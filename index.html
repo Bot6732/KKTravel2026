@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KKtravel2026</title>
+  <style>
+    :root {
+      --country-width: 150px;
+      --town-width: 190px;
+      --border: #d8dee8;
+      --header: #17324d;
+      --sticky: #fffdf7;
+      --sticky-header: #f3efe4;
+      --page: #f7f9fc;
+      --text: #182331;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--page);
+    }
+
+    body.locked main {
+      display: none;
+    }
+
+    main {
+      width: min(1200px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: #526173;
+      line-height: 1.5;
+    }
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      background: white;
+      box-shadow: 0 10px 24px rgba(23, 50, 77, 0.08);
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 1320px;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.35;
+      background: white;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      color: white;
+      background: var(--header);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      width: var(--country-width);
+      min-width: var(--country-width);
+      background: var(--sticky);
+      font-weight: 700;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      position: sticky;
+      left: var(--country-width);
+      z-index: 3;
+      width: var(--town-width);
+      min-width: var(--town-width);
+      background: var(--sticky);
+      font-weight: 700;
+      box-shadow: 8px 0 12px -12px rgba(23, 50, 77, 0.7);
+    }
+
+    th:nth-child(1),
+    th:nth-child(2) {
+      z-index: 5;
+      background: var(--sticky-header);
+      color: var(--header);
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 160px;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 165px;
+    }
+
+    th:nth-child(5),
+    td:nth-child(5),
+    th:nth-child(6),
+    td:nth-child(6),
+    th:nth-child(7),
+    td:nth-child(7) {
+      width: 135px;
+    }
+
+    th:nth-child(8),
+    td:nth-child(8) {
+      width: 300px;
+    }
+
+    th:nth-child(9),
+    td:nth-child(9),
+    th:nth-child(10),
+    td:nth-child(10) {
+      width: 230px;
+    }
+
+    .flight-table {
+      min-width: 1160px;
+    }
+
+    .flight-table th:nth-child(3),
+    .flight-table td:nth-child(3),
+    .flight-table th:nth-child(4),
+    .flight-table td:nth-child(4) {
+      width: 410px;
+    }
+
+    .flight-table strong {
+      color: var(--header);
+    }
+
+    .flight-link {
+      display: inline-flex;
+      margin-top: 8px;
+      color: #0d5f9f;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .flight-link:hover,
+    .flight-link:focus {
+      text-decoration: underline;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    .note {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #526173;
+    }
+
+    .gate {
+      display: none;
+      min-height: 100vh;
+      place-items: center;
+      padding: 24px;
+    }
+
+    body.locked .gate {
+      display: grid;
+    }
+
+    .gate-panel {
+      width: min(420px, 100%);
+      padding: 26px;
+      border: 1px solid var(--border);
+      background: white;
+      box-shadow: 0 10px 24px rgba(23, 50, 77, 0.08);
+    }
+
+    .gate-panel h1 {
+      margin-bottom: 16px;
+    }
+
+    .gate-panel label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .gate-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .gate-row input {
+      min-width: 0;
+      flex: 1;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      font: inherit;
+    }
+
+    .gate-row button {
+      padding: 11px 14px;
+      border: 0;
+      color: white;
+      background: var(--header);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .gate-error {
+      min-height: 20px;
+      margin-top: 10px;
+      color: #b3261e;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body class="locked">
+  <section class="gate" aria-label="Password required">
+    <form class="gate-panel" id="password-form">
+      <h1>KKtravel2026</h1>
+      <label for="password">Password</label>
+      <div class="gate-row">
+        <input id="password" name="password" type="password" autocomplete="current-password" autofocus>
+        <button type="submit">Open</button>
+      </div>
+      <div class="gate-error" id="password-error" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <main>
+    <h1>KKtravel2026</h1>
+    <p>Scroll left and right inside the table. The country and town/base columns stay in place.</p>
+
+    <div class="table-wrap" aria-label="Scrollable holiday locations table">
+      <table>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Town/Base</th>
+            <th>City/Region</th>
+            <th>Distance From Beach</th>
+            <th>Safety</th>
+            <th>Tourist-Friendliness</th>
+            <th>Beauty /10</th>
+            <th>Stuff To Do Nearby</th>
+            <th>Nightlife</th>
+            <th>Kitesurf</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spain</td>
+            <td>Tarifa</td>
+            <td>Cadiz, Andalucia</td>
+            <td>5-15 min walk to Los Lances</td>
+            <td>Good, 8/10</td>
+            <td>9/10</td>
+            <td>8.5</td>
+            <td>Whale watching, Bolonia dunes, old town tapas, Tangier day trip</td>
+            <td>Strong surf and bar scene</td>
+            <td>Excellent; one of Europe's kite capitals</td>
+          </tr>
+          <tr>
+            <td>Portugal</td>
+            <td>Lagos</td>
+            <td>Algarve</td>
+            <td>Praia da Batata is minutes from old town</td>
+            <td>Very good, 9/10</td>
+            <td>9/10</td>
+            <td>9</td>
+            <td>Ponta da Piedade caves, kayaking, Sagres, Meia Praia</td>
+            <td>Good; lively but not wild</td>
+            <td>Good nearby at Meia Praia and Alvor lagoon</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Naxos Town / Chora</td>
+            <td>Naxos, Cyclades</td>
+            <td>3-10 min walk to Agios Georgios</td>
+            <td>Very good, 9/10</td>
+            <td>9/10</td>
+            <td>9</td>
+            <td>Portara, Kastro, mountain villages, Plaka and Agia Anna beaches</td>
+            <td>Moderate-good</td>
+            <td>Excellent at Mikri Vigla, about 12-16 km away</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Lefkada Town or Nidri</td>
+            <td>Lefkada, Ionian</td>
+            <td>Agios Ioannis about 2 km; Nidri beach in town</td>
+            <td>Very good, 9/10</td>
+            <td>8/10</td>
+            <td>9.5</td>
+            <td>Porto Katsiki, Egremni, waterfalls, sailing, paragliding</td>
+            <td>Moderate</td>
+            <td>Excellent at Agios Ioannis and Vassiliki</td>
+          </tr>
+          <tr>
+            <td>Montenegro</td>
+            <td>Budva</td>
+            <td>Budva Riviera</td>
+            <td>5-10 min to Slovenska or Mogren</td>
+            <td>Good, 8/10</td>
+            <td>8/10</td>
+            <td>8.5</td>
+            <td>Old Town, Sveti Stefan, St Nikola island, Kotor day trip</td>
+            <td>Strong and loud in summer</td>
+            <td>Possible, but best spots near Ulcinj/Ada Bojana are about 70 km away</td>
+          </tr>
+          <tr>
+            <td>Poland</td>
+            <td>Sopot</td>
+            <td>Gdansk / Tri-City</td>
+            <td>Beach is in town</td>
+            <td>Very good, 9/10</td>
+            <td>8.5/10</td>
+            <td>8</td>
+            <td>Gdansk old town, Sopot pier, cycling, beach bars</td>
+            <td>Good</td>
+            <td>Good on Hel Peninsula, about 50-80 km; cooler Baltic water</td>
+          </tr>
+          <tr>
+            <td>Bulgaria</td>
+            <td>Sunny Beach / Nessebar</td>
+            <td>Burgas / Nessebar</td>
+            <td>0-5 min</td>
+            <td>Good, 8/10</td>
+            <td>8/10</td>
+            <td>7</td>
+            <td>UNESCO Nessebar, aquaparks, beach clubs, Burgas</td>
+            <td>Very strong, cheap, party-heavy</td>
+            <td>Possible at Sunny Beach; crowded in peak season</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Parikia or Naoussa</td>
+            <td>Paros, Cyclades</td>
+            <td>5-15 min to local beaches</td>
+            <td>Very good, 9/10</td>
+            <td>9/10</td>
+            <td>9</td>
+            <td>Antiparos, Kolymbithres, villages, boat days</td>
+            <td>Stronger than Naxos, pricier</td>
+            <td>Excellent at Pounda Beach</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">Tip: June and September usually give the best balance of weather, price, and crowds.</p>
+
+    <h1>Flight Prices From Estonia</h1>
+    <p>Snapshot for two travelers from Tallinn, staying inside 24 June-1/2 July 2026 where schedules allow. Totals include one standard cabin bag for each traveler; low-cost airline cabin bag prices are estimated because they vary by route and demand.</p>
+
+    <div class="table-wrap" aria-label="Scrollable flight price table">
+      <table class="flight-table">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Town</th>
+            <th>Best Price / Quality</th>
+            <th>Cheapest Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spain</td>
+            <td>Tarifa</td>
+            <td><strong>About EUR 830 total</strong><br>Route: Tallinn to Malaga, then ground transfer to Tarifa.<br>Travel time: about 4h50 out / 4h30 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Malaga%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 520 total</strong><br>Route: Tallinn to Malaga.<br>Travel time: roughly 8-13h each way.<br>Stops: usually 1 stop.<br>Airlines: Ryanair/Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Portugal</td>
+            <td>Lagos</td>
+            <td><strong>About EUR 870 total</strong><br>Route: Tallinn to Faro, then train/bus/car to Lagos.<br>Travel time: roughly 6-9h each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Faro%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 410 total</strong><br>Route: Tallinn to Faro.<br>Travel time: about 21-25h each way on the cheapest June-style itineraries.<br>Stops: 1 stop.<br>Airlines: Wizz Air UK/easyJet or similar.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Naxos Town / Chora</td>
+            <td><strong>About EUR 610-730 total</strong><br>Route: Tallinn to Naxos airport, usually via Athens; ferry alternative from Athens may be better.<br>Travel time: varies, often 8h+ flight routing.<br>Stops: 1-2 stops.<br>Airlines: Aegean/Olympic plus partner airline.<br>Cabin bags: included or added where needed.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/jnx/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 415-470 total</strong><br>Route: Tallinn to Athens only, then ferry to Naxos is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Lefkada Town or Nidri</td>
+            <td><strong>About EUR 582 total</strong><br>Route: Tallinn to Preveza/Lefkada, then short transfer.<br>Travel time: usually 6-8h each way.<br>Stops: 1 stop.<br>Airline: Lufthansa.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Preveza%202%20adults%2024%20June%202026%20return%201%20July%202026%20Lufthansa" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 535 total</strong><br>Route: Tallinn to Preveza/Lefkada.<br>Travel time: usually longer than Lufthansa option.<br>Stops: 1+ stops.<br>Airlines: Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Montenegro</td>
+            <td>Budva</td>
+            <td><strong>About EUR 682 total</strong><br>Route: Tallinn to Tivat via Riga, then short transfer to Budva.<br>Travel time: about 4h15 each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Tivat%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 350 total</strong><br>Route: Tallinn to Podgorica, then longer ground transfer to Budva.<br>Travel time: varies; usually 6-12h flight routing plus transfer.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair mix.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tgd/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Poland</td>
+            <td>Sopot</td>
+            <td><strong>About EUR 210-230 total</strong><br>Route: Tallinn to Gdansk, then train/taxi to Sopot.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 210-230 total</strong><br>Route: same direct Tallinn-Gdansk flight.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Bulgaria</td>
+            <td>Sunny Beach / Nessebar</td>
+            <td><strong>About EUR 860-1,030 total</strong><br>Route: Tallinn to Burgas, then short transfer.<br>Travel time: about 3h40 out / 3h10 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Burgas%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 555 total</strong><br>Route: Tallinn to Burgas.<br>Travel time: roughly 6-15h each way.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Parikia or Naoussa</td>
+            <td><strong>About EUR 415-470 total</strong><br>Route: Tallinn to Athens only, then ferry/short domestic leg to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pas/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td><strong>About EUR 415-470 total</strong><br>Route: Tallinn to Athens only, then ferry to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">ISIC note: the most relevant flight discount I found is an ISIC/Kiwi.com promo of EUR 15 off eligible bookings over EUR 200, valid through 31 July 2027, but it excludes Ryanair Group flights and must be verified through the ISIC offer page. I did not subtract it from the totals because eligibility depends on the exact booking path.</p>
+    <p class="note">Sources checked: airBaltic, Lufthansa, Eurowings, Skyscanner, Trip.com, Momondo, FlightsFrom, ISIC/Student discount pages, and airline cabin-bag policy pages. Flight prices can change quickly, so treat these as planning estimates rather than locked fares.</p>
+  </main>
+  <script>
+    const passwordForm = document.querySelector("#password-form");
+    const passwordInput = document.querySelector("#password");
+    const passwordError = document.querySelector("#password-error");
+    const pagePassword = "Peenis";
+
+    function unlockPage() {
+      document.body.classList.remove("locked");
+      sessionStorage.setItem("kktravel2026-unlocked", "true");
+    }
+
+    if (sessionStorage.getItem("kktravel2026-unlocked") === "true") {
+      unlockPage();
+    }
+
+    passwordForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (passwordInput.value === pagePassword) {
+        unlockPage();
+        return;
+      }
+
+      passwordError.textContent = "Wrong password.";
+      passwordInput.value = "";
+      passwordInput.focus();
+    });
+  </script>
+</body>
+</html>
