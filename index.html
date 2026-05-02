@@ -6,8 +6,7 @@
   <title>KKtravel2026</title>
   <style>
     :root {
-      --country-width: 150px;
-      --town-width: 190px;
+      --location-width: 230px;
       --border: #d8dee8;
       --header: #17324d;
       --sticky: #fffdf7;
@@ -66,7 +65,7 @@
     table {
       border-collapse: separate;
       border-spacing: 0;
-      min-width: 1540px;
+      min-width: 1360px;
       width: 100%;
       table-layout: fixed;
     }
@@ -102,85 +101,73 @@
       position: sticky;
       left: 0;
       z-index: 3;
-      width: var(--country-width);
-      min-width: var(--country-width);
-      background: var(--sticky);
-      font-weight: 700;
-    }
-
-    th:nth-child(2),
-    td:nth-child(2) {
-      position: sticky;
-      left: var(--country-width);
-      z-index: 3;
-      width: var(--town-width);
-      min-width: var(--town-width);
+      width: var(--location-width);
+      min-width: var(--location-width);
       background: var(--sticky);
       font-weight: 700;
       box-shadow: 8px 0 12px -12px rgba(23, 50, 77, 0.7);
     }
 
-    th:nth-child(1),
-    th:nth-child(2) {
+    th:nth-child(1) {
       z-index: 5;
       background: var(--sticky-header);
       color: var(--header);
     }
 
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 160px;
+    }
+
     th:nth-child(3),
     td:nth-child(3) {
-      width: 160px;
+      width: 165px;
     }
 
     th:nth-child(4),
     td:nth-child(4) {
-      width: 165px;
-    }
-
-    th:nth-child(5),
-    td:nth-child(5) {
       width: 220px;
     }
 
+    th:nth-child(5),
+    td:nth-child(5),
     th:nth-child(6),
     td:nth-child(6),
     th:nth-child(7),
-    td:nth-child(7),
-    th:nth-child(8),
-    td:nth-child(8) {
+    td:nth-child(7) {
       width: 135px;
     }
 
-    th:nth-child(9),
-    td:nth-child(9) {
+    th:nth-child(8),
+    td:nth-child(8) {
       width: 300px;
     }
 
+    th:nth-child(9),
+    td:nth-child(9),
     th:nth-child(10),
-    td:nth-child(10),
-    th:nth-child(11),
-    td:nth-child(11) {
+    td:nth-child(10) {
       width: 230px;
     }
 
     .flight-table {
-      min-width: 1670px;
+      min-width: 1480px;
     }
 
-    .flight-table th:nth-child(3),
-    .flight-table td:nth-child(3) {
+    .flight-table th:nth-child(2),
+    .flight-table td:nth-child(2) {
       width: 220px;
     }
 
+    .flight-table th:nth-child(3),
+    .flight-table td:nth-child(3),
     .flight-table th:nth-child(4),
-    .flight-table td:nth-child(4),
-    .flight-table th:nth-child(5),
-    .flight-table td:nth-child(5) {
+    .flight-table td:nth-child(4) {
       width: 410px;
     }
 
-    .flight-table th:nth-child(6),
-    .flight-table td:nth-child(6) {
+    .flight-table th:nth-child(5),
+    .flight-table td:nth-child(5) {
       width: 290px;
     }
 
@@ -202,37 +189,37 @@
     }
 
     .hotel-table {
-      min-width: 2080px;
+      min-width: 1880px;
+    }
+
+    .hotel-table th:nth-child(2),
+    .hotel-table td:nth-child(2) {
+      width: 145px;
     }
 
     .hotel-table th:nth-child(3),
     .hotel-table td:nth-child(3) {
-      width: 145px;
-    }
-
-    .hotel-table th:nth-child(4),
-    .hotel-table td:nth-child(4) {
       width: 230px;
     }
 
+    .hotel-table th:nth-child(4),
+    .hotel-table td:nth-child(4),
     .hotel-table th:nth-child(5),
-    .hotel-table td:nth-child(5),
-    .hotel-table th:nth-child(6),
-    .hotel-table td:nth-child(6) {
+    .hotel-table td:nth-child(5) {
       width: 280px;
     }
 
+    .hotel-table th:nth-child(6),
+    .hotel-table td:nth-child(6),
     .hotel-table th:nth-child(7),
     .hotel-table td:nth-child(7),
     .hotel-table th:nth-child(8),
-    .hotel-table td:nth-child(8),
-    .hotel-table th:nth-child(9),
-    .hotel-table td:nth-child(9) {
+    .hotel-table td:nth-child(8) {
       width: 200px;
     }
 
-    .hotel-table th:nth-child(10),
-    .hotel-table td:nth-child(10) {
+    .hotel-table th:nth-child(9),
+    .hotel-table td:nth-child(9) {
       width: 275px;
     }
 
@@ -311,8 +298,7 @@
     }
 
     :root {
-      --country-width: 154px;
-      --town-width: 210px;
+      --location-width: 230px;
       --border: #d6deea;
       --header: #12263a;
       --header-soft: #1f3b53;
@@ -605,6 +591,7 @@
       border-radius: 8px;
       background: var(--surface);
       box-shadow: var(--shadow);
+      -webkit-overflow-scrolling: touch;
     }
 
     .table-wrap::-webkit-scrollbar {
@@ -652,19 +639,15 @@
     }
 
     th:nth-child(1),
-    td:nth-child(1),
-    th:nth-child(2),
-    td:nth-child(2) {
+    td:nth-child(1) {
       font-weight: 800;
     }
 
-    tbody tr:hover td:nth-child(1),
-    tbody tr:hover td:nth-child(2) {
+    tbody tr:hover td:nth-child(1) {
       background: #f6eedc;
     }
 
-    th:nth-child(1),
-    th:nth-child(2) {
+    th:nth-child(1) {
       background: var(--sticky-header);
       color: var(--header);
     }
@@ -722,7 +705,7 @@
 
     .location-photo {
       position: relative;
-      min-height: 300px;
+      height: 220px;
       background: #d8e2ee;
     }
 
@@ -792,10 +775,43 @@
     }
 
     .fact {
+      position: relative;
       padding: 12px 13px;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--surface-muted);
+    }
+
+    .fact::after {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: calc(100% + 10px);
+      z-index: 12;
+      display: block;
+      min-width: 320px;
+      max-width: 560px;
+      padding: 11px 12px;
+      border: 1px solid rgba(18, 38, 58, 0.16);
+      border-radius: 8px;
+      color: white;
+      background: rgba(18, 38, 58, 0.96);
+      box-shadow: 0 16px 34px rgba(18, 38, 58, 0.24);
+      content: attr(data-detail);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.45;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 150ms ease 1s, transform 150ms ease 1s;
+    }
+
+    .fact:hover::after,
+    .fact:focus::after,
+    .fact:focus-within::after {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .fact span {
@@ -959,7 +975,7 @@
 
     .compare-panels {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -1006,6 +1022,104 @@
       color: #b3261e;
       font-size: 14px;
       font-weight: 700;
+    }
+
+    .trip-builder {
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 10px 26px rgba(18, 38, 58, 0.08);
+    }
+
+    .trip-builder h3 {
+      margin: 0 0 12px;
+      color: var(--header);
+      font-size: 19px;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .builder-field {
+      display: grid;
+      gap: 7px;
+      color: var(--header-soft);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .builder-field select {
+      width: 100%;
+      padding: 10px 11px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      background: white;
+      font: inherit;
+      font-weight: 700;
+      text-transform: none;
+    }
+
+    .trip-result {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--surface-muted);
+    }
+
+    .trip-total {
+      margin: 0 0 12px;
+      color: var(--header);
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .trip-result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .trip-result-item {
+      padding: 10px 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+    }
+
+    .trip-result-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .trip-result-item strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--header);
+      line-height: 1.35;
+    }
+
+    .trip-detail-list {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .trip-detail-list li {
+      color: #35465c;
+      line-height: 1.5;
     }
 
     .legacy-hotel-table {
@@ -1098,6 +1212,271 @@
       }
     }
 
+    @media (max-width: 700px) {
+      :root {
+        --location-width: 156px;
+      }
+
+      body {
+        font-size: 14px;
+      }
+
+      main {
+        padding: 0 10px 28px;
+      }
+
+      .menu-toggle {
+        top: 10px;
+        left: 10px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .site-header {
+        margin: 0 -10px 20px;
+        padding: 64px 12px 22px;
+      }
+
+      .site-title {
+        font-size: 28px;
+      }
+
+      .site-lead {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .meta-item,
+      .summary-card {
+        padding: 10px 11px;
+      }
+
+      .summary-card strong {
+        font-size: 16px;
+      }
+
+      .section-block {
+        margin-top: 24px;
+        padding-top: 6px;
+      }
+
+      .section-title {
+        font-size: 21px;
+      }
+
+      .section-copy {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .table-wrap {
+        border-radius: 6px;
+        box-shadow: 0 8px 20px rgba(18, 38, 58, 0.1);
+      }
+
+      table {
+        min-width: 980px;
+        font-size: 12px;
+      }
+
+      th,
+      td {
+        padding: 9px 8px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+      }
+
+      th {
+        font-size: 10px;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 115px;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3) {
+        width: 120px;
+      }
+
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 150px;
+      }
+
+      th:nth-child(5),
+      td:nth-child(5),
+      th:nth-child(6),
+      td:nth-child(6),
+      th:nth-child(7),
+      td:nth-child(7) {
+        width: 96px;
+      }
+
+      th:nth-child(8),
+      td:nth-child(8) {
+        width: 190px;
+      }
+
+      th:nth-child(9),
+      td:nth-child(9),
+      th:nth-child(10),
+      td:nth-child(10) {
+        width: 150px;
+      }
+
+      .flight-table {
+        min-width: 960px;
+      }
+
+      .flight-table th:nth-child(2),
+      .flight-table td:nth-child(2) {
+        width: 140px;
+      }
+
+      .flight-table th:nth-child(3),
+      .flight-table td:nth-child(3),
+      .flight-table th:nth-child(4),
+      .flight-table td:nth-child(4) {
+        width: 280px;
+      }
+
+      .flight-table th:nth-child(5),
+      .flight-table td:nth-child(5) {
+        width: 205px;
+      }
+
+      .hotel-table {
+        min-width: 1120px;
+      }
+
+      .hotel-table th:nth-child(2),
+      .hotel-table td:nth-child(2) {
+        width: 110px;
+      }
+
+      .hotel-table th:nth-child(3),
+      .hotel-table td:nth-child(3),
+      .hotel-table th:nth-child(4),
+      .hotel-table td:nth-child(4),
+      .hotel-table th:nth-child(5),
+      .hotel-table td:nth-child(5),
+      .hotel-table th:nth-child(6),
+      .hotel-table td:nth-child(6),
+      .hotel-table th:nth-child(7),
+      .hotel-table td:nth-child(7),
+      .hotel-table th:nth-child(8),
+      .hotel-table td:nth-child(8),
+      .hotel-table th:nth-child(9),
+      .hotel-table td:nth-child(9) {
+        width: 160px;
+      }
+
+      .flight-link {
+        font-size: 12px;
+      }
+
+      .location-photo {
+        height: 160px;
+      }
+
+      .location-photo-overlay {
+        padding: 36px 14px 14px;
+      }
+
+      .location-photo-overlay h2 {
+        font-size: 24px;
+      }
+
+      .location-photo-overlay p {
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .location-body {
+        padding: 16px 12px;
+      }
+
+      .overview-text {
+        font-size: 14px;
+        line-height: 1.62;
+      }
+
+      .weather-overview,
+      .flight-summary,
+      .hotel-card-body,
+      .trip-builder,
+      .compare-area {
+        padding: 12px;
+      }
+
+      .fact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .fact {
+        padding: 10px 11px;
+      }
+
+      .fact::after {
+        top: calc(100% + 8px);
+        right: 0;
+        bottom: auto;
+        left: 0;
+        min-width: 0;
+        max-width: none;
+        font-size: 12px;
+      }
+
+      .flight-summary-grid,
+      .hotel-grid,
+      .compare-panels {
+        grid-template-columns: 1fr;
+      }
+
+      .flight-summary strong {
+        font-size: 16px;
+      }
+
+      .hotel-card img {
+        height: 132px;
+      }
+
+      .compare-head {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .clear-compare {
+        width: 100%;
+      }
+
+      .compare-output table {
+        min-width: 520px;
+        font-size: 12px;
+      }
+
+      .compare-output th,
+      .compare-output td {
+        padding: 9px 8px;
+      }
+
+      .builder-grid,
+      .trip-result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-total {
+        font-size: 19px;
+      }
+
+      .side-nav {
+        width: min(300px, 92vw);
+        overflow-y: auto;
+      }
+    }
+
     @media (max-width: 560px) {
       .header-meta,
       .summary-grid {
@@ -1111,8 +1490,54 @@
       .fact-grid,
       .flight-summary-grid,
       .hotel-grid,
-      .compare-panels {
+      .compare-panels,
+      .builder-grid,
+      .trip-result-grid {
         grid-template-columns: 1fr;
+      }
+
+      table {
+        min-width: 900px;
+      }
+
+      .flight-table {
+        min-width: 880px;
+      }
+
+      .compare-output table {
+        min-width: 460px;
+      }
+
+      .location-photo {
+        height: 145px;
+      }
+
+      .gate {
+        padding: 14px;
+      }
+
+      .gate-panel {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      :root {
+        --location-width: 142px;
+      }
+
+      table {
+        min-width: 840px;
+        font-size: 11.5px;
+      }
+
+      th,
+      td {
+        padding: 8px 6px;
+      }
+
+      .flight-table {
+        min-width: 840px;
       }
     }
   </style>
@@ -1222,8 +1647,7 @@
       <table>
         <thead>
           <tr>
-            <th>Country</th>
-            <th>Town/Base</th>
+            <th>Location</th>
             <th>City/Region</th>
             <th>Distance From Beach</th>
             <th>Climate Late Jun</th>
@@ -1237,8 +1661,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Spain</td>
-            <td><a class="jump-link" href="#tarifa">Tarifa</a></td>
+            <td><a class="jump-link" href="#tarifa">Tarifa (Spain)</a></td>
             <td>Cadiz, Andalucia</td>
             <td>5-15 min walk to Los Lances</td>
             <td>23C day / 19C night; mostly sunny and dry, often windy; low rain chance</td>
@@ -1250,8 +1673,7 @@
             <td>Excellent; one of Europe's kite capitals</td>
           </tr>
           <tr>
-            <td>Portugal</td>
-            <td><a class="jump-link" href="#lagos">Lagos</a></td>
+            <td><a class="jump-link" href="#lagos">Lagos (Portugal)</a></td>
             <td>Algarve</td>
             <td>Praia da Batata is minutes from old town</td>
             <td>22C day / 18C night; mostly sunny, very dry and breezy; rare rain</td>
@@ -1263,8 +1685,7 @@
             <td>Good nearby at Meia Praia and Alvor lagoon</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td><a class="jump-link" href="#naxos">Naxos Town / Chora</a></td>
+            <td><a class="jump-link" href="#naxos">Naxos Town / Chora (Greece)</a></td>
             <td>Naxos, Cyclades</td>
             <td>3-10 min walk to Agios Georgios</td>
             <td>24C day / 22C night; sunny/clear, very dry, breezy Meltemi possible</td>
@@ -1276,8 +1697,7 @@
             <td>Excellent at Mikri Vigla, about 12-16 km away</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri</a></td>
+            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri (Greece)</a></td>
             <td>Lefkada, Ionian</td>
             <td>Agios Ioannis about 2 km; Nidri beach in town</td>
             <td>26C day / 21C night; sunny and warm, small shower risk</td>
@@ -1289,8 +1709,7 @@
             <td>Excellent at Agios Ioannis and Vassiliki</td>
           </tr>
           <tr>
-            <td>Montenegro</td>
-            <td><a class="jump-link" href="#budva">Budva</a></td>
+            <td><a class="jump-link" href="#budva">Budva (Montenegro)</a></td>
             <td>Budva Riviera</td>
             <td>5-10 min to Slovenska or Mogren</td>
             <td>24C day / 13C night; sunny spells, warm days, higher shower risk</td>
@@ -1302,8 +1721,7 @@
             <td>Possible, but best spots near Ulcinj/Ada Bojana are about 70 km away</td>
           </tr>
           <tr>
-            <td>Poland</td>
-            <td><a class="jump-link" href="#sopot">Sopot</a></td>
+            <td><a class="jump-link" href="#sopot">Sopot (Poland)</a></td>
             <td>Gdansk / Tri-City</td>
             <td>Beach is in town</td>
             <td>19C day / 12C night; mild, partly cloudy, rain possible</td>
@@ -1315,8 +1733,7 @@
             <td>Good on Hel Peninsula, about 50-80 km; cooler Baltic water</td>
           </tr>
           <tr>
-            <td>Bulgaria</td>
-            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar</a></td>
+            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar (Bulgaria)</a></td>
             <td>Burgas / Nessebar</td>
             <td>0-5 min</td>
             <td>27C day / 18C night; warm, mostly sunny, occasional showers</td>
@@ -1328,8 +1745,7 @@
             <td>Possible at Sunny Beach; crowded in peak season</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td><a class="jump-link" href="#paros">Parikia or Naoussa</a></td>
+            <td><a class="jump-link" href="#paros">Parikia or Naoussa (Greece)</a></td>
             <td>Paros, Cyclades</td>
             <td>5-15 min to local beaches</td>
             <td>24C day / 22C night; sunny/clear, very dry, breezy</td>
@@ -1362,8 +1778,7 @@
       <table class="flight-table">
         <thead>
           <tr>
-            <th>Country</th>
-            <th>Town</th>
+            <th>Location</th>
             <th>Climate Late Jun</th>
             <th>Best Price / Quality<br>Total For 2 / Per Person</th>
             <th>Cheapest Price<br>Total For 2 / Per Person</th>
@@ -1372,64 +1787,56 @@
         </thead>
         <tbody>
           <tr>
-            <td>Spain</td>
-            <td><a class="jump-link" href="#tarifa">Tarifa</a></td>
+            <td><a class="jump-link" href="#tarifa">Tarifa (Spain)</a></td>
             <td>23C / 19C; mostly sunny, dry and windy</td>
             <td><strong>About EUR 830 total for 2</strong><br><span class="price-basis">Approx EUR 415 per person</span><br>Route: Tallinn to Malaga, then ground transfer to Tarifa.<br>Travel time: about 4h50 out / 4h30 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 520 total for 2</strong><br><span class="price-basis">Approx EUR 260 per person</span><br>Route: Tallinn to Malaga.<br>Travel time: roughly 8-13h each way.<br>Stops: usually 1 stop.<br>Airlines: Ryanair/Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> if booked through the ISIC/Kiwi.com offer and the booking is over EUR 200. Cheapest option may fail if it includes Ryanair Group flights.</td>
           </tr>
           <tr>
-            <td>Portugal</td>
-            <td><a class="jump-link" href="#lagos">Lagos</a></td>
+            <td><a class="jump-link" href="#lagos">Lagos (Portugal)</a></td>
             <td>22C / 18C; mostly sunny, very dry</td>
             <td><strong>About EUR 870 total for 2</strong><br><span class="price-basis">Approx EUR 435 per person</span><br>Route: Tallinn to Faro, then train/bus/car to Lagos.<br>Travel time: roughly 6-9h each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 410 total for 2</strong><br><span class="price-basis">Approx EUR 205 per person</span><br>Route: Tallinn to Faro.<br>Travel time: about 21-25h each way on the cheapest June-style itineraries.<br>Stops: 1 stop.<br>Airlines: Wizz Air UK/easyJet or similar.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> through ISIC/Kiwi.com if the exact itinerary is sold there and no Ryanair Group segment is included.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td><a class="jump-link" href="#naxos">Naxos Town / Chora</a></td>
+            <td><a class="jump-link" href="#naxos">Naxos Town / Chora (Greece)</a></td>
             <td>24C / 22C; sunny, dry, breezy</td>
             <td><strong>About EUR 610-730 total for 2</strong><br><span class="price-basis">Approx EUR 305-365 per person</span><br>Route: Tallinn to Naxos airport, usually via Athens; ferry alternative from Athens may be better.<br>Travel time: varies, often 8h+ flight routing.<br>Stops: 1-2 stops.<br>Airlines: Aegean/Olympic plus partner airline.<br>Cabin bags: included or added where needed.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/jnx/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry to Naxos is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> on the flight booking via ISIC/Kiwi.com if over EUR 200 and not Ryanair Group. Ferry to Naxos is separate and not included in this flight discount.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri</a></td>
+            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri (Greece)</a></td>
             <td>26C / 21C; sunny, warm, small shower risk</td>
             <td><strong>About EUR 582 total for 2</strong><br><span class="price-basis">Approx EUR 291 per person</span><br>Route: Tallinn to Preveza/Lefkada, then short transfer.<br>Travel time: usually 6-8h each way.<br>Stops: 1 stop.<br>Airline: Lufthansa.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 535 total for 2</strong><br><span class="price-basis">Approx EUR 268 per person</span><br>Route: Tallinn to Preveza/Lefkada.<br>Travel time: usually longer than Lufthansa option.<br>Stops: 1+ stops.<br>Airlines: Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> via ISIC/Kiwi.com if the route is booked there, costs over EUR 200, and does not include Ryanair Group flights.</td>
           </tr>
           <tr>
-            <td>Montenegro</td>
-            <td><a class="jump-link" href="#budva">Budva</a></td>
+            <td><a class="jump-link" href="#budva">Budva (Montenegro)</a></td>
             <td>24C / 13C; sunny spells, showers possible</td>
             <td><strong>About EUR 682 total for 2</strong><br><span class="price-basis">Approx EUR 341 per person</span><br>Route: Tallinn to Tivat via Riga, then short transfer to Budva.<br>Travel time: about 4h15 each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tiv/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 350 total for 2</strong><br><span class="price-basis">Approx EUR 175 per person</span><br>Route: Tallinn to Podgorica, then longer ground transfer to Budva.<br>Travel time: varies; usually 6-12h flight routing plus transfer.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair mix.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tgd/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> for eligible Kiwi.com bookings. Best airBaltic-style routing is more likely eligible; cheapest mixed option may be excluded if Ryanair appears.</td>
           </tr>
           <tr>
-            <td>Poland</td>
-            <td><a class="jump-link" href="#sopot">Sopot</a></td>
+            <td><a class="jump-link" href="#sopot">Sopot (Poland)</a></td>
             <td>19C / 12C; mild, partly cloudy, rain possible</td>
             <td><strong>About EUR 210-230 total for 2</strong><br><span class="price-basis">Approx EUR 105-115 per person</span><br>Route: Tallinn to Gdansk, then train/taxi to Sopot.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 210-230 total for 2</strong><br><span class="price-basis">Approx EUR 105-115 per person</span><br>Route: same direct Tallinn-Gdansk flight.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> if the total booking is over EUR 200 and sold through ISIC/Kiwi.com. This is likely the clearest fit because it is Wizz Air, not Ryanair Group.</td>
           </tr>
           <tr>
-            <td>Bulgaria</td>
-            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar</a></td>
+            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar (Bulgaria)</a></td>
             <td>27C / 18C; warm, mostly sunny, occasional showers</td>
             <td><strong>About EUR 860-1,030 total for 2</strong><br><span class="price-basis">Approx EUR 430-515 per person</span><br>Route: Tallinn to Burgas, then short transfer.<br>Travel time: about 3h40 out / 3h10 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 555 total for 2</strong><br><span class="price-basis">Approx EUR 278 per person</span><br>Route: Tallinn to Burgas.<br>Travel time: roughly 6-15h each way.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>Up to EUR 15</strong> via ISIC/Kiwi.com. Cheapest option only works with the discount if the final itinerary avoids Ryanair Group flights.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td><a class="jump-link" href="#paros">Parikia or Naoussa</a></td>
+            <td><a class="jump-link" href="#paros">Parikia or Naoussa (Greece)</a></td>
             <td>24C / 22C; sunny, dry, breezy</td>
             <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry/short domestic leg to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pas/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
             <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
@@ -1449,7 +1856,7 @@
         <div>
           <span class="eyebrow">Destination deep dive</span>
           <h2 class="section-title">Location Details, Flights And Hotels</h2>
-          <p class="section-copy">Click a town in the tables above to jump straight to its full overview. Use the checkboxes to compare 2-3 destinations or hotel options side by side.</p>
+          <p class="section-copy">Click a location in the tables above to jump straight to its full overview. Use the checkboxes to compare 2-3 destinations, hotel options, or built trip estimates side by side. Hover over a fact square for about 1 second to see more detail.</p>
         </div>
         <span class="pill">Clickable sections</span>
       </div>
@@ -1470,6 +1877,12 @@
             <h3>Compare Hotels</h3>
             <div class="compare-output" id="hotel-comparison">
               <p class="empty-compare">Select 2-3 hotels from the hotel cards.</p>
+            </div>
+          </div>
+          <div>
+            <h3>Compare Built Trips</h3>
+            <div class="compare-output" id="trip-comparison">
+              <p class="empty-compare">Build and select 2-3 trip estimates from the destination sections.</p>
             </div>
           </div>
         </div>
@@ -1493,8 +1906,7 @@
       <table class="hotel-table">
         <thead>
           <tr>
-            <th>Country</th>
-            <th>Town</th>
+            <th>Location</th>
             <th>Type</th>
             <th>Hotel</th>
             <th>Strengths</th>
@@ -1507,8 +1919,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Spain</td>
-            <td>Tarifa</td>
+            <td>Tarifa (Spain)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://laresidenciatarifa.com/en/hotel-spa-tarifa/" target="_blank" rel="noopener">La Residencia Puerto Hotel &amp; Spa</a></td>
             <td>Rooftop heated infinity pool, spa, port views, polished couple-friendly feel.</td>
@@ -1519,8 +1930,7 @@
             <td>Pet-friendly rooms by availability; best for comfort plus easy evenings.</td>
           </tr>
           <tr>
-            <td>Spain</td>
-            <td>Tarifa</td>
+            <td>Tarifa (Spain)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.hostaltarifa.com/en/hostal-in-tarifa/" target="_blank" rel="noopener">Hostal Tarifa</a></td>
             <td>Simple, central, bright rooms with AC and Wi-Fi; practical for budget planning.</td>
@@ -1531,8 +1941,7 @@
             <td>Private parking available; good if you rent a car for kite beaches.</td>
           </tr>
           <tr>
-            <td>Spain</td>
-            <td>Tarifa</td>
+            <td>Tarifa (Spain)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://www.hotelhurricane.com/en/hotel-tarifa/" target="_blank" rel="noopener">Hotel Hurricane</a></td>
             <td>Classic beach/kite atmosphere, gardens, two pools, restaurant, direct beach mood.</td>
@@ -1543,8 +1952,7 @@
             <td>Best Tarifa pick if kitesurf vibe matters more than town nightlife.</td>
           </tr>
           <tr>
-            <td>Portugal</td>
-            <td>Lagos</td>
+            <td>Lagos (Portugal)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://www.tivolihotels.com/en/tivoli-lagos" target="_blank" rel="noopener">Tivoli Lagos Algarve Resort</a></td>
             <td>Central resort, indoor and outdoor pools, health club, beach club shuttle.</td>
@@ -1555,8 +1963,7 @@
             <td>Very easy logistics; good balance if you want pool plus town access.</td>
           </tr>
           <tr>
-            <td>Portugal</td>
-            <td>Lagos</td>
+            <td>Lagos (Portugal)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.lagosmar.com/en/" target="_blank" rel="noopener">Lagosmar Story Hotel</a></td>
             <td>Family hotel, central, simple rooms, easy marina/train/bus access.</td>
@@ -1567,8 +1974,7 @@
             <td>Rooftop terrace and sea views from some areas; good value base.</td>
           </tr>
           <tr>
-            <td>Portugal</td>
-            <td>Lagos</td>
+            <td>Lagos (Portugal)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://casa-mae.com/" target="_blank" rel="noopener">Casa Mae</a></td>
             <td>Stylish boutique compound with pools, gardens, spa, farm-to-table restaurant.</td>
@@ -1579,8 +1985,7 @@
             <td>Design, yoga/workshop energy and calmer mood than a party hotel.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Naxos Town / Chora</td>
+            <td>Naxos Town / Chora (Greece)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://www.nissakihotels.com/nissaki-beach-hotel/location.html" target="_blank" rel="noopener">Nissaki Beach Hotel</a></td>
             <td>Beachfront Agios Georgios location, pool, restaurant, very close to town.</td>
@@ -1591,8 +1996,7 @@
             <td>Excellent beach-town balance; private parking and transfers available.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Naxos Town / Chora</td>
+            <td>Naxos Town / Chora (Greece)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.soulahotel.gr/" target="_blank" rel="noopener">Soula Hotel</a></td>
             <td>Family-run, simple, 20 m from beach, very close to town.</td>
@@ -1603,8 +2007,7 @@
             <td>Free transfers to/from port and airport; strong value pick.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Naxos Town / Chora</td>
+            <td>Naxos Town / Chora (Greece)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://www.grotta.gr/" target="_blank" rel="noopener">Hotel Grotta</a></td>
             <td>Sea and Portara views, famous breakfast, spa pool, hammam and warm service.</td>
@@ -1615,8 +2018,7 @@
             <td>Great if views and breakfast matter more than being on sandy beach.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Lefkada Town or Nidri</td>
+            <td>Lefkada Town or Nidri (Greece)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://portogalini.gr/" target="_blank" rel="noopener">Porto Galini Seaside Resort &amp; Spa</a></td>
             <td>Five-star resort with secluded beach, pools, spa, sports and landscaped grounds.</td>
@@ -1627,8 +2029,7 @@
             <td>Best comfort pick for a proper resort stay on Lefkada.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Lefkada Town or Nidri</td>
+            <td>Lefkada Town or Nidri (Greece)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.boschettohotel.com/" target="_blank" rel="noopener">Boschetto Hotel</a></td>
             <td>Small chic B&amp;B in Lefkada Town, close to restaurants and old centre.</td>
@@ -1639,8 +2040,7 @@
             <td>Good short-stay base if you want town evenings and day trips by car.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Lefkada Town or Nidri</td>
+            <td>Lefkada Town or Nidri (Greece)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://www.elissohotel.com/" target="_blank" rel="noopener">Elisso Hotel Vasiliki</a></td>
             <td>Beachfront, pool, sea views, directly useful for windsurfing/watersports.</td>
@@ -1651,8 +2051,7 @@
             <td>Great sports option; direct-booking page advertises 10% off.</td>
           </tr>
           <tr>
-            <td>Montenegro</td>
-            <td>Budva</td>
+            <td>Budva (Montenegro)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://www.avalaresort.com/" target="_blank" rel="noopener">Avala Resort &amp; Villas</a></td>
             <td>Beside Old Town and beach, indoor/outdoor pools, spa, hotel beach.</td>
@@ -1663,8 +2062,7 @@
             <td>Free parking/pool use noted by hotel; best location in Budva for first timers.</td>
           </tr>
           <tr>
-            <td>Montenegro</td>
-            <td>Budva</td>
+            <td>Budva (Montenegro)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.hotelhermesbudva.com/en/location" target="_blank" rel="noopener">Hotel Hermes Budva</a></td>
             <td>Modern small hotel, practical location, good room-focused value.</td>
@@ -1675,8 +2073,7 @@
             <td>Bus station about 700 m; useful if you do day trips.</td>
           </tr>
           <tr>
-            <td>Montenegro</td>
-            <td>Budva</td>
+            <td>Budva (Montenegro)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://www.budva.com/eng/private-accommodation/astoria/1595.html" target="_blank" rel="noopener">Hotel Astoria Budva</a></td>
             <td>Old Town boutique atmosphere, character building, private beach area.</td>
@@ -1687,8 +2084,7 @@
             <td>Best if you want romantic old-town character over resort facilities.</td>
           </tr>
           <tr>
-            <td>Poland</td>
-            <td>Sopot</td>
+            <td>Sopot (Poland)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://www.marriott.com/en-us/hotels/gdnmc-sopot-marriott-resort-and-spa/overview/" target="_blank" rel="noopener">Sopot Marriott Resort &amp; Spa</a></td>
             <td>Beach hotel, indoor/outdoor pools, seasonal rooftop infinity pool, large spa.</td>
@@ -1699,8 +2095,7 @@
             <td>Best comfort/spa pick; beach promenade area is calmer than central Sopot.</td>
           </tr>
           <tr>
-            <td>Poland</td>
-            <td>Sopot</td>
+            <td>Sopot (Poland)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://bbmolo.pl/en/bb-molo-about-us/" target="_blank" rel="noopener">B&amp;B Molo</a></td>
             <td>Modern affordable rooms, breakfast, sauna, parking and shared kitchen.</td>
@@ -1711,8 +2106,7 @@
             <td>Good simple base when flight price is the priority.</td>
           </tr>
           <tr>
-            <td>Poland</td>
-            <td>Sopot</td>
+            <td>Sopot (Poland)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://www.hotelmolo.com/de/" target="_blank" rel="noopener">Hotel Molo</a></td>
             <td>Very central, modern, by Monte Cassino and train station; easy for nightlife.</td>
@@ -1723,8 +2117,7 @@
             <td>Strong choice if you want bars/restaurants first and beach second.</td>
           </tr>
           <tr>
-            <td>Bulgaria</td>
-            <td>Sunny Beach / Nessebar</td>
+            <td>Sunny Beach / Nessebar (Bulgaria)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://hotel-evrika.com/en/hotel/" target="_blank" rel="noopener">DIT Evrika Beach Club Hotel</a></td>
             <td>Beachfront all-inclusive, aquapark, several pools, beach bar, entertainment.</td>
@@ -1735,8 +2128,7 @@
             <td>Most complete resort choice here, especially if you want easy meals.</td>
           </tr>
           <tr>
-            <td>Bulgaria</td>
-            <td>Sunny Beach / Nessebar</td>
+            <td>Sunny Beach / Nessebar (Bulgaria)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.atolhotels.com/?lng=en-GB" target="_blank" rel="noopener">Hotel Atol</a></td>
             <td>Central budget-style hotel, 150 m from beach, steps from Flower Street.</td>
@@ -1747,8 +2139,7 @@
             <td>Best for cheap party logistics; weaker if you want quiet sleep.</td>
           </tr>
           <tr>
-            <td>Bulgaria</td>
-            <td>Sunny Beach / Nessebar</td>
+            <td>Sunny Beach / Nessebar (Bulgaria)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://hotelstpanteleimon.com/en/about-us/" target="_blank" rel="noopener">St Panteleimon Beach Hotel</a></td>
             <td>Quiet first-line setting, pool, restaurant, apartments and sea views.</td>
@@ -1759,8 +2150,7 @@
             <td>Better couple-friendly choice if Sunny Beach itself feels too intense.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Parikia or Naoussa</td>
+            <td>Parikia or Naoussa (Greece)</td>
             <td>Pool / resort</td>
             <td><a class="flight-link" href="https://www.parosagnanti.gr/" target="_blank" rel="noopener">Paros Agnanti Resort &amp; Spa</a></td>
             <td>Five-star resort, pool, spa, sea views, 80 m from Krios and Marcello beaches.</td>
@@ -1771,8 +2161,7 @@
             <td>Private-pool suite options and free/scheduled transfer options noted by hotel.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Parikia or Naoussa</td>
+            <td>Parikia or Naoussa (Greece)</td>
             <td>Just room</td>
             <td><a class="flight-link" href="https://www.paroshoteloasis.gr/rooms/" target="_blank" rel="noopener">Oasis Hotel Paros</a></td>
             <td>Simple renovated rooms, opposite port, very central for buses/ferries.</td>
@@ -1783,8 +2172,7 @@
             <td>Great logistics if you use ferries or want a cheap central base.</td>
           </tr>
           <tr>
-            <td>Greece</td>
-            <td>Parikia or Naoussa</td>
+            <td>Parikia or Naoussa (Greece)</td>
             <td>Varia</td>
             <td><a class="flight-link" href="https://www.hotel-senia.com/" target="_blank" rel="noopener">Senia Hotel</a></td>
             <td>Naoussa sea views, two infinity pools, above Piperi Beach, close to nightlife.</td>
@@ -1798,7 +2186,7 @@
       </table>
     </div>
 
-    <p class="note">Hotel source set: official hotel pages where available, plus hotel/travel listings for location checks. Hotel prices and availability for 24 June-1/2 July 2026 should be checked through the linked hotel pages before booking.</p>
+    <p class="note">Hotel source set: official hotel pages where available, plus hotel/travel listings for location checks. Hotel prices and availability for 24 June-1/2 July 2026 should be checked through the linked hotel pages before booking. Airport-transfer costs are rough one-way planning estimates for 2 people unless marked per person; always confirm with the hotel or transfer company before booking.</p>
     </section>
   </main>
   <script>
@@ -1827,6 +2215,11 @@
           things: "Whale watching, Bolonia dunes, old town tapas, Tangier day trip",
           nightlife: "Strong surf and bar scene",
           kitesurf: "Excellent; one of Europe's kite capitals"
+        },
+        beachAccess: {
+          walk: "Old town to the near part of Los Lances is about 5-15 min on foot; the better kite-school beach zones can be 25-45 min if walking farther along the sand.",
+          difficulty: "Easy and mostly flat. The main issue is wind, not terrain; walking on soft sand can feel slower.",
+          taxi: "Taxi is optional for normal beach time. For farther Los Lances/kitesurf areas, expect roughly EUR 8-15 one way and about 5-12 min from town."
         },
         climate: {
           day: "22.6C average daytime high",
@@ -1865,7 +2258,8 @@
             beach: "Playa Chica about 180 m; Los Lances about 6 km.",
             nightlife: "Old town about 300 m; bars and restaurants are walkable.",
             airport: "Malaga Airport about 155 km / 1h50; Jerez about 130 km.",
-            bonus: "Best comfort pick for town evenings and easy logistics."
+            bonus: "Best comfort pick for town evenings and easy logistics.",
+            transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Budget option: airport train/bus into Malaga, then coach toward Tarifa/Algeciras, roughly EUR 20-35 per person and 3.5-5h total. Rental car is easiest if you want kite beaches; hotel parking may cost extra."
           },
           {
             id: "tarifa-hostal",
@@ -1878,7 +2272,8 @@
             beach: "Less than 5 min walk to the beach.",
             nightlife: "Less than 5 min walk to old town, port and food streets.",
             airport: "Malaga Airport about 155 km / 1h50.",
-            bonus: "Private parking available; useful if you rent a car for kite beaches."
+            bonus: "Private parking available; useful if you rent a car for kite beaches.",
+            transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Budget option: public transport via Malaga city and coach to Tarifa, roughly EUR 20-35 per person and 3.5-5h. Rental car works well because the hotel has parking options."
           },
           {
             id: "tarifa-hurricane",
@@ -1891,7 +2286,8 @@
             beach: "Beachfront / immediate beach access.",
             nightlife: "About 7 km from Tarifa old town nightlife.",
             airport: "Malaga Airport about 150 km / 1h45-2h.",
-            bonus: "Best if kitesurf vibe matters more than town nightlife."
+            bonus: "Best if kitesurf vibe matters more than town nightlife.",
+            transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Public transport usually gets you to Tarifa town first, then add a local taxi of about EUR 10-15 to the hotel. Rental car is strongly useful here because the hotel is outside town."
           }
         ]
       },
@@ -1912,6 +2308,11 @@
           things: "Ponta da Piedade caves, kayaking, Sagres, Meia Praia",
           nightlife: "Good; lively but not wild",
           kitesurf: "Good nearby at Meia Praia and Alvor lagoon"
+        },
+        beachAccess: {
+          walk: "Old town to Praia da Batata is about 5-8 min; Dona Ana is about 15-25 min; Meia Praia can be 15-30 min depending on where you start.",
+          difficulty: "Mostly easy, but Lagos has slopes and steps near the cliff beaches. Fine in sandals, but less effortless with luggage or after a long beach day.",
+          taxi: "Taxi to nearby beaches is usually about EUR 6-12 one way; to Alvor lagoon/kitesurf areas expect more, often around EUR 25-40 one way."
         },
         climate: {
           day: "22C average daytime high",
@@ -1950,7 +2351,8 @@
             beach: "Duna Beach Club at Meia Praia about 2.5 km by shuttle.",
             nightlife: "In central Lagos, a few minutes from marina, bars and restaurants.",
             airport: "Faro Airport about 90 km / 1h.",
-            bonus: "Good balance if you want pool plus town access."
+            bonus: "Good balance if you want pool plus town access.",
+            transport: "From Faro Airport: pre-booked private transfer about EUR 76 for up to 4 people, public taxi about EUR 90, around 1h. Budget route: airport bus/taxi to Faro city, then train/bus to Lagos, roughly EUR 8-18 per person but slower at 2.5-4h. Shared shuttle may be around EUR 20-35 per person."
           },
           {
             id: "lagos-lagosmar",
@@ -1963,7 +2365,8 @@
             beach: "Batata Beach about 7 min walk; Meia Praia about 11 min walk.",
             nightlife: "Old town and marina nightlife are a short walk away.",
             airport: "Faro Airport about 90 km / 1h.",
-            bonus: "Rooftop terrace and sea views from some areas; strong value base."
+            bonus: "Rooftop terrace and sea views from some areas; strong value base.",
+            transport: "From Faro Airport: private transfer about EUR 76 for up to 4 people or public taxi about EUR 90, around 1h door-to-door. Budget option: reach Faro city first, then train/bus to Lagos for roughly EUR 8-18 per person total, but expect 2.5-4h with luggage."
           },
           {
             id: "lagos-casa-mae",
@@ -1976,7 +2379,8 @@
             beach: "About 10-15 min walk to Batata Beach; about 20 min to Dona Ana.",
             nightlife: "Inside or next to old town, so food and bars are close.",
             airport: "Faro Airport about 90 km / 1h.",
-            bonus: "Calmer and more design-led than a party hotel."
+            bonus: "Calmer and more design-led than a party hotel.",
+            transport: "From Faro Airport: private transfer about EUR 76 for up to 4 people or public taxi about EUR 90, around 1h. Budget train/bus via Faro city is roughly EUR 8-18 per person and slower. Casa Mae is central, so no car is needed once in Lagos."
           }
         ]
       },
@@ -1997,6 +2401,11 @@
           things: "Portara, Kastro, mountain villages, Plaka and Agia Anna beaches",
           nightlife: "Moderate-good",
           kitesurf: "Excellent at Mikri Vigla, about 12-16 km away"
+        },
+        beachAccess: {
+          walk: "Naxos Town to Agios Georgios is usually 3-10 min and very easy. Plaka/Agia Anna beaches need bus, scooter or taxi.",
+          difficulty: "Agios Georgios is an easy flat town walk. Kitesurf beaches such as Mikri Vigla are not realistic walking trips.",
+          taxi: "Taxi to Agios Georgios is usually unnecessary. To Mikri Vigla, plan roughly EUR 25-35 one way and about 20-25 min."
         },
         climate: {
           day: "23.8C average daytime high",
@@ -2035,7 +2444,8 @@
             beach: "About 10 m from Agios Georgios Beach.",
             nightlife: "About 200 m from town; port area about 800 m.",
             airport: "Naxos Airport about 2 km.",
-            bonus: "Excellent beach-town balance."
+            bonus: "Excellent beach-town balance.",
+            transport: "From Naxos Airport: local taxi/transfer to Naxos Town area is roughly EUR 20, about 5-10 min; premium pre-booked transfers can be EUR 40-60. Budget option: local bus if the timetable fits, roughly EUR 2-3 per person, or ask the hotel about transfers."
           },
           {
             id: "naxos-soula",
@@ -2048,7 +2458,8 @@
             beach: "About 20 m from Agios Georgios Beach.",
             nightlife: "About 2 min walk to Naxos town centre.",
             airport: "Naxos Airport about 2-3 km.",
-            bonus: "Free transfers to/from port and airport."
+            bonus: "Free transfers to/from port and airport.",
+            transport: "From Naxos Airport: Soula advertises free port/airport transfer, which is the best option if available. Otherwise local taxi/transfer is roughly EUR 20, about 5-10 min; premium pre-booked transfers can be EUR 40-60. Local bus may be EUR 2-3 per person if schedules line up."
           },
           {
             id: "naxos-grotta",
@@ -2061,7 +2472,8 @@
             beach: "Grotta Beach a few minutes; Agios Georgios about 15-20 min walk.",
             nightlife: "Short walk to Chora old market, restaurants and bars.",
             airport: "Naxos Airport about 3.5 km.",
-            bonus: "Great if views and breakfast matter more than sandy beach doorstep."
+            bonus: "Great if views and breakfast matter more than sandy beach doorstep.",
+            transport: "From Naxos Airport: local taxi/transfer to Chora/Grotta area is roughly EUR 20, about 5-10 min; premium pre-booked transfers can be EUR 40-60. Budget bus may be EUR 2-3 per person, then a short uphill walk/taxi depending on luggage."
           }
         ]
       },
@@ -2082,6 +2494,11 @@
           things: "Porto Katsiki, Egremni, waterfalls, sailing, paragliding",
           nightlife: "Moderate",
           kitesurf: "Excellent at Agios Ioannis and Vassiliki"
+        },
+        beachAccess: {
+          walk: "From Lefkada Town to Agios Ioannis is about 25-35 min on foot; from Nidri, the local beach is in town and usually 0-10 min away.",
+          difficulty: "Lefkada Town to Agios Ioannis is mostly flat and manageable, but exposed to sun/wind. Reaching the famous west-coast beaches is not a walk.",
+          taxi: "Taxi from Lefkada Town to Agios Ioannis is roughly EUR 8-12 one way. Longer beach trips like Porto Katsiki can be much more expensive by taxi, so a car is better."
         },
         climate: {
           day: "25.5C average daytime high",
@@ -2120,7 +2537,8 @@
             beach: "Private/secluded beach on site.",
             nightlife: "About 4 km from Nidri; about 12 km from Lefkada Town.",
             airport: "Preveza/Aktion Airport about 30-35 km.",
-            bonus: "Best comfort pick for a proper resort stay on Lefkada."
+            bonus: "Best comfort pick for a proper resort stay on Lefkada.",
+            transport: "From Preveza/Aktion Airport: taxi or pre-booked transfer to Nikiana/Porto Galini area is roughly EUR 40-55, around 30-40 min. Public transport is awkward with luggage. Rental car is recommended if you want west-coast beaches."
           },
           {
             id: "lefkada-boschetto",
@@ -2133,7 +2551,8 @@
             beach: "Lagoon waterfront nearby; Agios Ioannis Beach about 3 km.",
             nightlife: "Steps from Lefkada Town cafes, restaurants and relaxed bars.",
             airport: "Preveza/Aktion Airport about 20 km / 20-25 min.",
-            bonus: "Good short-stay base for town evenings and car day trips."
+            bonus: "Good short-stay base for town evenings and car day trips.",
+            transport: "From Preveza/Aktion Airport: taxi or pre-booked transfer to Lefkada Town is roughly EUR 35-50, about 25-30 min. There is no truly convenient budget option from the airport with luggage. Rental car is useful for beach trips, not necessary for town evenings."
           },
           {
             id: "lefkada-elisso",
@@ -2146,7 +2565,8 @@
             beach: "Vasiliki Beach about 100 m / 2 min walk.",
             nightlife: "Vasiliki port about 400 m; Nidri about 35 km.",
             airport: "Preveza/Aktion Airport about 65 km / 50 min.",
-            bonus: "Great sports option; direct booking page advertises 10% off."
+            bonus: "Great sports option; direct booking page advertises 10% off.",
+            transport: "From Preveza/Aktion Airport: taxi or pre-booked transfer to Vasiliki is roughly EUR 60-80, about 60-75 min. Public transport is inconvenient for arrival day. Rental car is strongly recommended unless you plan to stay mostly in Vasiliki."
           }
         ]
       },
@@ -2167,6 +2587,11 @@
           things: "Old Town, Sveti Stefan, St Nikola island, Kotor day trip",
           nightlife: "Strong and loud in summer",
           kitesurf: "Possible, but best spots near Ulcinj/Ada Bojana are about 70 km away"
+        },
+        beachAccess: {
+          walk: "Central Budva to Slovenska Beach is often 5-10 min; Mogren is about 10-20 min depending on where you stay.",
+          difficulty: "Slovenska is an easy town walk. Mogren has a coastal path and some steps, still easy for most people but not as flat.",
+          taxi: "Taxi is usually unnecessary inside Budva. Short local rides are roughly EUR 5-8 one way; Jaz or other nearby beaches can be around EUR 10-18."
         },
         climate: {
           day: "24C average daytime high",
@@ -2205,7 +2630,8 @@
             beach: "Direct beach setting; Mogren Beach about 300 m.",
             nightlife: "Old Town about 50-200 m; nightlife is very close.",
             airport: "Tivat Airport about 18-25 km.",
-            bonus: "Best location in Budva for first timers."
+            bonus: "Best location in Budva for first timers.",
+            transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. Budget option: taxi to Tivat bus station plus bus to Budva, usually around EUR 8-15 total for 2 but slower and less comfortable. From Podgorica Airport, transfer is usually about EUR 55-80."
           },
           {
             id: "budva-hermes",
@@ -2218,7 +2644,8 @@
             beach: "About 700 m / 9 min walk to beach.",
             nightlife: "Restaurants and shops within 50-100 m; old town about 1 km.",
             airport: "Tivat Airport about 25 km.",
-            bonus: "Bus station about 700 m; useful for day trips."
+            bonus: "Bus station about 700 m; useful for day trips.",
+            transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. Budget option: taxi to Tivat bus station, then bus to Budva, roughly EUR 8-15 total for 2 before any final walk/taxi. From Podgorica Airport, expect about EUR 55-80 by transfer."
           },
           {
             id: "budva-astoria",
@@ -2231,7 +2658,8 @@
             beach: "In/next to Old Town beach area; Mogren about 700 m.",
             nightlife: "Inside Budva Old Town, so nightlife and restaurants are immediate.",
             airport: "Tivat Airport about 20 km.",
-            bonus: "Best if you want romantic old-town character over resort facilities."
+            bonus: "Best if you want romantic old-town character over resort facilities.",
+            transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. Budget bus route via Tivat bus station can work for light luggage, roughly EUR 8-15 total for 2 plus walking. Old Town access may require a short walk from the drop-off point."
           }
         ]
       },
@@ -2252,6 +2680,11 @@
           things: "Gdansk old town, Sopot pier, cycling, beach bars",
           nightlife: "Good",
           kitesurf: "Good on Hel Peninsula, about 50-80 km; cooler Baltic water"
+        },
+        beachAccess: {
+          walk: "Most central Sopot stays are about 2-15 min from the beach and pier area.",
+          difficulty: "Very easy and flat. This is one of the simplest beach walks on the list.",
+          taxi: "Taxi is rarely needed for the beach. A short Sopot ride is roughly EUR 5-10 one way; Hel Peninsula kitesurf trips are better by train/car, not taxi."
         },
         climate: {
           day: "18.9C average daytime high",
@@ -2290,7 +2723,8 @@
             beach: "By the beach / roughly 0-100 m.",
             nightlife: "About 2-2.5 km from pier and Monte Cassino nightlife.",
             airport: "Gdansk Airport about 16.4 km.",
-            bonus: "Best comfort/spa pick; beach promenade area is calmer than central Sopot."
+            bonus: "Best comfort/spa pick; beach promenade area is calmer than central Sopot.",
+            transport: "From Gdansk Airport: pre-booked taxi to Sopot is about 120 PLN day / 150 PLN night, around EUR 28-35 and 25-30 min. SKM train is about 6-8 PLN per person but needs a walk/taxi from Sopot station. Bolt/Uber can range widely, roughly 70-180 PLN."
           },
           {
             id: "sopot-bb-molo",
@@ -2303,7 +2737,8 @@
             beach: "About 1 km to Sopot beach.",
             nightlife: "About 1 km to Monte Cassino / central nightlife.",
             airport: "Gdansk Airport about 15-16 km.",
-            bonus: "Good simple base when flight price is the priority."
+            bonus: "Good simple base when flight price is the priority.",
+            transport: "From Gdansk Airport: pre-booked taxi about 120 PLN day / 150 PLN night, around EUR 28-35 and 25-30 min. Cheapest option is SKM train for about 6-8 PLN per person, then walk or short taxi. Uber/Bolt may be 70-180 PLN depending on demand."
           },
           {
             id: "sopot-molo",
@@ -2316,7 +2751,8 @@
             beach: "About 500-800 m / around 10 min walk to beach and pier.",
             nightlife: "About 2 min to Monte Cassino nightlife.",
             airport: "Gdansk Airport about 17 km.",
-            bonus: "Strong choice if you want bars and restaurants first, beach second."
+            bonus: "Strong choice if you want bars and restaurants first, beach second.",
+            transport: "From Gdansk Airport: pre-booked taxi about 120 PLN day / 150 PLN night, around EUR 28-35 and 25-30 min. SKM train is cheap at about 6-8 PLN per person and fits this hotel well because it is central by the station. Uber/Bolt varies around 70-180 PLN."
           }
         ]
       },
@@ -2337,6 +2773,11 @@
           things: "UNESCO Nessebar, aquaparks, beach clubs, Burgas",
           nightlife: "Very strong, cheap, party-heavy",
           kitesurf: "Possible at Sunny Beach; crowded in peak season"
+        },
+        beachAccess: {
+          walk: "Most Sunny Beach resort stays are 0-5 min from sand; Nessebar-side hotels can still be very close to the sea.",
+          difficulty: "Very easy and flat. The bigger issue is crowds and heat, not walking difficulty.",
+          taxi: "Taxi is usually unnecessary for the beach. Short resort rides are roughly EUR 5-10; Sunny Beach to Old Nessebar can be around EUR 10-18 one way."
         },
         climate: {
           day: "27.2C average daytime high",
@@ -2375,7 +2816,8 @@
             beach: "Direct beachfront setting.",
             nightlife: "About 1.5 km or short taxi to Flower Street nightlife.",
             airport: "Burgas Airport about 28-30 km.",
-            bonus: "Most complete resort choice here, especially if you want easy meals."
+            bonus: "Most complete resort choice here, especially if you want easy meals.",
+            transport: "From Burgas Airport: taxi to Sunny Beach is roughly EUR 25-36 metered or about EUR 35 with some pre-booked transfers, around 30-40 min. Private transfers can range EUR 40-70. Budget bus via Burgas is possible but indirect and slow with luggage."
           },
           {
             id: "sunny-atol",
@@ -2388,7 +2830,8 @@
             beach: "About 150 m from central beach.",
             nightlife: "Steps from Flower Street, bars, clubs and restaurants.",
             airport: "Burgas Airport about 28-30 km.",
-            bonus: "Best for cheap party logistics; weaker if you want quiet sleep."
+            bonus: "Best for cheap party logistics; weaker if you want quiet sleep.",
+            transport: "From Burgas Airport: taxi to central Sunny Beach is roughly EUR 25-36 metered or about EUR 35 pre-booked, around 30-40 min. Private transfer can be EUR 40-70. Public transport is cheapest but usually means connecting via Burgas and is less convenient."
           },
           {
             id: "sunny-panteleimon",
@@ -2401,7 +2844,8 @@
             beach: "First line / very close to the sea.",
             nightlife: "About 3 km from Sunny Beach; about 4 km from Old Nessebar.",
             airport: "Burgas Airport about 25-30 km.",
-            bonus: "Better couple-friendly choice if Sunny Beach itself feels too intense."
+            bonus: "Better couple-friendly choice if Sunny Beach itself feels too intense.",
+            transport: "From Burgas Airport: taxi/private transfer to Nessebar area is roughly EUR 25-55 depending on provider and hotel side, around 35-50 min. Budget public transport via Burgas/Sunny Beach is possible but slow; rental car only makes sense for day trips."
           }
         ]
       },
@@ -2422,6 +2866,11 @@
           things: "Antiparos, Kolymbithres, villages, boat days",
           nightlife: "Stronger than Naxos, pricier",
           kitesurf: "Excellent at Pounda Beach"
+        },
+        beachAccess: {
+          walk: "Parikia and Naoussa bases usually have a local beach within 5-15 min. Better beaches like Kolymbithres or Pounda need transport.",
+          difficulty: "Local beach walks are easy, sometimes with a mild slope or stairs. Kitesurf beaches are not walking-distance from the main nightlife bases.",
+          taxi: "Taxi to local nearby beaches may be around EUR 8-15. To Pounda or Kolymbithres, plan roughly EUR 15-30 one way depending on base and season."
         },
         climate: {
           day: "23.8C average daytime high",
@@ -2460,7 +2909,8 @@
             beach: "About 80 m from Krios/Marcello beaches.",
             nightlife: "About 2.5 km from Parikia.",
             airport: "Paros Airport about 10 km.",
-            bonus: "Private-pool suite options and transfer options noted by hotel."
+            bonus: "Private-pool suite options and transfer options noted by hotel.",
+            transport: "From Paros Airport: to Parikia/Krios area, local taxi is often roughly EUR 15-25 while private transfer quotes can be about EUR 48. Bus to Parikia is about EUR 3-4 per person if schedules fit, then hotel shuttle/taxi to Krios. Ask the hotel about transfer options."
           },
           {
             id: "paros-oasis",
@@ -2473,7 +2923,8 @@
             beach: "Parikia seafront/port opposite; Livadia Beach about 700 m.",
             nightlife: "At the entrance to old town; bars and restaurants are immediate.",
             airport: "Paros Airport about 10 km.",
-            bonus: "Great logistics if you use ferries or want a cheap central base."
+            bonus: "Great logistics if you use ferries or want a cheap central base.",
+            transport: "From Paros Airport: taxi to Parikia is roughly EUR 9-15 locally, while pre-booked private transfer can be around EUR 48. Bus to Parikia is about EUR 3-4 per person and works well if the timetable lines up. No rental car needed for central Parikia."
           },
           {
             id: "paros-senia",
@@ -2486,11 +2937,80 @@
             beach: "Steps above Piperi Beach.",
             nightlife: "About 5 min walk to Naoussa shops, bars and restaurants.",
             airport: "Paros Airport about 20 km.",
-            bonus: "Best nightlife-plus-beauty pick on Paros if budget allows."
+            bonus: "Best nightlife-plus-beauty pick on Paros if budget allows.",
+            transport: "From Paros Airport: taxi to Naoussa is often quoted around EUR 17-25 locally, but in peak season/pre-booking can be EUR 40-60; private transfer quotes are about EUR 57. Budget bus via Parikia is about EUR 5-6 per person but can take around 2h+."
           }
         ]
       }
     ];
+
+    const tripAssumptions = {
+      travelers: 2,
+      nights: 7,
+      note: "Estimate includes flights for 2, 7 hotel nights, and return airport transfer. Food, local transport, activities, travel insurance and ferry/onward legs are only included where explicitly shown."
+    };
+
+    const flightEstimates = {
+      tarifa: {
+        best: { costLow: 830, costHigh: 830, outMin: 290, outMax: 290, backMin: 270, backMax: 270, label: "Best price / quality", travelNote: "Fastest and simplest option into Malaga." },
+        cheap: { costLow: 520, costHigh: 520, outMin: 480, outMax: 780, backMin: 480, backMax: 780, label: "Cheapest", travelNote: "Lower fare, but much longer and usually less comfortable." }
+      },
+      lagos: {
+        best: { costLow: 870, costHigh: 870, outMin: 360, outMax: 540, backMin: 360, backMax: 540, label: "Best price / quality", travelNote: "Balanced one-stop option into Faro." },
+        cheap: { costLow: 410, costHigh: 410, outMin: 1260, outMax: 1500, backMin: 1260, backMax: 1500, label: "Cheapest", travelNote: "Very cheap but painfully long for a one-week trip." }
+      },
+      naxos: {
+        best: { costLow: 610, costHigh: 730, outMin: 480, outMax: 720, backMin: 480, backMax: 720, label: "Best price / quality", travelNote: "Flight routing to Naxos via Athens where available." },
+        cheap: { costLow: 415, costHigh: 470, outMin: 215, outMax: 215, backMin: 215, backMax: 215, addOnCostLow: 180, addOnCostHigh: 320, addOnOutMin: 210, addOnOutMax: 330, addOnBackMin: 210, addOnBackMax: 330, label: "Cheapest", travelNote: "Athens flight only; estimate adds round-trip ferry/onward island connection for 2." }
+      },
+      lefkada: {
+        best: { costLow: 582, costHigh: 582, outMin: 360, outMax: 480, backMin: 360, backMax: 480, label: "Best price / quality", travelNote: "Good one-stop route into Preveza/Aktion." },
+        cheap: { costLow: 535, costHigh: 535, outMin: 480, outMax: 720, backMin: 480, backMax: 720, label: "Cheapest", travelNote: "Slightly cheaper, but normally longer and more awkward." }
+      },
+      budva: {
+        best: { costLow: 682, costHigh: 682, outMin: 255, outMax: 255, backMin: 255, backMax: 255, label: "Best price / quality", travelNote: "Arrives at Tivat, the convenient airport for Budva." },
+        cheap: { costLow: 350, costHigh: 350, outMin: 360, outMax: 720, backMin: 360, backMax: 720, transferLow: 55, transferHigh: 80, transferMin: 70, transferMax: 90, label: "Cheapest", travelNote: "Usually arrives at Podgorica, so transfer is longer and more expensive." }
+      },
+      sopot: {
+        best: { costLow: 210, costHigh: 230, outMin: 85, outMax: 85, backMin: 85, backMax: 85, label: "Best price / quality", travelNote: "Short direct flight to Gdansk." },
+        cheap: { costLow: 210, costHigh: 230, outMin: 85, outMax: 85, backMin: 85, backMax: 85, label: "Cheapest", travelNote: "Same direct flight; the best and cheapest option are effectively identical." }
+      },
+      "sunny-beach": {
+        best: { costLow: 860, costHigh: 1030, outMin: 220, outMax: 220, backMin: 190, backMax: 190, label: "Best price / quality", travelNote: "Nonstop Burgas route when available." },
+        cheap: { costLow: 555, costHigh: 555, outMin: 360, outMax: 900, backMin: 360, backMax: 900, label: "Cheapest", travelNote: "Cheaper but with a stop and much more variable travel time." }
+      },
+      paros: {
+        best: { costLow: 415, costHigh: 470, outMin: 215, outMax: 215, backMin: 215, backMax: 215, addOnCostLow: 160, addOnCostHigh: 300, addOnOutMin: 180, addOnOutMax: 300, addOnBackMin: 180, addOnBackMax: 300, label: "Best price / quality", travelNote: "Athens flight plus estimated ferry/domestic island connection for 2." },
+        cheap: { costLow: 415, costHigh: 470, outMin: 215, outMax: 215, backMin: 215, backMax: 215, addOnCostLow: 160, addOnCostHigh: 300, addOnOutMin: 180, addOnOutMax: 300, addOnBackMin: 180, addOnBackMax: 300, label: "Cheapest", travelNote: "Athens flight plus estimated ferry/onward connection; not a door-to-island fare." }
+      }
+    };
+
+    const hotelEstimates = {
+      "tarifa-residencia": { nightLow: 240, nightHigh: 360, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Upscale town spa hotel estimate." },
+      "tarifa-hostal": { nightLow: 85, nightHigh: 140, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Simple central room estimate." },
+      "tarifa-hurricane": { nightLow: 180, nightHigh: 300, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Beach/kite hotel estimate outside town." },
+      "lagos-tivoli": { nightLow: 200, nightHigh: 320, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Central resort estimate." },
+      "lagos-lagosmar": { nightLow: 95, nightHigh: 150, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Simple central hotel estimate." },
+      "lagos-casa-mae": { nightLow: 260, nightHigh: 420, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Boutique design hotel estimate." },
+      "naxos-nissaki": { nightLow: 260, nightHigh: 450, transferLow: 20, transferHigh: 60, transferMin: 5, transferMax: 10, priceNote: "Beachfront boutique resort estimate." },
+      "naxos-soula": { nightLow: 90, nightHigh: 160, transferLow: 0, transferHigh: 20, transferMin: 5, transferMax: 10, priceNote: "Simple beach hotel estimate; free transfer may apply." },
+      "naxos-grotta": { nightLow: 160, nightHigh: 260, transferLow: 20, transferHigh: 60, transferMin: 5, transferMax: 10, priceNote: "View/boutique hotel estimate." },
+      "lefkada-porto-galini": { nightLow: 260, nightHigh: 430, transferLow: 40, transferHigh: 55, transferMin: 30, transferMax: 40, priceNote: "Full resort estimate." },
+      "lefkada-boschetto": { nightLow: 140, nightHigh: 240, transferLow: 35, transferHigh: 50, transferMin: 25, transferMax: 30, priceNote: "Small town hotel estimate." },
+      "lefkada-elisso": { nightLow: 130, nightHigh: 230, transferLow: 60, transferHigh: 80, transferMin: 60, transferMax: 75, priceNote: "Vasiliki sport/beach hotel estimate." },
+      "budva-avala": { nightLow: 180, nightHigh: 320, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Central resort estimate from Tivat." },
+      "budva-hermes": { nightLow: 90, nightHigh: 160, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Simple Budva hotel estimate from Tivat." },
+      "budva-astoria": { nightLow: 160, nightHigh: 280, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Old-town boutique estimate from Tivat." },
+      "sopot-marriott": { nightLow: 220, nightHigh: 360, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Beach spa resort estimate." },
+      "sopot-bb-molo": { nightLow: 80, nightHigh: 140, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Simple B&B estimate." },
+      "sopot-molo": { nightLow: 120, nightHigh: 200, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Central hotel estimate." },
+      "sunny-evrika": { nightLow: 240, nightHigh: 420, transferLow: 25, transferHigh: 70, transferMin: 30, transferMax: 40, priceNote: "All-inclusive resort estimate." },
+      "sunny-atol": { nightLow: 70, nightHigh: 120, transferLow: 25, transferHigh: 70, transferMin: 30, transferMax: 40, priceNote: "Budget central hotel estimate." },
+      "sunny-panteleimon": { nightLow: 120, nightHigh: 220, transferLow: 25, transferHigh: 55, transferMin: 35, transferMax: 50, priceNote: "Nessebar-side quieter hotel estimate." },
+      "paros-agnanti": { nightLow: 280, nightHigh: 520, transferLow: 15, transferHigh: 48, transferMin: 15, transferMax: 25, priceNote: "Five-star resort estimate." },
+      "paros-oasis": { nightLow: 90, nightHigh: 160, transferLow: 9, transferHigh: 48, transferMin: 12, transferMax: 20, priceNote: "Simple central Parikia estimate." },
+      "paros-senia": { nightLow: 260, nightHigh: 480, transferLow: 25, transferHigh: 57, transferMin: 20, transferMax: 30, priceNote: "Naoussa boutique/pool hotel estimate." }
+    };
 
     function escapeHtml(value) {
       return String(value)
@@ -2513,6 +3033,9 @@
     }
 
     function renderHotelCard(location, hotel) {
+      const estimate = hotelEstimates[hotel.id];
+      const hotelStay = estimate ? `${formatEuros(estimate.nightLow * tripAssumptions.nights, estimate.nightHigh * tripAssumptions.nights)} for ${tripAssumptions.nights} nights` : "Estimate unavailable";
+
       return `
         <article class="hotel-card">
           <img src="${escapeHtml(hotel.image)}" alt="${escapeHtml(hotel.name)} hotel preview" loading="lazy">
@@ -2529,11 +3052,342 @@
               <li><b>Beach:</b> ${escapeHtml(hotel.beach)}</li>
               <li><b>City/nightlife:</b> ${escapeHtml(hotel.nightlife)}</li>
               <li><b>Airport:</b> ${escapeHtml(hotel.airport)}</li>
+              <li><b>Airport transfer:</b> ${escapeHtml(hotel.transport)}</li>
+              <li><b>Estimated hotel cost:</b> ${escapeHtml(hotelStay)}</li>
               <li><b>Bonus/minus:</b> ${escapeHtml(hotel.bonus)}</li>
             </ul>
+            <a class="flight-link" href="${escapeHtml(hotel.link)}" target="_blank" rel="noopener">Open hotel page</a>
             <p class="hotel-note">Hotel thumbnail is a visual planning preview. Use the hotel link for official photos and live room details.</p>
           </div>
         </article>
+      `;
+    }
+
+    function formatEuros(low, high) {
+      const formattedLow = Math.round(low).toLocaleString("en-US");
+      const formattedHigh = Math.round(high).toLocaleString("en-US");
+
+      if (Math.round(low) === Math.round(high)) {
+        return `EUR ${formattedLow}`;
+      }
+
+      return `EUR ${formattedLow}-${formattedHigh}`;
+    }
+
+    function formatMinutes(minutes) {
+      const rounded = Math.round(minutes);
+      const hours = Math.floor(rounded / 60);
+      const mins = rounded % 60;
+
+      if (!hours) {
+        return `${mins}m`;
+      }
+
+      if (!mins) {
+        return `${hours}h`;
+      }
+
+      return `${hours}h ${mins}m`;
+    }
+
+    function formatTimeRange(min, max) {
+      if (Math.round(min) === Math.round(max)) {
+        return formatMinutes(min);
+      }
+
+      return `${formatMinutes(min)}-${formatMinutes(max)}`;
+    }
+
+    function getFlightEstimate(location, flightKey) {
+      return {
+        ...location.flights[flightKey],
+        ...flightEstimates[location.id][flightKey],
+        key: flightKey
+      };
+    }
+
+    function getTransferEstimate(location, flightKey, hotelEstimate) {
+      const flight = flightEstimates[location.id][flightKey];
+
+      if (flight.transferLow) {
+        return {
+          low: flight.transferLow,
+          high: flight.transferHigh,
+          min: flight.transferMin,
+          max: flight.transferMax,
+          note: "Uses the longer arrival-airport transfer for this selected flight."
+        };
+      }
+
+      return {
+        low: hotelEstimate.transferLow,
+        high: hotelEstimate.transferHigh,
+        min: hotelEstimate.transferMin,
+        max: hotelEstimate.transferMax,
+        note: "Uses the hotel airport-transfer estimate."
+      };
+    }
+
+    function computeTripEstimate(location, flightKey, hotelId) {
+      const hotel = location.hotels.find((item) => item.id === hotelId) || location.hotels[0];
+      const hotelEstimate = hotelEstimates[hotel.id];
+      const flight = getFlightEstimate(location, flightKey);
+      const transfer = getTransferEstimate(location, flightKey, hotelEstimate);
+      const hotelLow = hotelEstimate.nightLow * tripAssumptions.nights;
+      const hotelHigh = hotelEstimate.nightHigh * tripAssumptions.nights;
+      const transferLow = transfer.low * 2;
+      const transferHigh = transfer.high * 2;
+      const addOnLow = flight.addOnCostLow || 0;
+      const addOnHigh = flight.addOnCostHigh || 0;
+      const outboundMin = flight.outMin + (flight.addOnOutMin || 0) + transfer.min;
+      const outboundMax = flight.outMax + (flight.addOnOutMax || 0) + transfer.max;
+      const returnMin = flight.backMin + (flight.addOnBackMin || 0) + transfer.min;
+      const returnMax = flight.backMax + (flight.addOnBackMax || 0) + transfer.max;
+
+      return {
+        location,
+        flight,
+        hotel,
+        hotelEstimate,
+        transfer,
+        hotelLow,
+        hotelHigh,
+        transferLow,
+        transferHigh,
+        addOnLow,
+        addOnHigh,
+        totalLow: flight.costLow + hotelLow + transferLow + addOnLow,
+        totalHigh: flight.costHigh + hotelHigh + transferHigh + addOnHigh,
+        outboundMin,
+        outboundMax,
+        returnMin,
+        returnMax,
+        totalTravelMin: outboundMin + returnMin,
+        totalTravelMax: outboundMax + returnMax
+      };
+    }
+
+    function renderTripResult(trip) {
+      const addOnText = trip.addOnHigh ? formatEuros(trip.addOnLow, trip.addOnHigh) : "None";
+
+      return `
+        <div class="trip-result">
+          <h4 class="trip-total">${escapeHtml(formatEuros(trip.totalLow, trip.totalHigh))} estimated total for 2</h4>
+          <div class="trip-result-grid">
+            <div class="trip-result-item"><span>Flight</span><strong>${escapeHtml(trip.flight.label)}: ${escapeHtml(formatEuros(trip.flight.costLow, trip.flight.costHigh))}</strong></div>
+            <div class="trip-result-item"><span>Hotel stay</span><strong>${escapeHtml(formatEuros(trip.hotelLow, trip.hotelHigh))} / ${tripAssumptions.nights} nights</strong></div>
+            <div class="trip-result-item"><span>Return transfer</span><strong>${escapeHtml(formatEuros(trip.transferLow, trip.transferHigh))}</strong></div>
+            <div class="trip-result-item"><span>Onward add-on</span><strong>${escapeHtml(addOnText)}</strong></div>
+            <div class="trip-result-item"><span>Outbound time</span><strong>${escapeHtml(formatTimeRange(trip.outboundMin, trip.outboundMax))}</strong></div>
+            <div class="trip-result-item"><span>Return time</span><strong>${escapeHtml(formatTimeRange(trip.returnMin, trip.returnMax))}</strong></div>
+          </div>
+          <ul class="trip-detail-list">
+            <li><b>Total travel time:</b> ${escapeHtml(formatTimeRange(trip.totalTravelMin, trip.totalTravelMax))} round-trip airport-to-hotel movement estimate.</li>
+            <li><b>Selected hotel:</b> ${escapeHtml(trip.hotel.name)} (${escapeHtml(trip.hotel.type)}). ${escapeHtml(trip.hotelEstimate.priceNote)}</li>
+            <li><b>Hotel benefits:</b> ${escapeHtml(trip.hotel.strengths)}</li>
+            <li><b>Hotel minuses:</b> ${escapeHtml(trip.hotel.weaknesses)}</li>
+            <li><b>Airport transfer:</b> ${escapeHtml(trip.hotel.transport)} ${escapeHtml(trip.transfer.note)}</li>
+            <li><b>Flight note:</b> ${escapeHtml(trip.flight.travelNote)}</li>
+            <li><b>Assumption:</b> ${escapeHtml(tripAssumptions.note)}</li>
+          </ul>
+        </div>
+      `;
+    }
+
+    function renderTripBuilder(location) {
+      return `
+        <div class="trip-builder" data-location-id="${escapeHtml(location.id)}">
+          <h3>Build This Trip Estimate</h3>
+          <div class="builder-grid">
+            <label class="builder-field">
+              Flight option
+              <select class="trip-flight">
+                <option value="best">${escapeHtml(location.flights.best.title)} - ${escapeHtml(location.flights.best.price)}</option>
+                <option value="cheap">${escapeHtml(location.flights.cheap.title)} - ${escapeHtml(location.flights.cheap.price)}</option>
+              </select>
+            </label>
+            <label class="builder-field">
+              Hotel option
+              <select class="trip-hotel">
+                ${location.hotels.map((hotel) => `<option value="${escapeHtml(hotel.id)}">${escapeHtml(hotel.name)} - ${escapeHtml(hotel.type)}</option>`).join("")}
+              </select>
+            </label>
+          </div>
+          <label class="compare-toggle">
+            <input type="checkbox" class="compare-trip" value="${escapeHtml(location.id)}">
+            Compare this built trip
+          </label>
+          <div class="trip-result-holder"></div>
+        </div>
+      `;
+    }
+
+    const detailedFactText = {
+      tarifa: {
+        Climate: "Late June is warm but not brutally hot: around 23C daytime and 19C at night. In direct sun it can feel closer to 27-30C, especially away from wind shade, but Tarifa wind often cools you down fast. Bring sun cream, sunglasses and a light layer for windy evenings.",
+        Weather: "Mostly sunny and dry. The important detail is wind: Levante can make the beach feel wild and sand-blown, while Poniente feels fresher and easier. Sun is sharp because the sky is often clear, but the wind can hide how much sun you are getting.",
+        Rain: "Rain risk is very low in late June, around a few rainy days in the whole month. A rainy holiday week is unlikely. The bigger weather risk is too much wind for relaxing beach days, even though that is exactly why kitesurfers love it.",
+        Safety: "8/10 because Tarifa is generally safe and small, but it is still a nightlife and beach town. Main risks are petty theft on beaches, leaving bags in rental cars, strong wind/sea conditions and late-night alcohol situations. Benefits: walkable centre, tourist routine, no big-city feel.",
+        "Tourist-friendly": "9/10 because it is used to international surf and kite tourists. English is common in activity businesses, restaurants are easy, and kite schools/transfers are simple to arrange. The only friction is that beaches and kite spots are spread out, so a car or taxi sometimes helps.",
+        Beauty: "8.5/10 because it has wide Atlantic beaches, dunes, views toward Morocco, white old-town streets and dramatic wind-sport scenery. It loses a little versus Greek islands because the town itself is less postcard-polished and the beaches can feel raw/windy.",
+        Nearby: "Whale watching is a highlight, often roughly EUR 35-55 per person. Bolonia dunes and Roman ruins are a strong half-day trip; entry is cheap/free but taxi/car costs matter. Tangier day trips are possible but become a long and more expensive day once ferry and tours are included.",
+        Nightlife: "Strong surf-town nightlife. Best zone is the old town around tapas streets and small bars; expect casual bar hopping, late dinners and surfer crowds rather than giant clubs. Drinks are usually moderate for Spain. Great if you want energy without a mega-resort party strip.",
+        Kitesurf: "This is the best kitesurf option in the plan. Schools, rentals and rescue support are established around Los Lances/Valdevaqueros. Beginner lessons are commonly around EUR 60-100 per session or more for packages; wind is reliable but can be too strong some days."
+      },
+      lagos: {
+        Climate: "Late June is comfortable: around 22C by day and 18C at night. In full sun on cliffs or sheltered streets it can feel 26-29C, but Atlantic breeze and cooler sea keep it from feeling too heavy. Evenings may need a light shirt.",
+        Weather: "Mostly sunny with clear skies and strong UV. Clouds are usually limited, and the sun feels sharp on cliff walks and kayak trips because there is little shade. The Atlantic water is cooler than Greece, so beach days feel fresh rather than tropical.",
+        Rain: "Rain is very unlikely in late June. Expect dry days as the default, with only a small chance of a short shower. Weather risk is more about wind or cooler ocean water than rain.",
+        Safety: "9/10 because Lagos is very tourism-ready and generally calm. Main risks are petty theft in busy old-town streets, slippery cliff paths, swimming near rocks/caves, and late-night bar street behavior. Benefits: walkable centre, easy taxis, lots of visitors and good services.",
+        "Tourist-friendly": "9/10 because it is one of the easiest Algarve bases: English is widely spoken, tours are everywhere, beaches are signed, and restaurants/transport are straightforward. The only friction is summer parking and crowds around the old town.",
+        Beauty: "9/10 because Ponta da Piedade, cliff paths, sea caves, Dona Ana/Camilo beaches and old-town streets give it real variety. It scores high because you get both natural drama and an actual town, not just resort blocks.",
+        Nearby: "Ponta da Piedade kayaking is the key activity; kayak rentals/tours are often roughly EUR 25-45 per person, while boat grotto trips are commonly around EUR 25-35. Sagres is a good day trip by car. Beach bars at Meia Praia add sunset options without big club costs.",
+        Nightlife: "Good but manageable. The main zone is Rua Candido dos Reis, often called Bar Street. Beer can be around EUR 4, cocktails often EUR 7-12, and club covers can be around EUR 10-20 on summer weekends. Best for bar hopping, not luxury clubbing.",
+        Kitesurf: "Good nearby rather than directly central. Meia Praia and Alvor lagoon are the practical areas. It is a nice bonus if you want one or two sport days, but Lagos is not as kitesurf-focused as Tarifa, Naxos or Paros."
+      },
+      naxos: {
+        Climate: "Late June is warm and steady: around 24C day and 22C night. In direct sun it can feel 28-31C because shade is limited, but sea wind often cools the body. Nights are warm enough for light clothes.",
+        Weather: "Mostly sunny and dry. The Cyclades sun is sharp because skies are clear and white stone reflects light. Wind can be strong when the Meltemi blows, which is great for kitesurfing but can make some beaches feel rough.",
+        Rain: "Rain is very unlikely in late June, with only a few rainy days across the month. A full rainy day would be unusual. Wind is the bigger weather variable.",
+        Safety: "9/10 because Naxos Town is relaxed, family/couple friendly and low-risk. Main risks are scooter/ATV accidents, sunburn, dehydration, beach valuables and ferry/weather disruption. Benefits: walkable Chora, calm atmosphere, easy medical/pharmacy access.",
+        "Tourist-friendly": "9/10 because Chora is easy for visitors, with English widely used, simple ferry/taxi/bus logistics and many hotels near the beach. The only friction is reaching the best beaches or kite spots without renting transport.",
+        Beauty: "9/10 because you get the Portara sunset, Kastro lanes, Agios Georgios beach, long west-coast beaches and mountain villages. It feels more authentic and spacious than busier Cyclades islands, which is why it scores high.",
+        Nearby: "Portara and Kastro are basically free. Bus trips to beaches/villages are cheap, often a few euros each way. Mikri Vigla kitesurf lessons can start around EUR 160 for intro/private sessions, while scooter/car rental adds flexibility for mountain villages.",
+        Nightlife: "Moderate-good. Best areas are Chora waterfront, old-market lanes and Agios Georgios beach bars. Expect relaxed cocktail bars, late dinners and some music bars, not a heavy club scene. Better for couples who want atmosphere without chaos.",
+        Kitesurf: "Excellent at Mikri Vigla, about 12-16 km away. The bay is known for side-onshore wind and turquoise water. Budget for transport plus lessons/rentals; beginner sessions often start around EUR 160 depending on format."
+      },
+      lefkada: {
+        Climate: "Late June is warm: around 26C day and 21C night. In full sun on west-coast beaches it can feel 30C+, especially on white cliffs with little shade. Evenings are pleasant and warmer than Portugal.",
+        Weather: "Usually sunny and warm, with less constant wind than the Cyclades. The sun is strong on beaches like Porto Katsiki because shade is limited. Afternoon breezes help, especially near watersport spots.",
+        Rain: "Rain risk is low-to-moderate for a summer beach trip. June can still have some shower days, but long rainy periods are not the normal expectation. A short shower is possible; beach plans should stay flexible.",
+        Safety: "9/10 because the island is generally calm and safe. Main risks are driving mountain roads, cliff steps, heat on remote beaches, and swimming where waves/currents pick up. Benefits: relaxed island feel, good for couples, less aggressive party scene.",
+        "Tourist-friendly": "8/10 because it is welcoming and tourism-based, but logistics require more effort. The best beaches are spread out, buses are not always ideal, and a car makes the island much easier. English is common in hotels/tour businesses.",
+        Beauty: "9.5/10 because Lefkada has the most dramatic beach scenery here: Porto Katsiki, Egremni, turquoise water under cliffs, mountain viewpoints and Ionian sunsets. It scores highest because the natural scenery is exceptional.",
+        Nearby: "Porto Katsiki and Egremni are the headline beach trips; cost depends on car rental, taxi or boat. Nidri boat trips to nearby islands often run roughly EUR 25-50 per person. Waterfalls are low-cost/free; paragliding can be around EUR 80-120+.",
+        Nightlife: "Moderate. Nidri has the liveliest holiday bars and waterfront restaurants; Lefkada Town is better for relaxed cafes/cocktails; Vasiliki is more sport/tavern focused. It is not a club-heavy choice, which is good if you want calmer evenings.",
+        Kitesurf: "Excellent, split by style: Agios Ioannis is strong for kitesurfing near Lefkada Town, while Vasiliki is famous for windsurfing/watersports. Transport choice matters because spots are far apart."
+      },
+      budva: {
+        Climate: "Late June is warm, around 24C by day, though nights can be cooler inland/under mountains. In direct sun on beaches or stone old-town streets it can feel closer to 28-31C. Evenings are usually comfortable but not as consistently warm as the Cyclades.",
+        Weather: "Sunny spells are common, but Budva is less bone-dry than Greece or Portugal. Mountains nearby can help produce cloud and showers. Sun is strong when clear, especially on pebble/concrete beach areas.",
+        Rain: "Rain risk is higher than most southern options on this list. June can still have shower or thunderstorm days. It probably will not ruin the trip, but it is worth having Kotor/Old Town/restaurant backup plans.",
+        Safety: "8/10 because Budva is generally safe but busier and messier in high season. Main risks are pickpockets in crowded nightlife/beach zones, overcharging taxis, late-night drunk crowds and traffic. Benefits: compact resort, lots of people around, easy services.",
+        "Tourist-friendly": "8/10 because tourism is the core economy and English is common in hotels/restaurants. It loses points for summer crowding, taxi negotiation, beach-club pricing, and less polished logistics than Portugal/Greece.",
+        Beauty: "8.5/10 because Budva has a pretty walled old town, Adriatic water, Mogren beach, Sveti Stefan nearby and Kotor day-trip access. It loses a little because central Budva can feel busy and built-up.",
+        Nearby: "Old Town and Mogren are low-cost/free to explore. Sveti Stefan viewpoints are easy by bus/taxi. Kotor day trip is one of the best values; bus is cheap, private tours cost more. Boat trips to St Nikola island are usually affordable short outings.",
+        Nightlife: "Strong and loud in summer. Old Town bars are good for earlier drinks; the promenade is busier and more touristy; Top Hill is the big club, often EUR 10-30 cover, cocktails roughly EUR 6-12, taxi/shuttle needed. Best if you actively want party energy.",
+        Kitesurf: "Possible but not the reason to choose Budva. The better Montenegro kitesurf zone is near Ulcinj/Ada Bojana, about 70 km away. Choose Budva for nightlife/coast trips; choose elsewhere for daily kitesurf."
+      },
+      sopot: {
+        Climate: "Late June is mild: around 19C day and 12C night. In sun and low wind it can feel pleasant, around 22-24C, but cloudy/windy beach days can feel cool. Pack a light jacket and do not expect Mediterranean heat.",
+        Weather: "More changeable than the southern options. Expect a mix of sun, cloud and possible rain. The sun is less harsh than Greece/Spain, but long daylight means you can still burn if you stay outside all day.",
+        Rain: "Rain is realistic. Around 10-11 rainy days in June means showers are possible during a one-week trip. It may still have plenty of usable beach hours, but it is the least reliable pure-sun choice.",
+        Safety: "9/10 because Sopot/Tricity is generally safe, organized and easy. Main risks are normal city petty theft, drunk nightlife on Monte Cassino, cooler sea conditions and late-night crowds. Benefits: strong public transport, good infrastructure, low stress.",
+        "Tourist-friendly": "8.5/10 because logistics are excellent, English is often usable and transport is simple. It loses half a point because beach weather is less predictable and some services feel more local/Polish than resort-international.",
+        Beauty: "8/10 because Sopot has the pier, sandy Baltic beach, elegant spa-town architecture and easy access to Gdansk old town. It is attractive, but less dramatic/tropical than Lefkada, Naxos or Lagos.",
+        Nearby: "Sopot pier is the classic stop and may have a small entry fee in season. Gdansk old town is easy by train and low-cost. Hel Peninsula kitesurf day trips are possible by train/car; lesson/rental prices vary but transport time is the main cost.",
+        Nightlife: "Good and compact. Main area is Bohaterow Monte Cassino, with clubs like Ego, Soho, Zla Kobieta and Makahiki listed around 10-20 PLN cover, beer around 8-12 PLN and drinks around 12-22 PLN. Good for affordable nights out.",
+        Kitesurf: "Good regionally, not directly in Sopot. The serious kitesurf scene is on Hel Peninsula, about 50-80 km away. This is a day-trip sport option, not a doorstep beach activity."
+      },
+      "sunny-beach": {
+        Climate: "Late June is properly warm: around 27C day and 18C night. In direct sun on sand or pool areas it can feel 31-34C, especially with little breeze. Evenings stay comfortable for nightlife.",
+        Weather: "Mostly sunny and resort-friendly, with a stronger beach-holiday feel than Sopot. The sun is sharp around midday, so shade and sunscreen matter. Cloud/showers can happen but are usually not the main pattern.",
+        Rain: "Rain risk is moderate compared with Greece/Portugal. Around a week can include a shower or storm, but many days should still be beach-usable. The bigger practical risk is crowds and noise, not weather.",
+        Safety: "8/10 because the resort is busy and tourism-focused but can be messy at night. Main risks are petty theft, scams/overcharging, very drunk party crowds, beach valuables and nightlife pressure. Benefits: lots of people, easy taxis, simple resort layout.",
+        "Tourist-friendly": "8/10 because it is extremely easy for package tourists: hotels, English menus, beach bars and clubs everywhere. It loses points because the area can feel commercial, loud and less authentic, and service quality varies.",
+        Beauty: "7/10 because the beach is long and practical, and Nessebar nearby is genuinely beautiful, but Sunny Beach itself is mostly resort blocks and party strip. The score improves if you stay near Nessebar rather than the loud centre.",
+        Nearby: "Nessebar old town is the best nearby sight and cheap to explore. Aquaparks and beach clubs are the main paid activities; aquapark tickets can be a noticeable extra cost. Cacao Beach/day clubs cost more than basic resort bars, especially for loungers and cocktails.",
+        Nightlife: "Very strong and cheap. The Main Strip/Flower Street is the core, with tourist bars, karaoke, clubs and promoters. Cacao Beach is the more polished club/beach-club option. Best for party value, worst for quiet romantic atmosphere.",
+        Kitesurf: "Possible on the Black Sea coast, but peak-season crowds make it less ideal. Treat it as a bonus activity if conditions line up, not the reason to choose the destination."
+      },
+      paros: {
+        Climate: "Late June is warm and stable: around 24C day and 22C night. In direct sun it can feel 28-31C, especially in whitewashed villages and beach clubs. Wind keeps it comfortable but can be strong.",
+        Weather: "Mostly sunny, dry and breezy. The sun is sharp because skies are usually clear and surfaces are bright. Wind can shape the day: great for Pounda/kitesurf, sometimes annoying on exposed beaches.",
+        Rain: "Rain is very unlikely in late June. Expect dry beach weather as the norm. The main weather variable is wind strength rather than rain or cloud.",
+        Safety: "9/10 because Paros is generally safe, touristy and couple-friendly. Main risks are scooter/ATV accidents, expensive taxis, crowded nightlife in Naoussa, beach valuables and sun exposure. Benefits: strong tourism services, safe-feeling evenings, good medical/pharmacy access.",
+        "Tourist-friendly": "9/10 because Paros is built for visitors: English widely used, ferries/buses/taxis common, many tours and beach clubs. It loses practical value only because Naoussa/taxi/hotel prices can climb quickly.",
+        Beauty: "9/10 because Paros combines Naoussa harbour, white Cycladic villages, Kolymbithres rocks, Antiparos trips and clear beaches. It scores high because it gives beauty plus nightlife, though it can feel more polished/expensive than Naxos.",
+        Nearby: "Antiparos ferry is a great low-cost half-day if you get to Pounda. Kolymbithres is a key beach trip. Boat days can range from moderate group trips to expensive private charters. Kitesurf at Pounda adds lesson/rental costs similar to other Cyclades spots.",
+        Nightlife: "Strong for a Greek island, especially Naoussa harbour and backstreets. Karnagio and other harbour bars are known late-night spots; Parikia is more practical and cheaper. Cocktails and club nights are pricier than Naxos, especially in Naoussa.",
+        Kitesurf: "Excellent at Pounda Beach. It is one of the best balances of sport and nightlife in the shortlist. Budget for transport from Parikia/Naoussa plus lesson or rental costs."
+      }
+    };
+
+    function getSafetyDetail(value) {
+      if (value.includes("9/10")) {
+        return "9/10 means a very comfortable tourist safety profile: low general risk, good for couples, but still use normal care with bags, late-night streets and crowded transport.";
+      }
+
+      return "8/10 means generally safe for tourists, with normal city/beach-resort caution: watch valuables, avoid messy late-night areas and use licensed taxis or known transport.";
+    }
+
+    function getFriendlyDetail(value) {
+      if (value.includes("9/10")) {
+        return "9/10 means the town is very easy for visitors: tourism infrastructure is strong, English is commonly usable and beaches, food, transport and tours are straightforward.";
+      }
+
+      if (value.includes("8.5/10")) {
+        return "8.5/10 means visitor logistics are strong, though weather/seasonality and local transport can need a little more planning than classic Mediterranean resorts.";
+      }
+
+      return "8/10 means tourist-friendly overall, but planning matters more: transfers, car rental, beach choice or language/local logistics can be a bit less effortless.";
+    }
+
+    function getBeautyDetail(value) {
+      return `${value} is a planning score, not an official rating. It balances beach quality, old-town charm, nature, views, water color and the overall holiday atmosphere.`;
+    }
+
+    function getClimateDetail(location) {
+      return `Late-June average: ${location.climate.day} and ${location.climate.night}. This is climate-normal data, useful for planning clothes and beach comfort.`;
+    }
+
+    function getWeatherDetail(location) {
+      return `Typical late-June pattern: ${location.climate.weather}. Forecasts for the exact trip dates should be checked 7-10 days before departure.`;
+    }
+
+    function getRainDetail(location) {
+      return `${location.climate.rain}. This gives the usual June rain risk; it does not guarantee the exact 24 June-2 July weather.`;
+    }
+
+    function getSeaDetail(location) {
+      return `${location.climate.sea}. Under about 20C can feel cool for long swims; 21-23C is usually pleasant once you are in.`;
+    }
+
+    function getBeachDetail(location, value) {
+      return `${value}. Walking: ${location.beachAccess.walk} Difficulty: ${location.beachAccess.difficulty} Taxi: ${location.beachAccess.taxi} Taxi ranges are rough one-way planning estimates for 2 people.`;
+    }
+
+    function getFactDetail(location, label, value) {
+      const localDetail = detailedFactText[location.id] && detailedFactText[location.id][label];
+      if (localDetail) {
+        return localDetail;
+      }
+
+      const details = {
+        Beach: getBeachDetail(location, value),
+        Safety: getSafetyDetail(value),
+        "Tourist-friendly": getFriendlyDetail(value),
+        Beauty: getBeautyDetail(value),
+        Nearby: `Main nearby activities: ${value}. This helps judge whether the destination works beyond just beach time.`,
+        Nightlife: `Nightlife summary: ${value}. This considers bars, clubs, late restaurants, summer energy and whether evenings are walkable from the base.`,
+        Kitesurf: `Kitesurf note: ${value}. Excellent means established spots/schools nearby; possible means it exists but may need travel, wind luck or more planning.`,
+        Climate: getClimateDetail(location),
+        Weather: getWeatherDetail(location),
+        Rain: getRainDetail(location),
+        Sea: getSeaDetail(location)
+      };
+
+      return details[label] || value;
+    }
+
+    function renderFact(location, label, value) {
+      const detail = getFactDetail(location, label, value);
+
+      return `
+        <div class="fact" tabindex="0" data-detail="${escapeHtml(detail)}" aria-label="${escapeHtml(`${label}: ${value}. ${detail}`)}">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
       `;
     }
 
@@ -2556,17 +3410,17 @@
               Compare this location
             </label>
             <div class="fact-grid">
-              <div class="fact"><span>Beach</span><strong>${escapeHtml(location.facts.beach)}</strong></div>
-              <div class="fact"><span>Climate</span><strong>${escapeHtml(location.climate.day)} / ${escapeHtml(location.climate.night)}</strong></div>
-              <div class="fact"><span>Weather</span><strong>${escapeHtml(location.climate.weather)}</strong></div>
-              <div class="fact"><span>Rain</span><strong>${escapeHtml(location.climate.rain)}</strong></div>
-              <div class="fact"><span>Safety</span><strong>${escapeHtml(location.facts.safety)}</strong></div>
-              <div class="fact"><span>Tourist-friendly</span><strong>${escapeHtml(location.facts.friendly)}</strong></div>
-              <div class="fact"><span>Beauty</span><strong>${escapeHtml(location.facts.beauty)}</strong></div>
-              <div class="fact"><span>Nearby</span><strong>${escapeHtml(location.facts.things)}</strong></div>
-              <div class="fact"><span>Nightlife</span><strong>${escapeHtml(location.facts.nightlife)}</strong></div>
-              <div class="fact"><span>Kitesurf</span><strong>${escapeHtml(location.facts.kitesurf)}</strong></div>
-              <div class="fact"><span>Sea</span><strong>${escapeHtml(location.climate.sea)}</strong></div>
+              ${renderFact(location, "Beach", location.facts.beach)}
+              ${renderFact(location, "Climate", `${location.climate.day} / ${location.climate.night}`)}
+              ${renderFact(location, "Weather", location.climate.weather)}
+              ${renderFact(location, "Rain", location.climate.rain)}
+              ${renderFact(location, "Safety", location.facts.safety)}
+              ${renderFact(location, "Tourist-friendly", location.facts.friendly)}
+              ${renderFact(location, "Beauty", location.facts.beauty)}
+              ${renderFact(location, "Nearby", location.facts.things)}
+              ${renderFact(location, "Nightlife", location.facts.nightlife)}
+              ${renderFact(location, "Kitesurf", location.facts.kitesurf)}
+              ${renderFact(location, "Sea", location.climate.sea)}
             </div>
             <div class="detail-subsection">
               <h3>Flights</h3>
@@ -2581,6 +3435,7 @@
                 ${location.hotels.map((hotel) => renderHotelCard(location, hotel)).join("")}
               </div>
             </div>
+            ${renderTripBuilder(location)}
           </div>
         </article>
       `;
@@ -2658,6 +3513,7 @@
         { label: "Beach", get: (item) => escapeHtml(item.hotel.beach) },
         { label: "City / nightlife", get: (item) => escapeHtml(item.hotel.nightlife) },
         { label: "Airport", get: (item) => escapeHtml(item.hotel.airport) },
+        { label: "Airport transfer", get: (item) => escapeHtml(item.hotel.transport) },
         { label: "Strength", get: (item) => escapeHtml(item.hotel.strengths) },
         { label: "Weakness", get: (item) => escapeHtml(item.hotel.weaknesses) },
         { label: "Bonus / minus", get: (item) => escapeHtml(item.hotel.bonus) }
@@ -2666,16 +3522,91 @@
       document.querySelector("#hotel-comparison").innerHTML = renderCompareTable(selected, rows);
     }
 
+    function getTripFromBuilder(builder) {
+      if (!builder) {
+        return null;
+      }
+
+      const location = locations.find((item) => item.id === builder.dataset.locationId);
+      const flightKey = builder.querySelector(".trip-flight")?.value || "best";
+      const hotelId = builder.querySelector(".trip-hotel")?.value;
+
+      if (!location || !hotelId) {
+        return null;
+      }
+
+      return computeTripEstimate(location, flightKey, hotelId);
+    }
+
+    function updateTripBuilder(builder) {
+      const trip = getTripFromBuilder(builder);
+      const holder = builder?.querySelector(".trip-result-holder");
+
+      if (!trip || !holder) {
+        return null;
+      }
+
+      holder.innerHTML = renderTripResult(trip);
+      return trip;
+    }
+
+    function updateAllTripBuilders() {
+      document.querySelectorAll(".trip-builder").forEach((builder) => {
+        updateTripBuilder(builder);
+      });
+    }
+
+    function updateTripComparison() {
+      const selected = [...document.querySelectorAll(".compare-trip:checked")]
+        .map((input) => getTripFromBuilder(input.closest(".trip-builder")))
+        .filter(Boolean)
+        .map((trip) => ({ label: trip.location.town, trip }));
+
+      const rows = [
+        { label: "Destination", get: (item) => escapeHtml(`${item.trip.location.town}, ${item.trip.location.country}`) },
+        { label: "Flight", get: (item) => escapeHtml(`${item.trip.flight.label}: ${formatEuros(item.trip.flight.costLow, item.trip.flight.costHigh)} for 2`) },
+        { label: "Flight details", get: (item) => escapeHtml(item.trip.flight.details) },
+        { label: "Hotel", get: (item) => escapeHtml(`${item.trip.hotel.name} (${item.trip.hotel.type})`) },
+        { label: "Hotel cost", get: (item) => escapeHtml(`${formatEuros(item.trip.hotelLow, item.trip.hotelHigh)} for ${tripAssumptions.nights} nights`) },
+        { label: "Return transfer", get: (item) => escapeHtml(`${formatEuros(item.trip.transferLow, item.trip.transferHigh)}; ${item.trip.transfer.note}`) },
+        { label: "Total estimate", get: (item) => escapeHtml(`${formatEuros(item.trip.totalLow, item.trip.totalHigh)} for 2`) },
+        { label: "Total travel time", get: (item) => escapeHtml(formatTimeRange(item.trip.totalTravelMin, item.trip.totalTravelMax)) },
+        { label: "Hotel benefits", get: (item) => escapeHtml(item.trip.hotel.strengths) },
+        { label: "Hotel minuses", get: (item) => escapeHtml(item.trip.hotel.weaknesses) },
+        { label: "Flight note", get: (item) => escapeHtml(item.trip.flight.travelNote) },
+        { label: "Trip assumption", get: () => escapeHtml(tripAssumptions.note) }
+      ];
+
+      document.querySelector("#trip-comparison").innerHTML = renderCompareTable(selected, rows);
+    }
+
     function bindCompareControls() {
       const message = document.querySelector("#compare-message");
       const clearButton = document.querySelector("#clear-comparison");
+      const details = document.querySelector("#location-details");
 
-      document.querySelector("#location-details").addEventListener("change", (event) => {
-        if (!event.target.matches(".compare-location, .compare-hotel")) {
+      if (!details || details.dataset.compareBound === "true") {
+        return;
+      }
+
+      details.dataset.compareBound = "true";
+
+      details.addEventListener("change", (event) => {
+        if (event.target.matches(".trip-flight, .trip-hotel")) {
+          updateTripBuilder(event.target.closest(".trip-builder"));
+          updateTripComparison();
           return;
         }
 
-        const selector = event.target.matches(".compare-location") ? ".compare-location:checked" : ".compare-hotel:checked";
+        if (!event.target.matches(".compare-location, .compare-hotel, .compare-trip")) {
+          return;
+        }
+
+        const selector = event.target.matches(".compare-location")
+          ? ".compare-location:checked"
+          : event.target.matches(".compare-hotel")
+            ? ".compare-hotel:checked"
+            : ".compare-trip:checked";
         const selectedCount = document.querySelectorAll(selector).length;
 
         if (selectedCount > 3) {
@@ -2687,15 +3618,17 @@
 
         updateLocationComparison();
         updateHotelComparison();
+        updateTripComparison();
       });
 
       clearButton.addEventListener("click", () => {
-        document.querySelectorAll(".compare-location, .compare-hotel").forEach((input) => {
+        document.querySelectorAll(".compare-location, .compare-hotel, .compare-trip").forEach((input) => {
           input.checked = false;
         });
         message.textContent = "";
         updateLocationComparison();
         updateHotelComparison();
+        updateTripComparison();
       });
     }
 
@@ -2707,8 +3640,10 @@
 
       container.innerHTML = locations.map(renderLocation).join("");
       bindCompareControls();
+      updateAllTripBuilders();
       updateLocationComparison();
       updateHotelComparison();
+      updateTripComparison();
     }
 
     renderLocationDetails();
