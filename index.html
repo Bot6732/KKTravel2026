@@ -31,6 +31,12 @@
       display: none;
     }
 
+    body.locked .menu-toggle,
+    body.locked .side-nav,
+    body.locked .menu-backdrop {
+      display: none;
+    }
+
     main {
       width: min(1200px, calc(100% - 32px));
       margin: 32px auto;
@@ -60,7 +66,7 @@
     table {
       border-collapse: separate;
       border-spacing: 0;
-      min-width: 1320px;
+      min-width: 1540px;
       width: 100%;
       table-layout: fixed;
     }
@@ -132,35 +138,50 @@
     }
 
     th:nth-child(5),
-    td:nth-child(5),
+    td:nth-child(5) {
+      width: 220px;
+    }
+
     th:nth-child(6),
     td:nth-child(6),
     th:nth-child(7),
-    td:nth-child(7) {
+    td:nth-child(7),
+    th:nth-child(8),
+    td:nth-child(8) {
       width: 135px;
     }
 
-    th:nth-child(8),
-    td:nth-child(8) {
+    th:nth-child(9),
+    td:nth-child(9) {
       width: 300px;
     }
 
-    th:nth-child(9),
-    td:nth-child(9),
     th:nth-child(10),
-    td:nth-child(10) {
+    td:nth-child(10),
+    th:nth-child(11),
+    td:nth-child(11) {
       width: 230px;
     }
 
     .flight-table {
-      min-width: 1160px;
+      min-width: 1670px;
     }
 
     .flight-table th:nth-child(3),
-    .flight-table td:nth-child(3),
+    .flight-table td:nth-child(3) {
+      width: 220px;
+    }
+
     .flight-table th:nth-child(4),
-    .flight-table td:nth-child(4) {
+    .flight-table td:nth-child(4),
+    .flight-table th:nth-child(5),
+    .flight-table td:nth-child(5) {
       width: 410px;
+    }
+
+    .flight-table th:nth-child(6),
+    .flight-table td:nth-child(6) {
+      width: 290px;
     }
 
     .flight-table strong {
@@ -178,6 +199,41 @@
     .flight-link:hover,
     .flight-link:focus {
       text-decoration: underline;
+    }
+
+    .hotel-table {
+      min-width: 2080px;
+    }
+
+    .hotel-table th:nth-child(3),
+    .hotel-table td:nth-child(3) {
+      width: 145px;
+    }
+
+    .hotel-table th:nth-child(4),
+    .hotel-table td:nth-child(4) {
+      width: 230px;
+    }
+
+    .hotel-table th:nth-child(5),
+    .hotel-table td:nth-child(5),
+    .hotel-table th:nth-child(6),
+    .hotel-table td:nth-child(6) {
+      width: 280px;
+    }
+
+    .hotel-table th:nth-child(7),
+    .hotel-table td:nth-child(7),
+    .hotel-table th:nth-child(8),
+    .hotel-table td:nth-child(8),
+    .hotel-table th:nth-child(9),
+    .hotel-table td:nth-child(9) {
+      width: 200px;
+    }
+
+    .hotel-table th:nth-child(10),
+    .hotel-table td:nth-child(10) {
+      width: 275px;
     }
 
     tr:last-child td {
@@ -253,6 +309,812 @@
       color: #b3261e;
       font-size: 14px;
     }
+
+    :root {
+      --country-width: 154px;
+      --town-width: 210px;
+      --border: #d6deea;
+      --header: #12263a;
+      --header-soft: #1f3b53;
+      --accent: #0f766e;
+      --accent-soft: #e6f4f2;
+      --gold: #b7791f;
+      --sticky: #fffaf0;
+      --sticky-header: #f4e6c8;
+      --page: #f3f6fa;
+      --surface: #ffffff;
+      --surface-muted: #f8fafc;
+      --text: #172033;
+      --muted: #5b697c;
+      --shadow: 0 18px 45px rgba(18, 38, 58, 0.12);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--page);
+    }
+
+    main {
+      width: min(1440px, 100%);
+      margin: 0 auto 64px;
+      padding: 0 24px 40px;
+    }
+
+    .site-header {
+      margin: 0 -24px 30px;
+      padding: 34px 24px 28px;
+      color: white;
+      background: var(--header);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 20;
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      color: white;
+      background: rgba(18, 38, 58, 0.94);
+      box-shadow: 0 12px 28px rgba(18, 38, 58, 0.22);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 3px 0;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .side-nav {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 22;
+      width: min(310px, 88vw);
+      padding: 24px 18px;
+      background: var(--surface);
+      box-shadow: 22px 0 48px rgba(18, 38, 58, 0.24);
+      transform: translateX(-104%);
+      transition: transform 180ms ease;
+    }
+
+    .side-nav.open {
+      transform: translateX(0);
+    }
+
+    .side-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .side-nav-title {
+      margin: 0;
+      color: var(--header);
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .side-nav-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--header);
+      background: var(--surface-muted);
+      font: inherit;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .side-nav-group {
+      margin-top: 18px;
+    }
+
+    .side-nav-label {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .side-nav a {
+      display: block;
+      padding: 10px 10px;
+      border-radius: 8px;
+      color: var(--header-soft);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .side-nav a:hover,
+    .side-nav a:focus {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .menu-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 21;
+      display: none;
+      background: rgba(18, 38, 58, 0.36);
+    }
+
+    .menu-backdrop.open {
+      display: block;
+    }
+
+    .site-header-inner {
+      width: min(1392px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: #b8c7d8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--accent);
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .site-lead {
+      max-width: 760px;
+      margin: 12px 0 0;
+      color: #d7e1ec;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .header-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: 10px;
+      min-width: 320px;
+    }
+
+    .meta-item {
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .meta-label {
+      display: block;
+      color: #b8c7d8;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .meta-value {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .section-block {
+      margin-top: 32px;
+      padding-top: 10px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 900px;
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .pill {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border: 1px solid #c6d2df;
+      border-radius: 999px;
+      color: var(--header-soft);
+      background: var(--surface);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+      margin-bottom: 24px;
+    }
+
+    .summary-card {
+      padding: 15px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 8px 22px rgba(18, 38, 58, 0.05);
+    }
+
+    .summary-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--header);
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .table-wrap::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    .table-wrap::-webkit-scrollbar-track {
+      background: #e7edf4;
+      border-radius: 999px;
+    }
+
+    .table-wrap::-webkit-scrollbar-thumb {
+      background: #96a6b8;
+      border-radius: 999px;
+      border: 3px solid #e7edf4;
+    }
+
+    table {
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 14px 15px;
+      border-color: var(--border);
+    }
+
+    th {
+      background: var(--header);
+      color: #f8fafc;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    td {
+      color: #223044;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: var(--surface-muted);
+    }
+
+    tbody tr:hover td {
+      background: #eef7f6;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1),
+    th:nth-child(2),
+    td:nth-child(2) {
+      font-weight: 800;
+    }
+
+    tbody tr:hover td:nth-child(1),
+    tbody tr:hover td:nth-child(2) {
+      background: #f6eedc;
+    }
+
+    th:nth-child(1),
+    th:nth-child(2) {
+      background: var(--sticky-header);
+      color: var(--header);
+    }
+
+    .flight-table strong,
+    .hotel-table strong {
+      color: var(--header);
+    }
+
+    .price-basis {
+      display: inline-block;
+      margin: 4px 0 2px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .flight-link {
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .flight-link::after {
+      content: ">";
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .jump-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .jump-link:hover,
+    .jump-link:focus {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .location-details {
+      display: grid;
+      gap: 28px;
+      margin-top: 18px;
+    }
+
+    .location-panel {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      scroll-margin-top: 18px;
+    }
+
+    .location-photo {
+      position: relative;
+      min-height: 300px;
+      background: #d8e2ee;
+    }
+
+    .location-photo img,
+    .hotel-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .location-photo-overlay {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 48px 24px 24px;
+      color: white;
+      background: linear-gradient(180deg, rgba(18, 38, 58, 0), rgba(18, 38, 58, 0.86));
+    }
+
+    .location-photo-overlay h2 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: 0;
+    }
+
+    .location-photo-overlay p {
+      margin: 8px 0 0;
+      color: #e7edf4;
+    }
+
+    .photo-credit {
+      display: inline-block;
+      margin-top: 8px;
+      color: #cbd7e5;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .photo-credit a {
+      color: inherit;
+    }
+
+    .location-body {
+      padding: 24px;
+    }
+
+    .overview-text {
+      max-width: 1040px;
+      margin: 0;
+      color: #29384c;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .weather-overview {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 22px 0;
+    }
+
+    .fact {
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-muted);
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--header);
+      line-height: 1.35;
+    }
+
+    .detail-subsection {
+      margin-top: 24px;
+    }
+
+    .detail-subsection h3,
+    .compare-area h3 {
+      margin: 0 0 12px;
+      color: var(--header);
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+
+    .flight-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .flight-summary,
+    .hotel-card,
+    .compare-area {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-muted);
+    }
+
+    .flight-summary {
+      padding: 15px;
+    }
+
+    .flight-summary strong {
+      display: block;
+      color: var(--header);
+      font-size: 18px;
+    }
+
+    .flight-summary p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .hotel-card {
+      overflow: hidden;
+    }
+
+    .hotel-card img {
+      height: 170px;
+    }
+
+    .hotel-card-body {
+      padding: 15px;
+    }
+
+    .hotel-type {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hotel-card h4 {
+      margin: 5px 0 10px;
+      color: var(--header);
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .hotel-card p,
+    .hotel-card li {
+      color: #35465c;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hotel-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .hotel-card ul {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .compare-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 14px 0;
+      color: var(--header-soft);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .compare-toggle input {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--accent);
+    }
+
+    .compare-area {
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--surface);
+    }
+
+    .compare-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .clear-compare {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--header);
+      background: var(--surface-muted);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .clear-compare:hover,
+    .clear-compare:focus {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .compare-panels {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .compare-output {
+      overflow-x: auto;
+    }
+
+    .compare-output table {
+      min-width: 620px;
+      table-layout: auto;
+      font-size: 13px;
+    }
+
+    .compare-output th,
+    .compare-output td {
+      position: static;
+      width: auto;
+      min-width: 0;
+      background: white;
+      font-weight: 400;
+    }
+
+    .compare-output th {
+      color: white;
+      background: var(--header);
+      font-weight: 800;
+    }
+
+    .compare-output td:first-child,
+    .compare-output th:first-child {
+      font-weight: 800;
+      background: #f4e6c8;
+      color: var(--header);
+    }
+
+    .empty-compare {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .compare-message {
+      margin-top: 8px;
+      min-height: 20px;
+      color: #b3261e;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .legacy-hotel-table {
+      display: none;
+    }
+
+    .note {
+      max-width: 1120px;
+      margin-top: 14px;
+      padding-left: 12px;
+      border-left: 3px solid var(--gold);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .gate {
+      background: var(--header);
+    }
+
+    .gate-panel {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+    }
+
+    .gate-panel h1 {
+      color: var(--header);
+      font-size: 34px;
+    }
+
+    .gate-panel label {
+      color: var(--header-soft);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .gate-row input {
+      border-radius: 6px;
+      border-color: #b9c6d6;
+      outline: none;
+    }
+
+    .gate-row input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16);
+    }
+
+    .gate-row button {
+      border-radius: 6px;
+      background: var(--accent);
+    }
+
+    .gate-row button:hover,
+    .gate-row button:focus {
+      background: #0b625b;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        padding: 0 14px 32px;
+      }
+
+      .site-header {
+        margin: 0 -14px 22px;
+        padding: 28px 14px 24px;
+      }
+
+      .site-header-inner,
+      .section-heading {
+        display: block;
+      }
+
+      .header-meta,
+      .summary-grid {
+        grid-template-columns: 1fr 1fr;
+        min-width: 0;
+        margin-top: 18px;
+      }
+
+      .site-title {
+        font-size: 34px;
+      }
+
+      .pill {
+        display: inline-flex;
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .header-meta,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gate-row {
+        display: grid;
+      }
+
+      .fact-grid,
+      .flight-summary-grid,
+      .hotel-grid,
+      .compare-panels {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body class="locked">
@@ -269,10 +1131,94 @@
   </section>
 
   <main>
-    <h1>KKtravel2026</h1>
-    <p>Scroll left and right inside the table. The country and town/base columns stay in place.</p>
+    <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="side-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="menu-backdrop" id="menu-backdrop"></div>
+    <nav class="side-nav" id="side-nav" aria-label="Page navigation">
+      <div class="side-nav-header">
+        <h2 class="side-nav-title">KKtravel2026</h2>
+        <button class="side-nav-close" type="button" id="side-nav-close" aria-label="Close navigation menu">x</button>
+      </div>
+      <div class="side-nav-group">
+        <p class="side-nav-label">Start</p>
+        <a href="#start">Top of page</a>
+        <a href="#destinations">Destination table</a>
+        <a href="#flights">Flight table</a>
+      </div>
+      <div class="side-nav-group">
+        <p class="side-nav-label">Locations</p>
+        <a href="#tarifa">Tarifa</a>
+        <a href="#lagos">Lagos</a>
+        <a href="#naxos">Naxos Town / Chora</a>
+        <a href="#lefkada">Lefkada Town or Nidri</a>
+        <a href="#budva">Budva</a>
+        <a href="#sopot">Sopot</a>
+        <a href="#sunny-beach">Sunny Beach / Nessebar</a>
+        <a href="#paros">Parikia or Naoussa</a>
+      </div>
+    </nav>
 
-    <div class="table-wrap" aria-label="Scrollable holiday locations table">
+    <header class="site-header" id="start">
+      <div class="site-header-inner">
+        <div>
+          <span class="eyebrow">Summer 2026 travel plan</span>
+          <h1 class="site-title">KKtravel2026</h1>
+          <p class="site-lead">A focused shortlist for two travelers from Estonia, comparing beach towns, flight routes, ISIC savings and hotel options for late June.</p>
+        </div>
+        <div class="header-meta" aria-label="Trip summary">
+          <div class="meta-item">
+            <span class="meta-label">Travelers</span>
+            <span class="meta-value">2 people</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Dates</span>
+            <span class="meta-value">24 Jun - 1/2 Jul</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Departure</span>
+            <span class="meta-value">Tallinn</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Budget</span>
+            <span class="meta-value">Moderate</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section-block" id="destinations">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Destination shortlist</span>
+          <h2 class="section-title">Beach Town Comparison</h2>
+          <p class="section-copy">European beach bases with nightlife, moderate pricing potential and kitesurf access where available.</p>
+        </div>
+        <span class="pill">8 locations</span>
+      </div>
+
+      <div class="summary-grid" aria-label="Planning highlights">
+        <div class="summary-card">
+          <span>Best kitesurf</span>
+          <strong>Tarifa</strong>
+        </div>
+        <div class="summary-card">
+          <span>Best all-rounder</span>
+          <strong>Lagos</strong>
+        </div>
+        <div class="summary-card">
+          <span>Best beauty score</span>
+          <strong>Lefkada</strong>
+        </div>
+        <div class="summary-card">
+          <span>Cheapest flight base</span>
+          <strong>Sopot</strong>
+        </div>
+      </div>
+
+    <div class="table-wrap" aria-label="Holiday locations table">
       <table>
         <thead>
           <tr>
@@ -280,6 +1226,7 @@
             <th>Town/Base</th>
             <th>City/Region</th>
             <th>Distance From Beach</th>
+            <th>Climate Late Jun</th>
             <th>Safety</th>
             <th>Tourist-Friendliness</th>
             <th>Beauty /10</th>
@@ -291,9 +1238,10 @@
         <tbody>
           <tr>
             <td>Spain</td>
-            <td>Tarifa</td>
+            <td><a class="jump-link" href="#tarifa">Tarifa</a></td>
             <td>Cadiz, Andalucia</td>
             <td>5-15 min walk to Los Lances</td>
+            <td>23C day / 19C night; mostly sunny and dry, often windy; low rain chance</td>
             <td>Good, 8/10</td>
             <td>9/10</td>
             <td>8.5</td>
@@ -303,9 +1251,10 @@
           </tr>
           <tr>
             <td>Portugal</td>
-            <td>Lagos</td>
+            <td><a class="jump-link" href="#lagos">Lagos</a></td>
             <td>Algarve</td>
             <td>Praia da Batata is minutes from old town</td>
+            <td>22C day / 18C night; mostly sunny, very dry and breezy; rare rain</td>
             <td>Very good, 9/10</td>
             <td>9/10</td>
             <td>9</td>
@@ -315,9 +1264,10 @@
           </tr>
           <tr>
             <td>Greece</td>
-            <td>Naxos Town / Chora</td>
+            <td><a class="jump-link" href="#naxos">Naxos Town / Chora</a></td>
             <td>Naxos, Cyclades</td>
             <td>3-10 min walk to Agios Georgios</td>
+            <td>24C day / 22C night; sunny/clear, very dry, breezy Meltemi possible</td>
             <td>Very good, 9/10</td>
             <td>9/10</td>
             <td>9</td>
@@ -327,9 +1277,10 @@
           </tr>
           <tr>
             <td>Greece</td>
-            <td>Lefkada Town or Nidri</td>
+            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri</a></td>
             <td>Lefkada, Ionian</td>
             <td>Agios Ioannis about 2 km; Nidri beach in town</td>
+            <td>26C day / 21C night; sunny and warm, small shower risk</td>
             <td>Very good, 9/10</td>
             <td>8/10</td>
             <td>9.5</td>
@@ -339,9 +1290,10 @@
           </tr>
           <tr>
             <td>Montenegro</td>
-            <td>Budva</td>
+            <td><a class="jump-link" href="#budva">Budva</a></td>
             <td>Budva Riviera</td>
             <td>5-10 min to Slovenska or Mogren</td>
+            <td>24C day / 13C night; sunny spells, warm days, higher shower risk</td>
             <td>Good, 8/10</td>
             <td>8/10</td>
             <td>8.5</td>
@@ -351,9 +1303,10 @@
           </tr>
           <tr>
             <td>Poland</td>
-            <td>Sopot</td>
+            <td><a class="jump-link" href="#sopot">Sopot</a></td>
             <td>Gdansk / Tri-City</td>
             <td>Beach is in town</td>
+            <td>19C day / 12C night; mild, partly cloudy, rain possible</td>
             <td>Very good, 9/10</td>
             <td>8.5/10</td>
             <td>8</td>
@@ -363,9 +1316,10 @@
           </tr>
           <tr>
             <td>Bulgaria</td>
-            <td>Sunny Beach / Nessebar</td>
+            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar</a></td>
             <td>Burgas / Nessebar</td>
             <td>0-5 min</td>
+            <td>27C day / 18C night; warm, mostly sunny, occasional showers</td>
             <td>Good, 8/10</td>
             <td>8/10</td>
             <td>7</td>
@@ -375,9 +1329,10 @@
           </tr>
           <tr>
             <td>Greece</td>
-            <td>Parikia or Naoussa</td>
+            <td><a class="jump-link" href="#paros">Parikia or Naoussa</a></td>
             <td>Paros, Cyclades</td>
             <td>5-15 min to local beaches</td>
+            <td>24C day / 22C night; sunny/clear, very dry, breezy</td>
             <td>Very good, 9/10</td>
             <td>9/10</td>
             <td>9</td>
@@ -390,77 +1345,1404 @@
     </div>
 
     <p class="note">Tip: June and September usually give the best balance of weather, price, and crowds.</p>
+    <p class="note">Climate note: temperatures and weather summaries are late-June climate averages, not a live forecast. Exact forecasts for 24 June-2 July 2026 should be checked about 7-10 days before departure.</p>
+    </section>
 
-    <h1>Flight Prices From Estonia</h1>
-    <p>Snapshot for two travelers from Tallinn, staying inside 24 June-1/2 July 2026 where schedules allow. Totals include one standard cabin bag for each traveler; low-cost airline cabin bag prices are estimated because they vary by route and demand.</p>
+    <section class="section-block" id="flights">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Flights</span>
+          <h2 class="section-title">Flight Prices From Estonia</h2>
+          <p class="section-copy">Snapshot for two travelers from Tallinn, staying inside 24 June-1/2 July 2026 where schedules allow. Totals include one standard cabin bag for each traveler; low-cost airline cabin bag prices are estimated because they vary by route and demand.</p>
+        </div>
+        <span class="pill">Cabin bags included</span>
+      </div>
 
-    <div class="table-wrap" aria-label="Scrollable flight price table">
+    <div class="table-wrap" aria-label="Flight price table">
       <table class="flight-table">
         <thead>
           <tr>
             <th>Country</th>
             <th>Town</th>
-            <th>Best Price / Quality</th>
-            <th>Cheapest Price</th>
+            <th>Climate Late Jun</th>
+            <th>Best Price / Quality<br>Total For 2 / Per Person</th>
+            <th>Cheapest Price<br>Total For 2 / Per Person</th>
+            <th>Possible ISIC Discount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spain</td>
+            <td><a class="jump-link" href="#tarifa">Tarifa</a></td>
+            <td>23C / 19C; mostly sunny, dry and windy</td>
+            <td><strong>About EUR 830 total for 2</strong><br><span class="price-basis">Approx EUR 415 per person</span><br>Route: Tallinn to Malaga, then ground transfer to Tarifa.<br>Travel time: about 4h50 out / 4h30 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 520 total for 2</strong><br><span class="price-basis">Approx EUR 260 per person</span><br>Route: Tallinn to Malaga.<br>Travel time: roughly 8-13h each way.<br>Stops: usually 1 stop.<br>Airlines: Ryanair/Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> if booked through the ISIC/Kiwi.com offer and the booking is over EUR 200. Cheapest option may fail if it includes Ryanair Group flights.</td>
+          </tr>
+          <tr>
+            <td>Portugal</td>
+            <td><a class="jump-link" href="#lagos">Lagos</a></td>
+            <td>22C / 18C; mostly sunny, very dry</td>
+            <td><strong>About EUR 870 total for 2</strong><br><span class="price-basis">Approx EUR 435 per person</span><br>Route: Tallinn to Faro, then train/bus/car to Lagos.<br>Travel time: roughly 6-9h each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 410 total for 2</strong><br><span class="price-basis">Approx EUR 205 per person</span><br>Route: Tallinn to Faro.<br>Travel time: about 21-25h each way on the cheapest June-style itineraries.<br>Stops: 1 stop.<br>Airlines: Wizz Air UK/easyJet or similar.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> through ISIC/Kiwi.com if the exact itinerary is sold there and no Ryanair Group segment is included.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td><a class="jump-link" href="#naxos">Naxos Town / Chora</a></td>
+            <td>24C / 22C; sunny, dry, breezy</td>
+            <td><strong>About EUR 610-730 total for 2</strong><br><span class="price-basis">Approx EUR 305-365 per person</span><br>Route: Tallinn to Naxos airport, usually via Athens; ferry alternative from Athens may be better.<br>Travel time: varies, often 8h+ flight routing.<br>Stops: 1-2 stops.<br>Airlines: Aegean/Olympic plus partner airline.<br>Cabin bags: included or added where needed.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/jnx/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry to Naxos is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> on the flight booking via ISIC/Kiwi.com if over EUR 200 and not Ryanair Group. Ferry to Naxos is separate and not included in this flight discount.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri</a></td>
+            <td>26C / 21C; sunny, warm, small shower risk</td>
+            <td><strong>About EUR 582 total for 2</strong><br><span class="price-basis">Approx EUR 291 per person</span><br>Route: Tallinn to Preveza/Lefkada, then short transfer.<br>Travel time: usually 6-8h each way.<br>Stops: 1 stop.<br>Airline: Lufthansa.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 535 total for 2</strong><br><span class="price-basis">Approx EUR 268 per person</span><br>Route: Tallinn to Preveza/Lefkada.<br>Travel time: usually longer than Lufthansa option.<br>Stops: 1+ stops.<br>Airlines: Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> via ISIC/Kiwi.com if the route is booked there, costs over EUR 200, and does not include Ryanair Group flights.</td>
+          </tr>
+          <tr>
+            <td>Montenegro</td>
+            <td><a class="jump-link" href="#budva">Budva</a></td>
+            <td>24C / 13C; sunny spells, showers possible</td>
+            <td><strong>About EUR 682 total for 2</strong><br><span class="price-basis">Approx EUR 341 per person</span><br>Route: Tallinn to Tivat via Riga, then short transfer to Budva.<br>Travel time: about 4h15 each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tiv/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 350 total for 2</strong><br><span class="price-basis">Approx EUR 175 per person</span><br>Route: Tallinn to Podgorica, then longer ground transfer to Budva.<br>Travel time: varies; usually 6-12h flight routing plus transfer.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair mix.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tgd/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> for eligible Kiwi.com bookings. Best airBaltic-style routing is more likely eligible; cheapest mixed option may be excluded if Ryanair appears.</td>
+          </tr>
+          <tr>
+            <td>Poland</td>
+            <td><a class="jump-link" href="#sopot">Sopot</a></td>
+            <td>19C / 12C; mild, partly cloudy, rain possible</td>
+            <td><strong>About EUR 210-230 total for 2</strong><br><span class="price-basis">Approx EUR 105-115 per person</span><br>Route: Tallinn to Gdansk, then train/taxi to Sopot.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 210-230 total for 2</strong><br><span class="price-basis">Approx EUR 105-115 per person</span><br>Route: same direct Tallinn-Gdansk flight.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> if the total booking is over EUR 200 and sold through ISIC/Kiwi.com. This is likely the clearest fit because it is Wizz Air, not Ryanair Group.</td>
+          </tr>
+          <tr>
+            <td>Bulgaria</td>
+            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar</a></td>
+            <td>27C / 18C; warm, mostly sunny, occasional showers</td>
+            <td><strong>About EUR 860-1,030 total for 2</strong><br><span class="price-basis">Approx EUR 430-515 per person</span><br>Route: Tallinn to Burgas, then short transfer.<br>Travel time: about 3h40 out / 3h10 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 555 total for 2</strong><br><span class="price-basis">Approx EUR 278 per person</span><br>Route: Tallinn to Burgas.<br>Travel time: roughly 6-15h each way.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> via ISIC/Kiwi.com. Cheapest option only works with the discount if the final itinerary avoids Ryanair Group flights.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td><a class="jump-link" href="#paros">Parikia or Naoussa</a></td>
+            <td>24C / 22C; sunny, dry, breezy</td>
+            <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry/short domestic leg to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pas/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
+            <td><strong>Up to EUR 15</strong> on eligible flight booking through ISIC/Kiwi.com. Ferry or separate island transfer costs are not covered by the flight discount.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">Price note: flight prices in this table are shown as a total for 2 travelers first, with an approximate per-person price underneath. Skyscanner links are set for 2 adults where the URL supports it.</p>
+    <p class="note">ISIC note: the most relevant flight discount I found is an ISIC/Kiwi.com promo of EUR 15 off eligible bookings over EUR 200, valid through 31 July 2027, but it excludes Ryanair Group flights and must be verified through the ISIC offer page. I did not subtract it from the totals because eligibility depends on the exact booking path. <a href="https://isic.at/en/benefits/kiwi-com/8099/" target="_blank" rel="noopener">Open ISIC/Kiwi.com discount</a>.</p>
+    <p class="note">Sources checked: airBaltic, Lufthansa, Eurowings, Skyscanner, Trip.com, Momondo, FlightsFrom, ISIC/Student discount pages, airline cabin-bag policy pages, Weather Atlas and Weather Spark. Flight prices and weather forecasts can change quickly, so treat these as planning estimates rather than locked fares.</p>
+    </section>
+
+    <section class="section-block" id="location-details-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Destination deep dive</span>
+          <h2 class="section-title">Location Details, Flights And Hotels</h2>
+          <p class="section-copy">Click a town in the tables above to jump straight to its full overview. Use the checkboxes to compare 2-3 destinations or hotel options side by side.</p>
+        </div>
+        <span class="pill">Clickable sections</span>
+      </div>
+
+      <div class="compare-area" aria-label="Comparison tools">
+        <div class="compare-head">
+          <h3>Comparison</h3>
+          <button class="clear-compare" type="button" id="clear-comparison">Clear comparison</button>
+        </div>
+        <div class="compare-panels">
+          <div>
+            <h3>Compare Locations</h3>
+            <div class="compare-output" id="location-comparison">
+              <p class="empty-compare">Select 2-3 locations from the destination sections.</p>
+            </div>
+          </div>
+          <div>
+            <h3>Compare Hotels</h3>
+            <div class="compare-output" id="hotel-comparison">
+              <p class="empty-compare">Select 2-3 hotels from the hotel cards.</p>
+            </div>
+          </div>
+        </div>
+        <div class="compare-message" id="compare-message" aria-live="polite"></div>
+      </div>
+
+      <div class="location-details" id="location-details"></div>
+    </section>
+
+    <section class="section-block legacy-hotel-table" id="legacy-hotels">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Stays</span>
+          <h2 class="section-title">Hotel Choices</h2>
+          <p class="section-copy">Three hotel styles for each destination: pool/resort, simple room and a varia option. Distances are approximate planning distances.</p>
+        </div>
+        <span class="pill">24 hotel options</span>
+      </div>
+
+    <div class="table-wrap" aria-label="Hotel choices table">
+      <table class="hotel-table">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Town</th>
+            <th>Type</th>
+            <th>Hotel</th>
+            <th>Strengths</th>
+            <th>Weaknesses</th>
+            <th>Beach Distance</th>
+            <th>City / Nightlife Distance</th>
+            <th>Airport Distance</th>
+            <th>Other Bonuses / Minuses</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Spain</td>
             <td>Tarifa</td>
-            <td><strong>About EUR 830 total</strong><br>Route: Tallinn to Malaga, then ground transfer to Tarifa.<br>Travel time: about 4h50 out / 4h30 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Malaga%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 520 total</strong><br>Route: Tallinn to Malaga.<br>Travel time: roughly 8-13h each way.<br>Stops: usually 1 stop.<br>Airlines: Ryanair/Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://laresidenciatarifa.com/en/hotel-spa-tarifa/" target="_blank" rel="noopener">La Residencia Puerto Hotel &amp; Spa</a></td>
+            <td>Rooftop heated infinity pool, spa, port views, polished couple-friendly feel.</td>
+            <td>Higher price, parking can cost extra, not on the main kitesurf beach.</td>
+            <td>Playa Chica about 180 m; Los Lances about 6 km.</td>
+            <td>Old town about 300 m; bars and restaurants are walkable.</td>
+            <td>Malaga Airport about 155 km / 1h50; Jerez about 130 km.</td>
+            <td>Pet-friendly rooms by availability; best for comfort plus easy evenings.</td>
+          </tr>
+          <tr>
+            <td>Spain</td>
+            <td>Tarifa</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.hostaltarifa.com/en/hostal-in-tarifa/" target="_blank" rel="noopener">Hostal Tarifa</a></td>
+            <td>Simple, central, bright rooms with AC and Wi-Fi; practical for budget planning.</td>
+            <td>No pool or resort feeling; more functional than romantic.</td>
+            <td>Less than 5 min walk to the beach.</td>
+            <td>Less than 5 min walk to old town, port and food streets.</td>
+            <td>Malaga Airport about 155 km / 1h50.</td>
+            <td>Private parking available; good if you rent a car for kite beaches.</td>
+          </tr>
+          <tr>
+            <td>Spain</td>
+            <td>Tarifa</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://www.hotelhurricane.com/en/hotel-tarifa/" target="_blank" rel="noopener">Hotel Hurricane</a></td>
+            <td>Classic beach/kite atmosphere, gardens, two pools, restaurant, direct beach mood.</td>
+            <td>Out of town, so nightlife needs taxi/car; wind can be intense.</td>
+            <td>Beachfront / immediate beach access.</td>
+            <td>About 7 km from Tarifa old town nightlife.</td>
+            <td>Malaga Airport about 150 km / 1h45-2h.</td>
+            <td>Best Tarifa pick if kitesurf vibe matters more than town nightlife.</td>
           </tr>
           <tr>
             <td>Portugal</td>
             <td>Lagos</td>
-            <td><strong>About EUR 870 total</strong><br>Route: Tallinn to Faro, then train/bus/car to Lagos.<br>Travel time: roughly 6-9h each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Faro%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 410 total</strong><br>Route: Tallinn to Faro.<br>Travel time: about 21-25h each way on the cheapest June-style itineraries.<br>Stops: 1 stop.<br>Airlines: Wizz Air UK/easyJet or similar.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://www.tivolihotels.com/en/tivoli-lagos" target="_blank" rel="noopener">Tivoli Lagos Algarve Resort</a></td>
+            <td>Central resort, indoor and outdoor pools, health club, beach club shuttle.</td>
+            <td>Large hotel feel; the main beach club is not at the hotel door.</td>
+            <td>Duna Beach Club at Meia Praia about 2.5 km by shuttle.</td>
+            <td>In central Lagos, a few minutes from marina, bars and restaurants.</td>
+            <td>Faro Airport about 90 km / 1h.</td>
+            <td>Very easy logistics; good balance if you want pool plus town access.</td>
+          </tr>
+          <tr>
+            <td>Portugal</td>
+            <td>Lagos</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.lagosmar.com/en/" target="_blank" rel="noopener">Lagosmar Story Hotel</a></td>
+            <td>Family hotel, central, simple rooms, easy marina/train/bus access.</td>
+            <td>No pool; basic 2-star style rather than resort comfort.</td>
+            <td>Batata Beach about 7 min walk; Meia Praia about 11 min walk.</td>
+            <td>Old town and marina nightlife are a short walk away.</td>
+            <td>Faro Airport about 90 km / 1h.</td>
+            <td>Rooftop terrace and sea views from some areas; good value base.</td>
+          </tr>
+          <tr>
+            <td>Portugal</td>
+            <td>Lagos</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://casa-mae.com/" target="_blank" rel="noopener">Casa Mae</a></td>
+            <td>Stylish boutique compound with pools, gardens, spa, farm-to-table restaurant.</td>
+            <td>Usually pricier; not beachfront; some room categories are compact.</td>
+            <td>About 10-15 min walk to Batata Beach; about 20 min to Dona Ana.</td>
+            <td>Inside/next to the old town, so food and bars are close.</td>
+            <td>Faro Airport about 90 km / 1h.</td>
+            <td>Design, yoga/workshop energy and calmer mood than a party hotel.</td>
           </tr>
           <tr>
             <td>Greece</td>
             <td>Naxos Town / Chora</td>
-            <td><strong>About EUR 610-730 total</strong><br>Route: Tallinn to Naxos airport, usually via Athens; ferry alternative from Athens may be better.<br>Travel time: varies, often 8h+ flight routing.<br>Stops: 1-2 stops.<br>Airlines: Aegean/Olympic plus partner airline.<br>Cabin bags: included or added where needed.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/jnx/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 415-470 total</strong><br>Route: Tallinn to Athens only, then ferry to Naxos is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://www.nissakihotels.com/nissaki-beach-hotel/location.html" target="_blank" rel="noopener">Nissaki Beach Hotel</a></td>
+            <td>Beachfront Agios Georgios location, pool, restaurant, very close to town.</td>
+            <td>Often expensive and small, so book early if interested.</td>
+            <td>About 10 m from Agios Georgios Beach.</td>
+            <td>About 200 m from town; port area about 800 m.</td>
+            <td>Naxos Airport about 2 km.</td>
+            <td>Excellent beach-town balance; private parking and transfers available.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Naxos Town / Chora</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.soulahotel.gr/" target="_blank" rel="noopener">Soula Hotel</a></td>
+            <td>Family-run, simple, 20 m from beach, very close to town.</td>
+            <td>No resort pool; rooms are more practical than luxurious.</td>
+            <td>About 20 m from Agios Georgios Beach.</td>
+            <td>About 2 min walk to Naxos town centre.</td>
+            <td>Naxos Airport about 2-3 km.</td>
+            <td>Free transfers to/from port and airport; strong value pick.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Naxos Town / Chora</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://www.grotta.gr/" target="_blank" rel="noopener">Hotel Grotta</a></td>
+            <td>Sea and Portara views, famous breakfast, spa pool, hammam and warm service.</td>
+            <td>Grotta Beach is pebbly; uphill/old-town walk; no outdoor resort pool.</td>
+            <td>Grotta Beach a few minutes; Agios Georgios about 15-20 min walk.</td>
+            <td>Short walk to Chora old market, restaurants and bars.</td>
+            <td>Naxos Airport about 3.5 km.</td>
+            <td>Great if views and breakfast matter more than being on sandy beach.</td>
           </tr>
           <tr>
             <td>Greece</td>
             <td>Lefkada Town or Nidri</td>
-            <td><strong>About EUR 582 total</strong><br>Route: Tallinn to Preveza/Lefkada, then short transfer.<br>Travel time: usually 6-8h each way.<br>Stops: 1 stop.<br>Airline: Lufthansa.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Preveza%202%20adults%2024%20June%202026%20return%201%20July%202026%20Lufthansa" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 535 total</strong><br>Route: Tallinn to Preveza/Lefkada.<br>Travel time: usually longer than Lufthansa option.<br>Stops: 1+ stops.<br>Airlines: Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://portogalini.gr/" target="_blank" rel="noopener">Porto Galini Seaside Resort &amp; Spa</a></td>
+            <td>Five-star resort with secluded beach, pools, spa, sports and landscaped grounds.</td>
+            <td>Not a nightlife hotel; car/taxi useful; likely higher price.</td>
+            <td>Private/secluded beach on site.</td>
+            <td>About 4 km from Nidri; about 12 km from Lefkada Town.</td>
+            <td>Preveza/Aktion Airport about 30-35 km.</td>
+            <td>Best comfort pick for a proper resort stay on Lefkada.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Lefkada Town or Nidri</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.boschettohotel.com/" target="_blank" rel="noopener">Boschetto Hotel</a></td>
+            <td>Small chic B&amp;B in Lefkada Town, close to restaurants and old centre.</td>
+            <td>No pool or beach resort feel; only a handful of rooms.</td>
+            <td>Lagoon waterfront nearby; Agios Ioannis Beach about 3 km.</td>
+            <td>Steps from Lefkada Town cafes, restaurants and relaxed bars.</td>
+            <td>Preveza/Aktion Airport about 20 km / 20-25 min.</td>
+            <td>Good short-stay base if you want town evenings and day trips by car.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Lefkada Town or Nidri</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://www.elissohotel.com/" target="_blank" rel="noopener">Elisso Hotel Vasiliki</a></td>
+            <td>Beachfront, pool, sea views, directly useful for windsurfing/watersports.</td>
+            <td>Far from Lefkada Town and Nidri nightlife; car strongly recommended.</td>
+            <td>Vasiliki Beach about 100 m / 2 min walk.</td>
+            <td>Vasiliki port about 400 m; Nidri about 35 km.</td>
+            <td>Preveza/Aktion Airport about 65 km / 50 min.</td>
+            <td>Great sports option; direct-booking page advertises 10% off.</td>
           </tr>
           <tr>
             <td>Montenegro</td>
             <td>Budva</td>
-            <td><strong>About EUR 682 total</strong><br>Route: Tallinn to Tivat via Riga, then short transfer to Budva.<br>Travel time: about 4h15 each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Tivat%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 350 total</strong><br>Route: Tallinn to Podgorica, then longer ground transfer to Budva.<br>Travel time: varies; usually 6-12h flight routing plus transfer.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair mix.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tgd/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://www.avalaresort.com/" target="_blank" rel="noopener">Avala Resort &amp; Villas</a></td>
+            <td>Beside Old Town and beach, indoor/outdoor pools, spa, hotel beach.</td>
+            <td>Central location can feel busy; not the cheapest Budva option.</td>
+            <td>Direct beach setting; Mogren Beach about 300 m.</td>
+            <td>Old Town about 50-200 m; nightlife is very close.</td>
+            <td>Tivat Airport about 18-25 km.</td>
+            <td>Free parking/pool use noted by hotel; best location in Budva for first timers.</td>
+          </tr>
+          <tr>
+            <td>Montenegro</td>
+            <td>Budva</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.hotelhermesbudva.com/en/location" target="_blank" rel="noopener">Hotel Hermes Budva</a></td>
+            <td>Modern small hotel, practical location, good room-focused value.</td>
+            <td>No pool/resort feel; beach and old town are a walk rather than doorstep.</td>
+            <td>About 700 m / 9 min walk to beach.</td>
+            <td>Restaurants and shops within 50-100 m; old town about 1 km.</td>
+            <td>Tivat Airport about 25 km.</td>
+            <td>Bus station about 700 m; useful if you do day trips.</td>
+          </tr>
+          <tr>
+            <td>Montenegro</td>
+            <td>Budva</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://www.budva.com/eng/private-accommodation/astoria/1595.html" target="_blank" rel="noopener">Hotel Astoria Budva</a></td>
+            <td>Old Town boutique atmosphere, character building, private beach area.</td>
+            <td>No pool; Old Town access/parking can be awkward; possible night noise.</td>
+            <td>In/next to Old Town beach area; Mogren about 700 m.</td>
+            <td>Inside Budva Old Town, so nightlife and restaurants are immediate.</td>
+            <td>Tivat Airport about 20 km.</td>
+            <td>Best if you want romantic old-town character over resort facilities.</td>
           </tr>
           <tr>
             <td>Poland</td>
             <td>Sopot</td>
-            <td><strong>About EUR 210-230 total</strong><br>Route: Tallinn to Gdansk, then train/taxi to Sopot.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 210-230 total</strong><br>Route: same direct Tallinn-Gdansk flight.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://www.marriott.com/en-us/hotels/gdnmc-sopot-marriott-resort-and-spa/overview/" target="_blank" rel="noopener">Sopot Marriott Resort &amp; Spa</a></td>
+            <td>Beach hotel, indoor/outdoor pools, seasonal rooftop infinity pool, large spa.</td>
+            <td>Pricier; parking is expensive; not right on Monte Cassino nightlife street.</td>
+            <td>By the beach / roughly 0-100 m.</td>
+            <td>About 2-2.5 km from pier and Monte Cassino nightlife.</td>
+            <td>Gdansk Airport about 16.4 km.</td>
+            <td>Best comfort/spa pick; beach promenade area is calmer than central Sopot.</td>
+          </tr>
+          <tr>
+            <td>Poland</td>
+            <td>Sopot</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://bbmolo.pl/en/bb-molo-about-us/" target="_blank" rel="noopener">B&amp;B Molo</a></td>
+            <td>Modern affordable rooms, breakfast, sauna, parking and shared kitchen.</td>
+            <td>Inland location; no pool; beach/nightlife need a longer walk.</td>
+            <td>About 1 km to Sopot beach.</td>
+            <td>About 1 km to Monte Cassino / central nightlife.</td>
+            <td>Gdansk Airport about 15-16 km.</td>
+            <td>Good simple base when flight price is the priority.</td>
+          </tr>
+          <tr>
+            <td>Poland</td>
+            <td>Sopot</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://www.hotelmolo.com/de/" target="_blank" rel="noopener">Hotel Molo</a></td>
+            <td>Very central, modern, by Monte Cassino and train station; easy for nightlife.</td>
+            <td>No pool; central/train location can mean noise.</td>
+            <td>About 500-800 m / around 10 min walk to beach and pier.</td>
+            <td>About 2 min to Monte Cassino nightlife.</td>
+            <td>Gdansk Airport about 17 km.</td>
+            <td>Strong choice if you want bars/restaurants first and beach second.</td>
           </tr>
           <tr>
             <td>Bulgaria</td>
             <td>Sunny Beach / Nessebar</td>
-            <td><strong>About EUR 860-1,030 total</strong><br>Route: Tallinn to Burgas, then short transfer.<br>Travel time: about 3h40 out / 3h10 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.google.com/travel/flights?q=Tallinn%20to%20Burgas%202%20adults%2024%20June%202026%20return%201%20July%202026%20airBaltic" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 555 total</strong><br>Route: Tallinn to Burgas.<br>Travel time: roughly 6-15h each way.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://hotel-evrika.com/en/hotel/" target="_blank" rel="noopener">DIT Evrika Beach Club Hotel</a></td>
+            <td>Beachfront all-inclusive, aquapark, several pools, beach bar, entertainment.</td>
+            <td>Large, crowded and noisy; some services can cost extra.</td>
+            <td>Direct beachfront setting.</td>
+            <td>About 1.5 km or short taxi to Flower Street nightlife.</td>
+            <td>Burgas Airport about 28-30 km.</td>
+            <td>Most complete resort choice here, especially if you want easy meals.</td>
+          </tr>
+          <tr>
+            <td>Bulgaria</td>
+            <td>Sunny Beach / Nessebar</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.atolhotels.com/?lng=en-GB" target="_blank" rel="noopener">Hotel Atol</a></td>
+            <td>Central budget-style hotel, 150 m from beach, steps from Flower Street.</td>
+            <td>No pool; central noise likely; parking can be inconvenient.</td>
+            <td>About 150 m from central beach.</td>
+            <td>Steps from Flower Street, bars, clubs and restaurants.</td>
+            <td>Burgas Airport about 28-30 km.</td>
+            <td>Best for cheap party logistics; weaker if you want quiet sleep.</td>
+          </tr>
+          <tr>
+            <td>Bulgaria</td>
+            <td>Sunny Beach / Nessebar</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://hotelstpanteleimon.com/en/about-us/" target="_blank" rel="noopener">St Panteleimon Beach Hotel</a></td>
+            <td>Quiet first-line setting, pool, restaurant, apartments and sea views.</td>
+            <td>Not party-central; you will need taxi/bus for Sunny Beach nightlife.</td>
+            <td>First line / very close to the sea.</td>
+            <td>About 3 km from Sunny Beach; about 4 km from Old Nessebar.</td>
+            <td>Burgas Airport about 25-30 km.</td>
+            <td>Better couple-friendly choice if Sunny Beach itself feels too intense.</td>
           </tr>
           <tr>
             <td>Greece</td>
             <td>Parikia or Naoussa</td>
-            <td><strong>About EUR 415-470 total</strong><br>Route: Tallinn to Athens only, then ferry/short domestic leg to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pas/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
-            <td><strong>About EUR 415-470 total</strong><br>Route: Tallinn to Athens only, then ferry to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open live search</a></td>
+            <td>Pool / resort</td>
+            <td><a class="flight-link" href="https://www.parosagnanti.gr/" target="_blank" rel="noopener">Paros Agnanti Resort &amp; Spa</a></td>
+            <td>Five-star resort, pool, spa, sea views, 80 m from Krios and Marcello beaches.</td>
+            <td>2.5 km from Parikia nightlife; higher price; taxi/shuttle helpful.</td>
+            <td>About 80 m from Krios/Marcello beaches.</td>
+            <td>About 2.5 km from Parikia.</td>
+            <td>Paros Airport about 10 km.</td>
+            <td>Private-pool suite options and free/scheduled transfer options noted by hotel.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Parikia or Naoussa</td>
+            <td>Just room</td>
+            <td><a class="flight-link" href="https://www.paroshoteloasis.gr/rooms/" target="_blank" rel="noopener">Oasis Hotel Paros</a></td>
+            <td>Simple renovated rooms, opposite port, very central for buses/ferries.</td>
+            <td>No pool; port/centre area can be lively; rooms are compact.</td>
+            <td>Parikia seafront/port opposite; Livadia Beach about 700 m.</td>
+            <td>At the entrance to old town; bars and restaurants are immediate.</td>
+            <td>Paros Airport about 10 km.</td>
+            <td>Great logistics if you use ferries or want a cheap central base.</td>
+          </tr>
+          <tr>
+            <td>Greece</td>
+            <td>Parikia or Naoussa</td>
+            <td>Varia</td>
+            <td><a class="flight-link" href="https://www.hotel-senia.com/" target="_blank" rel="noopener">Senia Hotel</a></td>
+            <td>Naoussa sea views, two infinity pools, above Piperi Beach, close to nightlife.</td>
+            <td>Naoussa can be pricier; some rooms are small; steps to upper rooms.</td>
+            <td>Steps above Piperi Beach.</td>
+            <td>About 5 min walk to Naoussa shops, bars and restaurants.</td>
+            <td>Paros Airport about 20 km.</td>
+            <td>Best nightlife-plus-beauty pick on Paros if budget allows.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p class="note">ISIC note: the most relevant flight discount I found is an ISIC/Kiwi.com promo of EUR 15 off eligible bookings over EUR 200, valid through 31 July 2027, but it excludes Ryanair Group flights and must be verified through the ISIC offer page. I did not subtract it from the totals because eligibility depends on the exact booking path.</p>
-    <p class="note">Sources checked: airBaltic, Lufthansa, Eurowings, Skyscanner, Trip.com, Momondo, FlightsFrom, ISIC/Student discount pages, and airline cabin-bag policy pages. Flight prices can change quickly, so treat these as planning estimates rather than locked fares.</p>
+    <p class="note">Hotel source set: official hotel pages where available, plus hotel/travel listings for location checks. Hotel prices and availability for 24 June-1/2 July 2026 should be checked through the linked hotel pages before booking.</p>
+    </section>
   </main>
   <script>
+    const hotelImages = {
+      resort: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80",
+      room: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80",
+      boutique: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80",
+      beach: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80"
+    };
+
+    const locations = [
+      {
+        id: "tarifa",
+        country: "Spain",
+        town: "Tarifa",
+        region: "Cadiz, Andalucia",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kitesurfer_Tarifa_Beach.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Kitesurfer_Tarifa_Beach.jpg",
+        imageCredit: "Kmtextor / Wikimedia Commons",
+        overview: "Tarifa is the strongest choice if kitesurfing and beach energy are important. It sits at the southern tip of Spain where the Atlantic and Mediterranean meet, so the town has a relaxed surf identity, windy beaches and a lively old town full of tapas bars. Los Lances is the main beach for long walks, beach days and kite schools, while Playa Chica is closer to the port and old town. Safety is good, tourist-friendliness is high and the beauty score is 8.5/10, helped by the dunes, ocean views and Morocco visible across the water. Nightlife is strong but more bar-and-surf-scene than giant club resort, which makes it a good fit for a couple that wants evenings out without going full party holiday.",
+        facts: {
+          beach: "5-15 min walk to Los Lances",
+          safety: "Good, 8/10",
+          friendly: "9/10",
+          beauty: "8.5/10",
+          things: "Whale watching, Bolonia dunes, old town tapas, Tangier day trip",
+          nightlife: "Strong surf and bar scene",
+          kitesurf: "Excellent; one of Europe's kite capitals"
+        },
+        climate: {
+          day: "22.6C average daytime high",
+          night: "18.6C average night low",
+          weather: "Mostly sunny, dry and often windy",
+          rain: "About 3 rainy days / 6 mm in June",
+          sunshine: "Long bright days; wind is the bigger planning factor",
+          sea: "About 21.1C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: mostly sunny, dry beach weather with strong Levante/Poniente wind possible, so great for kitesurfing but sometimes rough for casual beach lounging."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 830 total for 2",
+            perPerson: "Approx EUR 415 per person",
+            details: "Tallinn to Malaga, then ground transfer to Tarifa. About 4h50 out / 4h30 back, nonstop, airBaltic, cabin bags included.",
+            link: "https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 520 total for 2",
+            perPerson: "Approx EUR 260 per person",
+            details: "Tallinn to Malaga, usually 1 stop, roughly 8-13h each way, Ryanair/Wizz Air or mixed low-cost, cabin bags added.",
+            link: "https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "tarifa-residencia",
+            type: "Pool / resort",
+            name: "La Residencia Puerto Hotel & Spa",
+            link: "https://laresidenciatarifa.com/en/hotel-spa-tarifa/",
+            image: hotelImages.resort,
+            strengths: "Rooftop heated infinity pool, spa, port views and a polished couple-friendly feel.",
+            weaknesses: "Higher price, parking can cost extra and it is not on the main kitesurf beach.",
+            beach: "Playa Chica about 180 m; Los Lances about 6 km.",
+            nightlife: "Old town about 300 m; bars and restaurants are walkable.",
+            airport: "Malaga Airport about 155 km / 1h50; Jerez about 130 km.",
+            bonus: "Best comfort pick for town evenings and easy logistics."
+          },
+          {
+            id: "tarifa-hostal",
+            type: "Just room",
+            name: "Hostal Tarifa",
+            link: "https://www.hostaltarifa.com/en/hostal-in-tarifa/",
+            image: hotelImages.room,
+            strengths: "Simple, central, bright rooms with AC and Wi-Fi; practical for budget planning.",
+            weaknesses: "No pool or resort feeling; more functional than romantic.",
+            beach: "Less than 5 min walk to the beach.",
+            nightlife: "Less than 5 min walk to old town, port and food streets.",
+            airport: "Malaga Airport about 155 km / 1h50.",
+            bonus: "Private parking available; useful if you rent a car for kite beaches."
+          },
+          {
+            id: "tarifa-hurricane",
+            type: "Varia",
+            name: "Hotel Hurricane",
+            link: "https://www.hotelhurricane.com/en/hotel-tarifa/",
+            image: hotelImages.beach,
+            strengths: "Classic beach and kite atmosphere, gardens, two pools, restaurant and direct beach mood.",
+            weaknesses: "Out of town, so nightlife needs taxi or car; wind can be intense.",
+            beach: "Beachfront / immediate beach access.",
+            nightlife: "About 7 km from Tarifa old town nightlife.",
+            airport: "Malaga Airport about 150 km / 1h45-2h.",
+            bonus: "Best if kitesurf vibe matters more than town nightlife."
+          }
+        ]
+      },
+      {
+        id: "lagos",
+        country: "Portugal",
+        town: "Lagos",
+        region: "Algarve",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Lagos_ponta_da_piedade.JPG?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Lagos_ponta_da_piedade.JPG",
+        imageCredit: "Eduardo Sortica / Wikimedia Commons",
+        overview: "Lagos is probably the safest all-round pick in the list: beautiful coastline, easy beaches, a real old town and enough nightlife without feeling as extreme as Sunny Beach or Budva in peak summer. Praia da Batata is minutes from the old town, Meia Praia gives you a wider sand beach, and Ponta da Piedade is the headline scenery with cliffs, caves and kayak trips. The location scores very highly for safety and tourist-friendliness, both 9/10, and beauty is 9/10. Kitesurfing is not right in the old town, but Meia Praia and Alvor lagoon make it a good nearby option.",
+        facts: {
+          beach: "Praia da Batata is minutes from old town",
+          safety: "Very good, 9/10",
+          friendly: "9/10",
+          beauty: "9/10",
+          things: "Ponta da Piedade caves, kayaking, Sagres, Meia Praia",
+          nightlife: "Good; lively but not wild",
+          kitesurf: "Good nearby at Meia Praia and Alvor lagoon"
+        },
+        climate: {
+          day: "22C average daytime high",
+          night: "17.8C average night low",
+          weather: "Mostly sunny, very dry and breezy",
+          rain: "About 2-3 rainy days / 2 mm in June",
+          sunshine: "About 11+ hours of sunshine per day",
+          sea: "About 19.8C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: sunny, dry Algarve weather with cool Atlantic water and breezy evenings; rain risk is low."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 870 total for 2",
+            perPerson: "Approx EUR 435 per person",
+            details: "Tallinn to Faro, then train, bus or car to Lagos. Roughly 6-9h each way, 1 stop, airBaltic, cabin bags included.",
+            link: "https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 410 total for 2",
+            perPerson: "Approx EUR 205 per person",
+            details: "Tallinn to Faro, about 21-25h each way on the cheapest June-style itineraries, 1 stop, Wizz Air UK/easyJet or similar, cabin bags added.",
+            link: "https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "lagos-tivoli",
+            type: "Pool / resort",
+            name: "Tivoli Lagos Algarve Resort",
+            link: "https://www.tivolihotels.com/en/tivoli-lagos",
+            image: hotelImages.resort,
+            strengths: "Central resort, indoor and outdoor pools, health club and beach club shuttle.",
+            weaknesses: "Large hotel feel; the main beach club is not at the hotel door.",
+            beach: "Duna Beach Club at Meia Praia about 2.5 km by shuttle.",
+            nightlife: "In central Lagos, a few minutes from marina, bars and restaurants.",
+            airport: "Faro Airport about 90 km / 1h.",
+            bonus: "Good balance if you want pool plus town access."
+          },
+          {
+            id: "lagos-lagosmar",
+            type: "Just room",
+            name: "Lagosmar Story Hotel",
+            link: "https://www.lagosmar.com/en/",
+            image: hotelImages.room,
+            strengths: "Family hotel, central, simple rooms, easy marina, train and bus access.",
+            weaknesses: "No pool; basic 2-star style rather than resort comfort.",
+            beach: "Batata Beach about 7 min walk; Meia Praia about 11 min walk.",
+            nightlife: "Old town and marina nightlife are a short walk away.",
+            airport: "Faro Airport about 90 km / 1h.",
+            bonus: "Rooftop terrace and sea views from some areas; strong value base."
+          },
+          {
+            id: "lagos-casa-mae",
+            type: "Varia",
+            name: "Casa Mae",
+            link: "https://casa-mae.com/",
+            image: hotelImages.boutique,
+            strengths: "Stylish boutique compound with pools, gardens, spa and farm-to-table restaurant.",
+            weaknesses: "Usually pricier; not beachfront; some room categories are compact.",
+            beach: "About 10-15 min walk to Batata Beach; about 20 min to Dona Ana.",
+            nightlife: "Inside or next to old town, so food and bars are close.",
+            airport: "Faro Airport about 90 km / 1h.",
+            bonus: "Calmer and more design-led than a party hotel."
+          }
+        ]
+      },
+      {
+        id: "naxos",
+        country: "Greece",
+        town: "Naxos Town / Chora",
+        region: "Naxos, Cyclades",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/City_beach_Agios_Georgios,_Naxos,_11H2322.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:City_beach_Agios_Georgios,_Naxos,_11H2322.jpg",
+        imageCredit: "Wikimedia Commons",
+        overview: "Naxos Town is the Greek-island option that feels beautiful, practical and still relatively sensible compared with the most expensive Cyclades islands. Agios Georgios beach is right by town, so you can walk between the beach, restaurants, the port, sunset at the Portara and the old Kastro streets. Tourist-friendliness and safety are both strong at 9/10, and beauty is 9/10. Nightlife is moderate-good: enough cocktail bars and late restaurants, but not a full club island. Kitesurfing is excellent at Mikri Vigla, about 12-16 km away, which is a real bonus if you are willing to take a bus, scooter or car.",
+        facts: {
+          beach: "3-10 min walk to Agios Georgios",
+          safety: "Very good, 9/10",
+          friendly: "9/10",
+          beauty: "9/10",
+          things: "Portara, Kastro, mountain villages, Plaka and Agia Anna beaches",
+          nightlife: "Moderate-good",
+          kitesurf: "Excellent at Mikri Vigla, about 12-16 km away"
+        },
+        climate: {
+          day: "23.8C average daytime high",
+          night: "22.1C average night low",
+          weather: "Sunny/clear, very dry and breezy",
+          rain: "About 2-3 rainy days / 4 mm in June",
+          sunshine: "About 12.1 hours of sunshine per day",
+          sea: "About 22.2C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: clear, dry Cyclades weather with possible Meltemi wind, especially useful for kitesurf days around Mikri Vigla."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 610-730 total for 2",
+            perPerson: "Approx EUR 305-365 per person",
+            details: "Tallinn to Naxos airport, usually via Athens; ferry alternative from Athens may be better. Often 8h+ flight routing, 1-2 stops, cabin bags included or added where needed.",
+            link: "https://www.skyscanner.net/transport/flights/tll/jnx/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 415-470 total for 2",
+            perPerson: "Approx EUR 208-235 per person",
+            details: "Tallinn to Athens only, then ferry to Naxos is extra. About 3h35 if direct; ferry extra, airBaltic or Wizz/Aegean mix.",
+            link: "https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "naxos-nissaki",
+            type: "Pool / resort",
+            name: "Nissaki Beach Hotel",
+            link: "https://www.nissakihotels.com/nissaki-beach-hotel/location.html",
+            image: hotelImages.resort,
+            strengths: "Beachfront Agios Georgios location, pool, restaurant and very close to town.",
+            weaknesses: "Often expensive and small, so book early if interested.",
+            beach: "About 10 m from Agios Georgios Beach.",
+            nightlife: "About 200 m from town; port area about 800 m.",
+            airport: "Naxos Airport about 2 km.",
+            bonus: "Excellent beach-town balance."
+          },
+          {
+            id: "naxos-soula",
+            type: "Just room",
+            name: "Soula Hotel",
+            link: "https://www.soulahotel.gr/",
+            image: hotelImages.room,
+            strengths: "Family-run, simple, 20 m from beach, very close to town.",
+            weaknesses: "No resort pool; rooms are more practical than luxurious.",
+            beach: "About 20 m from Agios Georgios Beach.",
+            nightlife: "About 2 min walk to Naxos town centre.",
+            airport: "Naxos Airport about 2-3 km.",
+            bonus: "Free transfers to/from port and airport."
+          },
+          {
+            id: "naxos-grotta",
+            type: "Varia",
+            name: "Hotel Grotta",
+            link: "https://www.grotta.gr/",
+            image: hotelImages.boutique,
+            strengths: "Sea and Portara views, famous breakfast, spa pool, hammam and warm service.",
+            weaknesses: "Grotta Beach is pebbly; uphill/old-town walk; no outdoor resort pool.",
+            beach: "Grotta Beach a few minutes; Agios Georgios about 15-20 min walk.",
+            nightlife: "Short walk to Chora old market, restaurants and bars.",
+            airport: "Naxos Airport about 3.5 km.",
+            bonus: "Great if views and breakfast matter more than sandy beach doorstep."
+          }
+        ]
+      },
+      {
+        id: "lefkada",
+        country: "Greece",
+        town: "Lefkada Town or Nidri",
+        region: "Lefkada, Ionian",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Porto_Katsiki_beach,_pic1.JPG?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Porto_Katsiki_beach,_pic1.JPG",
+        imageCredit: "Alf van Beem / Wikimedia Commons",
+        overview: "Lefkada is the beauty-heavy option, with the highest scenery score in the shortlist at 9.5/10. It is better when you are ready to move around by car or scooter, because the best beaches and watersport spots are spread across the island. Lefkada Town gives you easy access from Preveza airport and relaxed evening streets, Nidri is more holiday-town and boating-focused, while Vasiliki and Agios Ioannis are the sportier choices. Beaches like Porto Katsiki and Egremni are spectacular, nightlife is moderate rather than intense, and kitesurf/windsport options are excellent at Agios Ioannis and Vasiliki.",
+        facts: {
+          beach: "Agios Ioannis about 2 km; Nidri beach in town",
+          safety: "Very good, 9/10",
+          friendly: "8/10",
+          beauty: "9.5/10",
+          things: "Porto Katsiki, Egremni, waterfalls, sailing, paragliding",
+          nightlife: "Moderate",
+          kitesurf: "Excellent at Agios Ioannis and Vassiliki"
+        },
+        climate: {
+          day: "25.5C average daytime high",
+          night: "20.8C average night low",
+          weather: "Sunny and warm with a small shower risk",
+          rain: "About 7 rainy days / 16 mm in June",
+          sunshine: "About 12 hours of sunshine per day",
+          sea: "About 23.3C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: warm sunny days, pleasant nights and only a modest risk of short showers; west-coast beach days should be excellent if wind is manageable."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 582 total for 2",
+            perPerson: "Approx EUR 291 per person",
+            details: "Tallinn to Preveza/Lefkada, then short transfer. Usually 6-8h each way, 1 stop, Lufthansa, cabin bags included.",
+            link: "https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 535 total for 2",
+            perPerson: "Approx EUR 268 per person",
+            details: "Tallinn to Preveza/Lefkada, usually longer than the Lufthansa option, 1+ stops, Wizz Air or mixed low-cost, cabin bags added.",
+            link: "https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "lefkada-porto-galini",
+            type: "Pool / resort",
+            name: "Porto Galini Seaside Resort & Spa",
+            link: "https://portogalini.gr/",
+            image: hotelImages.resort,
+            strengths: "Five-star resort with secluded beach, pools, spa, sports and landscaped grounds.",
+            weaknesses: "Not a nightlife hotel; car or taxi useful; likely higher price.",
+            beach: "Private/secluded beach on site.",
+            nightlife: "About 4 km from Nidri; about 12 km from Lefkada Town.",
+            airport: "Preveza/Aktion Airport about 30-35 km.",
+            bonus: "Best comfort pick for a proper resort stay on Lefkada."
+          },
+          {
+            id: "lefkada-boschetto",
+            type: "Just room",
+            name: "Boschetto Hotel",
+            link: "https://www.boschettohotel.com/",
+            image: hotelImages.room,
+            strengths: "Small chic B&B in Lefkada Town, close to restaurants and old centre.",
+            weaknesses: "No pool or beach resort feel; only a handful of rooms.",
+            beach: "Lagoon waterfront nearby; Agios Ioannis Beach about 3 km.",
+            nightlife: "Steps from Lefkada Town cafes, restaurants and relaxed bars.",
+            airport: "Preveza/Aktion Airport about 20 km / 20-25 min.",
+            bonus: "Good short-stay base for town evenings and car day trips."
+          },
+          {
+            id: "lefkada-elisso",
+            type: "Varia",
+            name: "Elisso Hotel Vasiliki",
+            link: "https://www.elissohotel.com/",
+            image: hotelImages.beach,
+            strengths: "Beachfront, pool, sea views and directly useful for windsurfing/watersports.",
+            weaknesses: "Far from Lefkada Town and Nidri nightlife; car strongly recommended.",
+            beach: "Vasiliki Beach about 100 m / 2 min walk.",
+            nightlife: "Vasiliki port about 400 m; Nidri about 35 km.",
+            airport: "Preveza/Aktion Airport about 65 km / 50 min.",
+            bonus: "Great sports option; direct booking page advertises 10% off."
+          }
+        ]
+      },
+      {
+        id: "budva",
+        country: "Montenegro",
+        town: "Budva",
+        region: "Budva Riviera",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/City_beach_(Budva).jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:City_beach_(Budva).jpg",
+        imageCredit: "Radoslaw Botev / Wikimedia Commons",
+        overview: "Budva is the Adriatic party-and-old-town option. It has beaches within a short walk, a scenic walled old town, easy day trips to Sveti Stefan and Kotor, and the strongest summer nightlife after Sunny Beach. The tradeoff is that July can feel crowded and loud, especially around the promenade and club areas. Safety is good at 8/10, tourist-friendliness is 8/10 and beauty is 8.5/10. Kitesurfing is possible in Montenegro, but the best-known spots around Ulcinj and Ada Bojana are around 70 km away, so Budva is better for nightlife and coast-hopping than for daily kitesurf.",
+        facts: {
+          beach: "5-10 min to Slovenska or Mogren",
+          safety: "Good, 8/10",
+          friendly: "8/10",
+          beauty: "8.5/10",
+          things: "Old Town, Sveti Stefan, St Nikola island, Kotor day trip",
+          nightlife: "Strong and loud in summer",
+          kitesurf: "Possible, but best spots near Ulcinj/Ada Bojana are about 70 km away"
+        },
+        climate: {
+          day: "24C average daytime high",
+          night: "13C average night low",
+          weather: "Warm sunny spells with higher shower risk than Greece/Portugal",
+          rain: "About 10 rainy days / 71 mm in June",
+          sunshine: "About 9 hours of sunshine per day",
+          sea: "About 21C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: warm beach weather with sunny spells, but Budva has a higher chance of showers than the driest options on the list."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 682 total for 2",
+            perPerson: "Approx EUR 341 per person",
+            details: "Tallinn to Tivat via Riga, then short transfer to Budva. About 4h15 each way, 1 stop, airBaltic, cabin bags included.",
+            link: "https://www.skyscanner.net/transport/flights/tll/tiv/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 350 total for 2",
+            perPerson: "Approx EUR 175 per person",
+            details: "Tallinn to Podgorica, then longer ground transfer to Budva. Usually 6-12h flight routing plus transfer, 1 stop, Wizz Air/Ryanair mix, cabin bags added.",
+            link: "https://www.skyscanner.net/transport/flights/tll/tgd/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "budva-avala",
+            type: "Pool / resort",
+            name: "Avala Resort & Villas",
+            link: "https://www.avalaresort.com/",
+            image: hotelImages.resort,
+            strengths: "Beside Old Town and beach, indoor/outdoor pools, spa and hotel beach.",
+            weaknesses: "Central location can feel busy; not the cheapest Budva option.",
+            beach: "Direct beach setting; Mogren Beach about 300 m.",
+            nightlife: "Old Town about 50-200 m; nightlife is very close.",
+            airport: "Tivat Airport about 18-25 km.",
+            bonus: "Best location in Budva for first timers."
+          },
+          {
+            id: "budva-hermes",
+            type: "Just room",
+            name: "Hotel Hermes Budva",
+            link: "https://www.hotelhermesbudva.com/en/location",
+            image: hotelImages.room,
+            strengths: "Modern small hotel, practical location and good room-focused value.",
+            weaknesses: "No pool/resort feel; beach and old town are a walk rather than doorstep.",
+            beach: "About 700 m / 9 min walk to beach.",
+            nightlife: "Restaurants and shops within 50-100 m; old town about 1 km.",
+            airport: "Tivat Airport about 25 km.",
+            bonus: "Bus station about 700 m; useful for day trips."
+          },
+          {
+            id: "budva-astoria",
+            type: "Varia",
+            name: "Hotel Astoria Budva",
+            link: "https://www.budva.com/eng/private-accommodation/astoria/1595.html",
+            image: hotelImages.boutique,
+            strengths: "Old Town boutique atmosphere, character building and private beach area.",
+            weaknesses: "No pool; Old Town access/parking can be awkward; possible night noise.",
+            beach: "In/next to Old Town beach area; Mogren about 700 m.",
+            nightlife: "Inside Budva Old Town, so nightlife and restaurants are immediate.",
+            airport: "Tivat Airport about 20 km.",
+            bonus: "Best if you want romantic old-town character over resort facilities."
+          }
+        ]
+      },
+      {
+        id: "sopot",
+        country: "Poland",
+        town: "Sopot",
+        region: "Gdansk / Tri-City",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Pier_in_Sopot.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Pier_in_Sopot.jpg",
+        imageCredit: "Arquus / Wikimedia Commons",
+        overview: "Sopot is the practical-value wildcard: the flight is short and cheap from Tallinn, the beach is in town, and the nightlife around Monte Cassino is easy without needing a resort transfer. It does not deliver warm Mediterranean water, and the Baltic can be cooler and less reliable for pure sunbathing, but the city logistics are excellent. Safety is very good at 9/10, tourist-friendliness is 8.5/10 and beauty is 8/10. Kitesurfing is strongest on the Hel Peninsula, about 50-80 km away, so this is better as a low-stress city-beach holiday with a possible sport day trip.",
+        facts: {
+          beach: "Beach is in town",
+          safety: "Very good, 9/10",
+          friendly: "8.5/10",
+          beauty: "8/10",
+          things: "Gdansk old town, Sopot pier, cycling, beach bars",
+          nightlife: "Good",
+          kitesurf: "Good on Hel Peninsula, about 50-80 km; cooler Baltic water"
+        },
+        climate: {
+          day: "18.9C average daytime high",
+          night: "12C average night low",
+          weather: "Mild, partly cloudy and more changeable",
+          rain: "About 10-11 rainy days / 32 mm in June",
+          sunshine: "About 9+ hours of sunshine per day",
+          sea: "About 15.2C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: mild Baltic summer weather with long daylight, some sunny beach hours and a realistic chance of cloudy or rainy periods."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 210-230 total for 2",
+            perPerson: "Approx EUR 105-115 per person",
+            details: "Tallinn to Gdansk, then train/taxi to Sopot. About 1h25 nonstop, Wizz Air, WIZZ Priority cabin bags added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 210-230 total for 2",
+            perPerson: "Approx EUR 105-115 per person",
+            details: "Same direct Tallinn-Gdansk flight. About 1h25 nonstop, Wizz Air, cabin bags added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "sopot-marriott",
+            type: "Pool / resort",
+            name: "Sopot Marriott Resort & Spa",
+            link: "https://www.marriott.com/en-us/hotels/gdnmc-sopot-marriott-resort-and-spa/overview/",
+            image: hotelImages.resort,
+            strengths: "Beach hotel, indoor/outdoor pools, seasonal rooftop infinity pool and large spa.",
+            weaknesses: "Pricier; parking is expensive; not right on Monte Cassino nightlife street.",
+            beach: "By the beach / roughly 0-100 m.",
+            nightlife: "About 2-2.5 km from pier and Monte Cassino nightlife.",
+            airport: "Gdansk Airport about 16.4 km.",
+            bonus: "Best comfort/spa pick; beach promenade area is calmer than central Sopot."
+          },
+          {
+            id: "sopot-bb-molo",
+            type: "Just room",
+            name: "B&B Molo",
+            link: "https://bbmolo.pl/en/bb-molo-about-us/",
+            image: hotelImages.room,
+            strengths: "Modern affordable rooms, breakfast, sauna, parking and shared kitchen.",
+            weaknesses: "Inland location; no pool; beach/nightlife need a longer walk.",
+            beach: "About 1 km to Sopot beach.",
+            nightlife: "About 1 km to Monte Cassino / central nightlife.",
+            airport: "Gdansk Airport about 15-16 km.",
+            bonus: "Good simple base when flight price is the priority."
+          },
+          {
+            id: "sopot-molo",
+            type: "Varia",
+            name: "Hotel Molo",
+            link: "https://www.hotelmolo.com/de/",
+            image: hotelImages.boutique,
+            strengths: "Very central, modern, by Monte Cassino and train station; easy for nightlife.",
+            weaknesses: "No pool; central/train location can mean noise.",
+            beach: "About 500-800 m / around 10 min walk to beach and pier.",
+            nightlife: "About 2 min to Monte Cassino nightlife.",
+            airport: "Gdansk Airport about 17 km.",
+            bonus: "Strong choice if you want bars and restaurants first, beach second."
+          }
+        ]
+      },
+      {
+        id: "sunny-beach",
+        country: "Bulgaria",
+        town: "Sunny Beach / Nessebar",
+        region: "Burgas / Nessebar",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Bulgaria-Sunny_Beach-04.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Bulgaria-Sunny_Beach-04.jpg",
+        imageCredit: "Wikimedia Commons",
+        overview: "Sunny Beach and Nessebar are the cheapest-feeling party-resort option. The beach is immediate, nightlife is very strong and the area is built around summer tourism, so it is easy to find bars, clubs, aquaparks and beach clubs. The tradeoff is that it can feel crowded, loud and less charming than places like Lagos or Naxos. Safety and tourist-friendliness are both around 8/10, beauty is 7/10, and it works best if value and nightlife are more important than atmosphere. Kitesurfing can be possible on the Black Sea coast, but crowded peak-season beaches make it less clean as a sport choice.",
+        facts: {
+          beach: "0-5 min",
+          safety: "Good, 8/10",
+          friendly: "8/10",
+          beauty: "7/10",
+          things: "UNESCO Nessebar, aquaparks, beach clubs, Burgas",
+          nightlife: "Very strong, cheap, party-heavy",
+          kitesurf: "Possible at Sunny Beach; crowded in peak season"
+        },
+        climate: {
+          day: "27.2C average daytime high",
+          night: "17.5C average night low",
+          weather: "Warm, mostly sunny, occasional showers",
+          rain: "About 7 rainy days / 32 mm in June",
+          sunshine: "About 10.6 hours of sunshine per day",
+          sea: "About 21.6C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: warm resort weather, good beach temperatures and occasional shower risk; generally better for sun than Sopot, but less dry than Naxos or Lagos."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 860-1,030 total for 2",
+            perPerson: "Approx EUR 430-515 per person",
+            details: "Tallinn to Burgas, then short transfer. About 3h40 out / 3h10 back, nonstop, airBaltic, cabin bags included.",
+            link: "https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 555 total for 2",
+            perPerson: "Approx EUR 278 per person",
+            details: "Tallinn to Burgas, roughly 6-15h each way, 1 stop, Wizz Air/Ryanair or mixed low-cost, cabin bags added.",
+            link: "https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "sunny-evrika",
+            type: "Pool / resort",
+            name: "DIT Evrika Beach Club Hotel",
+            link: "https://hotel-evrika.com/en/hotel/",
+            image: hotelImages.resort,
+            strengths: "Beachfront all-inclusive, aquapark, several pools, beach bar and entertainment.",
+            weaknesses: "Large, crowded and noisy; some services can cost extra.",
+            beach: "Direct beachfront setting.",
+            nightlife: "About 1.5 km or short taxi to Flower Street nightlife.",
+            airport: "Burgas Airport about 28-30 km.",
+            bonus: "Most complete resort choice here, especially if you want easy meals."
+          },
+          {
+            id: "sunny-atol",
+            type: "Just room",
+            name: "Hotel Atol",
+            link: "https://www.atolhotels.com/?lng=en-GB",
+            image: hotelImages.room,
+            strengths: "Central budget-style hotel, 150 m from beach, steps from Flower Street.",
+            weaknesses: "No pool; central noise likely; parking can be inconvenient.",
+            beach: "About 150 m from central beach.",
+            nightlife: "Steps from Flower Street, bars, clubs and restaurants.",
+            airport: "Burgas Airport about 28-30 km.",
+            bonus: "Best for cheap party logistics; weaker if you want quiet sleep."
+          },
+          {
+            id: "sunny-panteleimon",
+            type: "Varia",
+            name: "St Panteleimon Beach Hotel",
+            link: "https://hotelstpanteleimon.com/en/about-us/",
+            image: hotelImages.beach,
+            strengths: "Quiet first-line setting, pool, restaurant, apartments and sea views.",
+            weaknesses: "Not party-central; you will need taxi/bus for Sunny Beach nightlife.",
+            beach: "First line / very close to the sea.",
+            nightlife: "About 3 km from Sunny Beach; about 4 km from Old Nessebar.",
+            airport: "Burgas Airport about 25-30 km.",
+            bonus: "Better couple-friendly choice if Sunny Beach itself feels too intense."
+          }
+        ]
+      },
+      {
+        id: "paros",
+        country: "Greece",
+        town: "Parikia or Naoussa",
+        region: "Paros, Cyclades",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Naousa_beach.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Naousa_beach.jpg",
+        imageCredit: "Smtunli / Wikimedia Commons",
+        overview: "Paros is the stylish Greek-island option with stronger nightlife than Naxos, especially around Naoussa, while still offering beaches, villages and day trips to Antiparos. It scores very high for safety, tourist-friendliness and beauty, all around 9/10. Parikia is more practical for ferries and lower-cost rooms, while Naoussa is prettier and better for nightlife but usually pricier. Kitesurfing is excellent at Pounda Beach, so Paros is one of the best blends of beauty, nightlife and sport. The main warning is price creep: late June can already be expensive if you choose Naoussa or resort-style hotels.",
+        facts: {
+          beach: "5-15 min to local beaches",
+          safety: "Very good, 9/10",
+          friendly: "9/10",
+          beauty: "9/10",
+          things: "Antiparos, Kolymbithres, villages, boat days",
+          nightlife: "Stronger than Naxos, pricier",
+          kitesurf: "Excellent at Pounda Beach"
+        },
+        climate: {
+          day: "23.8C average daytime high",
+          night: "22.1C average night low",
+          weather: "Sunny/clear, very dry and breezy",
+          rain: "About 2-3 rainy days / 4 mm in June",
+          sunshine: "About 12.1 hours of sunshine per day",
+          sea: "About 22.2C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: dry Cyclades beach weather with sunny days, warm evenings and possible wind around Pounda Beach."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 415-470 total for 2",
+            perPerson: "Approx EUR 208-235 per person",
+            details: "Tallinn to Athens only, then ferry/short domestic leg to Paros is extra. About 3h35 if direct; ferry extra, airBaltic or Wizz/Aegean mix.",
+            link: "https://www.skyscanner.net/transport/flights/tll/pas/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 415-470 total for 2",
+            perPerson: "Approx EUR 208-235 per person",
+            details: "Tallinn to Athens only, then ferry to Paros is extra. About 3h35 if direct; ferry extra, cabin bags included/added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          {
+            id: "paros-agnanti",
+            type: "Pool / resort",
+            name: "Paros Agnanti Resort & Spa",
+            link: "https://www.parosagnanti.gr/",
+            image: hotelImages.resort,
+            strengths: "Five-star resort, pool, spa, sea views, 80 m from Krios and Marcello beaches.",
+            weaknesses: "2.5 km from Parikia nightlife; higher price; taxi/shuttle helpful.",
+            beach: "About 80 m from Krios/Marcello beaches.",
+            nightlife: "About 2.5 km from Parikia.",
+            airport: "Paros Airport about 10 km.",
+            bonus: "Private-pool suite options and transfer options noted by hotel."
+          },
+          {
+            id: "paros-oasis",
+            type: "Just room",
+            name: "Oasis Hotel Paros",
+            link: "https://www.paroshoteloasis.gr/rooms/",
+            image: hotelImages.room,
+            strengths: "Simple renovated rooms, opposite port, very central for buses and ferries.",
+            weaknesses: "No pool; port/centre area can be lively; rooms are compact.",
+            beach: "Parikia seafront/port opposite; Livadia Beach about 700 m.",
+            nightlife: "At the entrance to old town; bars and restaurants are immediate.",
+            airport: "Paros Airport about 10 km.",
+            bonus: "Great logistics if you use ferries or want a cheap central base."
+          },
+          {
+            id: "paros-senia",
+            type: "Varia",
+            name: "Senia Hotel",
+            link: "https://www.hotel-senia.com/",
+            image: hotelImages.boutique,
+            strengths: "Naoussa sea views, two infinity pools, above Piperi Beach, close to nightlife.",
+            weaknesses: "Naoussa can be pricier; some rooms are small; steps to upper rooms.",
+            beach: "Steps above Piperi Beach.",
+            nightlife: "About 5 min walk to Naoussa shops, bars and restaurants.",
+            airport: "Paros Airport about 20 km.",
+            bonus: "Best nightlife-plus-beauty pick on Paros if budget allows."
+          }
+        ]
+      }
+    ];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderFlightSummary(flight) {
+      return `
+        <article class="flight-summary">
+          <strong>${escapeHtml(flight.title)}</strong>
+          <p><b>${escapeHtml(flight.price)}</b><br>${escapeHtml(flight.perPerson)}</p>
+          <p>${escapeHtml(flight.details)}</p>
+          <a class="flight-link" href="${escapeHtml(flight.link)}" target="_blank" rel="noopener">Open Skyscanner</a>
+        </article>
+      `;
+    }
+
+    function renderHotelCard(location, hotel) {
+      return `
+        <article class="hotel-card">
+          <img src="${escapeHtml(hotel.image)}" alt="${escapeHtml(hotel.name)} hotel preview" loading="lazy">
+          <div class="hotel-card-body">
+            <div class="hotel-type">${escapeHtml(hotel.type)}</div>
+            <h4><a class="jump-link" href="${escapeHtml(hotel.link)}" target="_blank" rel="noopener">${escapeHtml(hotel.name)}</a></h4>
+            <label class="compare-toggle">
+              <input type="checkbox" class="compare-hotel" value="${escapeHtml(hotel.id)}" data-location="${escapeHtml(location.id)}">
+              Compare hotel
+            </label>
+            <ul>
+              <li><b>Strength:</b> ${escapeHtml(hotel.strengths)}</li>
+              <li><b>Weakness:</b> ${escapeHtml(hotel.weaknesses)}</li>
+              <li><b>Beach:</b> ${escapeHtml(hotel.beach)}</li>
+              <li><b>City/nightlife:</b> ${escapeHtml(hotel.nightlife)}</li>
+              <li><b>Airport:</b> ${escapeHtml(hotel.airport)}</li>
+              <li><b>Bonus/minus:</b> ${escapeHtml(hotel.bonus)}</li>
+            </ul>
+            <p class="hotel-note">Hotel thumbnail is a visual planning preview. Use the hotel link for official photos and live room details.</p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderLocation(location) {
+      return `
+        <article class="location-panel" id="${escapeHtml(location.id)}">
+          <div class="location-photo">
+            <img src="${escapeHtml(location.image)}" alt="${escapeHtml(location.town)} destination photo" loading="lazy">
+            <div class="location-photo-overlay">
+              <h2>${escapeHtml(location.town)}</h2>
+              <p>${escapeHtml(location.country)} - ${escapeHtml(location.region)}</p>
+              <small class="photo-credit">Photo: <a href="${escapeHtml(location.imageSource)}" target="_blank" rel="noopener">${escapeHtml(location.imageCredit)}</a></small>
+            </div>
+          </div>
+          <div class="location-body">
+            <p class="overview-text">${escapeHtml(location.overview)}</p>
+            <p class="overview-text weather-overview"><b>Late-June climate:</b> ${escapeHtml(location.climate.day)}, ${escapeHtml(location.climate.night)}. Usual weather is ${escapeHtml(location.climate.weather.toLowerCase())}; ${escapeHtml(location.climate.rain.toLowerCase())}. Sea temperature is usually ${escapeHtml(location.climate.sea.toLowerCase())}. <b>Forecast note:</b> ${escapeHtml(location.climate.forecast)}</p>
+            <label class="compare-toggle">
+              <input type="checkbox" class="compare-location" value="${escapeHtml(location.id)}">
+              Compare this location
+            </label>
+            <div class="fact-grid">
+              <div class="fact"><span>Beach</span><strong>${escapeHtml(location.facts.beach)}</strong></div>
+              <div class="fact"><span>Climate</span><strong>${escapeHtml(location.climate.day)} / ${escapeHtml(location.climate.night)}</strong></div>
+              <div class="fact"><span>Weather</span><strong>${escapeHtml(location.climate.weather)}</strong></div>
+              <div class="fact"><span>Rain</span><strong>${escapeHtml(location.climate.rain)}</strong></div>
+              <div class="fact"><span>Safety</span><strong>${escapeHtml(location.facts.safety)}</strong></div>
+              <div class="fact"><span>Tourist-friendly</span><strong>${escapeHtml(location.facts.friendly)}</strong></div>
+              <div class="fact"><span>Beauty</span><strong>${escapeHtml(location.facts.beauty)}</strong></div>
+              <div class="fact"><span>Nearby</span><strong>${escapeHtml(location.facts.things)}</strong></div>
+              <div class="fact"><span>Nightlife</span><strong>${escapeHtml(location.facts.nightlife)}</strong></div>
+              <div class="fact"><span>Kitesurf</span><strong>${escapeHtml(location.facts.kitesurf)}</strong></div>
+              <div class="fact"><span>Sea</span><strong>${escapeHtml(location.climate.sea)}</strong></div>
+            </div>
+            <div class="detail-subsection">
+              <h3>Flights</h3>
+              <div class="flight-summary-grid">
+                ${renderFlightSummary(location.flights.best)}
+                ${renderFlightSummary(location.flights.cheap)}
+              </div>
+            </div>
+            <div class="detail-subsection">
+              <h3>Hotels</h3>
+              <div class="hotel-grid">
+                ${location.hotels.map((hotel) => renderHotelCard(location, hotel)).join("")}
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function getHotelById(id) {
+      for (const location of locations) {
+        const hotel = location.hotels.find((item) => item.id === id);
+        if (hotel) {
+          return { hotel, location };
+        }
+      }
+      return null;
+    }
+
+    function renderCompareTable(items, rows) {
+      if (!items.length) {
+        return '<p class="empty-compare">Select 2-3 options to compare.</p>';
+      }
+
+      return `
+        <table>
+          <thead>
+            <tr>
+              <th>Criteria</th>
+              ${items.map((item) => `<th>${escapeHtml(item.label)}</th>`).join("")}
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map((row) => `
+              <tr>
+                <td>${escapeHtml(row.label)}</td>
+                ${items.map((item) => `<td>${row.get(item)}</td>`).join("")}
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function updateLocationComparison() {
+      const selected = [...document.querySelectorAll(".compare-location:checked")]
+        .map((input) => locations.find((location) => location.id === input.value))
+        .filter(Boolean)
+        .map((location) => ({ label: location.town, location }));
+
+      const rows = [
+        { label: "Country", get: (item) => escapeHtml(item.location.country) },
+        { label: "Region", get: (item) => escapeHtml(item.location.region) },
+        { label: "Beach", get: (item) => escapeHtml(item.location.facts.beach) },
+        { label: "Climate", get: (item) => escapeHtml(`${item.location.climate.day}; ${item.location.climate.night}`) },
+        { label: "Weather", get: (item) => escapeHtml(item.location.climate.weather) },
+        { label: "Rain", get: (item) => escapeHtml(item.location.climate.rain) },
+        { label: "Safety", get: (item) => escapeHtml(item.location.facts.safety) },
+        { label: "Tourist-friendly", get: (item) => escapeHtml(item.location.facts.friendly) },
+        { label: "Beauty", get: (item) => escapeHtml(item.location.facts.beauty) },
+        { label: "Nightlife", get: (item) => escapeHtml(item.location.facts.nightlife) },
+        { label: "Kitesurf", get: (item) => escapeHtml(item.location.facts.kitesurf) },
+        { label: "Best flight", get: (item) => escapeHtml(`${item.location.flights.best.price}; ${item.location.flights.best.perPerson}`) },
+        { label: "Cheapest flight", get: (item) => escapeHtml(`${item.location.flights.cheap.price}; ${item.location.flights.cheap.perPerson}`) }
+      ];
+
+      document.querySelector("#location-comparison").innerHTML = renderCompareTable(selected, rows);
+    }
+
+    function updateHotelComparison() {
+      const selected = [...document.querySelectorAll(".compare-hotel:checked")]
+        .map((input) => getHotelById(input.value))
+        .filter(Boolean)
+        .map(({ hotel, location }) => ({ label: hotel.name, hotel, location }));
+
+      const rows = [
+        { label: "Destination", get: (item) => escapeHtml(`${item.location.town}, ${item.location.country}`) },
+        { label: "Type", get: (item) => escapeHtml(item.hotel.type) },
+        { label: "Beach", get: (item) => escapeHtml(item.hotel.beach) },
+        { label: "City / nightlife", get: (item) => escapeHtml(item.hotel.nightlife) },
+        { label: "Airport", get: (item) => escapeHtml(item.hotel.airport) },
+        { label: "Strength", get: (item) => escapeHtml(item.hotel.strengths) },
+        { label: "Weakness", get: (item) => escapeHtml(item.hotel.weaknesses) },
+        { label: "Bonus / minus", get: (item) => escapeHtml(item.hotel.bonus) }
+      ];
+
+      document.querySelector("#hotel-comparison").innerHTML = renderCompareTable(selected, rows);
+    }
+
+    function bindCompareControls() {
+      const message = document.querySelector("#compare-message");
+      const clearButton = document.querySelector("#clear-comparison");
+
+      document.querySelector("#location-details").addEventListener("change", (event) => {
+        if (!event.target.matches(".compare-location, .compare-hotel")) {
+          return;
+        }
+
+        const selector = event.target.matches(".compare-location") ? ".compare-location:checked" : ".compare-hotel:checked";
+        const selectedCount = document.querySelectorAll(selector).length;
+
+        if (selectedCount > 3) {
+          event.target.checked = false;
+          message.textContent = "You can compare up to 3 options at once.";
+        } else {
+          message.textContent = "";
+        }
+
+        updateLocationComparison();
+        updateHotelComparison();
+      });
+
+      clearButton.addEventListener("click", () => {
+        document.querySelectorAll(".compare-location, .compare-hotel").forEach((input) => {
+          input.checked = false;
+        });
+        message.textContent = "";
+        updateLocationComparison();
+        updateHotelComparison();
+      });
+    }
+
+    function renderLocationDetails() {
+      const container = document.querySelector("#location-details");
+      if (!container) {
+        return;
+      }
+
+      container.innerHTML = locations.map(renderLocation).join("");
+      bindCompareControls();
+      updateLocationComparison();
+      updateHotelComparison();
+    }
+
+    renderLocationDetails();
+
+    const menuToggle = document.querySelector("#menu-toggle");
+    const sideNav = document.querySelector("#side-nav");
+    const sideNavClose = document.querySelector("#side-nav-close");
+    const menuBackdrop = document.querySelector("#menu-backdrop");
+
+    function openMenu() {
+      sideNav.classList.add("open");
+      menuBackdrop.classList.add("open");
+      menuToggle.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMenu() {
+      sideNav.classList.remove("open");
+      menuBackdrop.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    menuToggle.addEventListener("click", openMenu);
+    sideNavClose.addEventListener("click", closeMenu);
+    menuBackdrop.addEventListener("click", closeMenu);
+    sideNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
     const passwordForm = document.querySelector("#password-form");
     const passwordInput = document.querySelector("#password");
     const passwordError = document.querySelector("#password-error");
