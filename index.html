@@ -92,6 +92,48 @@
       letter-spacing: 0;
     }
 
+    .th-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .rank-button {
+      flex: 0 0 auto;
+      padding: 4px 7px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 6px;
+      color: white;
+      background: rgba(255, 255, 255, 0.12);
+      font: inherit;
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .rank-button:hover,
+    .rank-button:focus,
+    .rank-button.active {
+      color: var(--header);
+      background: white;
+    }
+
+    th:nth-child(1) .rank-button {
+      border-color: rgba(18, 38, 58, 0.24);
+      color: var(--header);
+      background: rgba(18, 38, 58, 0.06);
+    }
+
+    th:nth-child(1) .rank-button:hover,
+    th:nth-child(1) .rank-button:focus,
+    th:nth-child(1) .rank-button.active {
+      color: white;
+      background: var(--accent);
+    }
+
     tbody tr:nth-child(even) td {
       background: #fbfcfe;
     }
@@ -584,6 +626,257 @@
       color: var(--header);
       font-size: 18px;
       line-height: 1.25;
+    }
+
+    .map-panel,
+    .score-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .map-panel {
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .route-map {
+      position: relative;
+      min-height: 250px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #dce9f1;
+    }
+
+    .route-map-small {
+      width: 100%;
+      min-height: 150px;
+      margin: 0;
+      box-shadow: 0 10px 26px rgba(18, 38, 58, 0.08);
+    }
+
+    .route-map svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+    }
+
+    .map-image {
+      opacity: 0.94;
+    }
+
+    .map-line {
+      fill: none;
+      stroke: rgba(86, 99, 115, 0.42);
+      stroke-width: 0.28;
+      stroke-linecap: round;
+    }
+
+    .map-line.active {
+      stroke: rgba(86, 99, 115, 0.66);
+      stroke-width: 0.36;
+    }
+
+    .map-pin {
+      fill: #d22f27;
+      stroke: white;
+      stroke-width: 0.4;
+    }
+
+    .map-pin.active {
+      fill: #d22f27;
+      stroke: white;
+      stroke-width: 0.5;
+    }
+
+    .map-pin-dot {
+      fill: white;
+      stroke: none;
+      pointer-events: none;
+    }
+
+    .map-origin {
+      fill: #26384d;
+      stroke: white;
+      stroke-width: 0.5;
+    }
+
+    .map-label {
+      fill: var(--header);
+      font-size: 2.4px;
+      font-weight: 800;
+      paint-order: stroke;
+      stroke: rgba(255, 255, 255, 0.9);
+      stroke-width: 0.6;
+      stroke-linejoin: round;
+    }
+
+    .map-caption {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .map-caption a {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .score-panel {
+      padding: 16px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .map-score-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: start;
+      margin: 18px 0;
+    }
+
+    .map-score-pair > * {
+      min-width: 0;
+    }
+
+    .location-decision {
+      margin: 0;
+    }
+
+    .location-decision h3 {
+      margin: 0 0 10px;
+      color: var(--header);
+      font-size: 19px;
+    }
+
+    .score-grid-single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .score-card {
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-muted);
+    }
+
+    .score-card h3 {
+      margin: 0;
+      color: var(--header);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .score-card .score-number {
+      display: inline-flex;
+      margin-top: 8px;
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .score-card p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .score-bars {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .score-bar {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr) 32px;
+      gap: 7px;
+      align-items: center;
+      color: #35465c;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .score-track {
+      height: 6px;
+      border-radius: 999px;
+      background: #dbe5ee;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--accent);
+    }
+
+    .rank-status {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mobile-card-list {
+      display: none;
+    }
+
+    .mobile-table-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 8px 20px rgba(18, 38, 58, 0.08);
+      overflow: hidden;
+    }
+
+    .mobile-table-card h3 {
+      margin: 0;
+      padding: 13px 14px;
+      color: var(--header);
+      background: var(--sticky-header);
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .mobile-table-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mobile-table-card-body {
+      display: grid;
+      gap: 9px;
+      padding: 13px 14px;
+    }
+
+    .mobile-card-row {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 10px;
+      color: #35465c;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .mobile-card-row span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .mobile-card-row strong {
+      color: var(--header);
     }
 
     .table-wrap {
@@ -1081,6 +1374,13 @@
       line-height: 1.25;
     }
 
+    .trip-budget-note {
+      margin: -4px 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
     .trip-result-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1255,6 +1555,51 @@
         font-size: 16px;
       }
 
+      .score-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .score-grid-single {
+        grid-template-columns: 1fr;
+      }
+
+      .map-score-pair {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 10px;
+      }
+
+      .map-panel,
+      .score-panel {
+        padding: 12px;
+      }
+
+      .route-map {
+        min-height: 210px;
+      }
+
+      .route-map-small {
+        width: 100%;
+        min-height: 150px;
+      }
+
+      .location-decision h3 {
+        font-size: 16px;
+      }
+
+      .location-decision .score-card {
+        padding: 11px;
+      }
+
+      .location-decision .score-card p {
+        font-size: 12px;
+      }
+
+      .location-decision .score-bar {
+        grid-template-columns: 58px minmax(0, 1fr) 26px;
+        gap: 5px;
+        font-size: 11px;
+      }
+
       .section-block {
         margin-top: 24px;
         padding-top: 6px;
@@ -1274,6 +1619,18 @@
         box-shadow: 0 8px 20px rgba(18, 38, 58, 0.1);
       }
 
+      .mobile-card-preview #destinations .table-wrap,
+      .mobile-card-preview #flights .table-wrap,
+      .mobile-card-preview #destinations-table-rank-status,
+      .mobile-card-preview #flights-table-rank-status {
+        display: none;
+      }
+
+      .mobile-card-preview .mobile-card-list {
+        display: grid;
+        gap: 12px;
+      }
+
       table {
         min-width: 980px;
         font-size: 12px;
@@ -1288,6 +1645,17 @@
 
       th {
         font-size: 10px;
+      }
+
+      .th-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .rank-button {
+        padding: 4px 6px;
+        font-size: 9px;
       }
 
       th:nth-child(2),
@@ -1483,6 +1851,26 @@
         grid-template-columns: 1fr;
       }
 
+      .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .score-grid-single {
+        grid-template-columns: 1fr;
+      }
+
+      .map-score-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .route-map-small {
+        min-height: 140px;
+      }
+
+      .score-bar {
+        grid-template-columns: 68px minmax(0, 1fr) 30px;
+      }
+
       .gate-row {
         display: grid;
       }
@@ -1542,7 +1930,7 @@
     }
   </style>
 </head>
-<body class="locked">
+<body class="locked mobile-card-preview">
   <section class="gate" aria-label="Password required">
     <form class="gate-panel" id="password-form">
       <h1>KKtravel2026</h1>
@@ -1570,6 +1958,7 @@
       <div class="side-nav-group">
         <p class="side-nav-label">Start</p>
         <a href="#start">Top of page</a>
+        <a href="#decision-scores">Decision scores</a>
         <a href="#destinations">Destination table</a>
         <a href="#flights">Flight table</a>
       </div>
@@ -1614,6 +2003,18 @@
       </div>
     </header>
 
+    <section class="section-block" id="decision-scores">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Decision score</span>
+          <h2 class="section-title">Weighted Score By Travel Fit</h2>
+          <p class="section-copy">Scores combine price, weather, nightlife, beach quality, flight convenience and hotel fit. Kitesurf stays separate as a nice-to-have bonus, not part of the weighted score.</p>
+        </div>
+        <span class="pill">Out of 10</span>
+      </div>
+      <div class="score-panel" id="score-board" aria-label="Destination decision scores"></div>
+    </section>
+
     <section class="section-block" id="destinations">
       <div class="section-heading">
         <div>
@@ -1644,19 +2045,19 @@
       </div>
 
     <div class="table-wrap" aria-label="Holiday locations table">
-      <table>
+      <table id="destinations-table">
         <thead>
           <tr>
-            <th>Location</th>
+            <th><span class="th-title"><span>Location</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="overall" data-rank-direction="desc">Rank</button></span></th>
             <th>City/Region</th>
-            <th>Distance From Beach</th>
-            <th>Climate Late Jun</th>
-            <th>Safety</th>
-            <th>Tourist-Friendliness</th>
-            <th>Beauty /10</th>
-            <th>Stuff To Do Nearby</th>
-            <th>Nightlife</th>
-            <th>Kitesurf</th>
+            <th><span class="th-title"><span>Distance From Beach</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="beach" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Climate Late Jun</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="weather" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Safety</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="safety" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Tourist-Friendliness</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="friendly" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Beauty /10</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="beauty" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Stuff To Do Nearby</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="nearby" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Nightlife</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="nightlife" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Kitesurf</span><button class="rank-button" type="button" data-rank-table="destinations-table" data-rank-key="kitesurf" data-rank-direction="desc">Rank</button></span></th>
           </tr>
         </thead>
         <tbody>
@@ -1760,6 +2161,9 @@
       </table>
     </div>
 
+    <p class="rank-status" id="destinations-table-rank-status" aria-live="polite">Current order: original shortlist.</p>
+    <div class="mobile-card-list" id="destination-mobile-cards" aria-label="Mobile destination cards"></div>
+
     <p class="note">Tip: June and September usually give the best balance of weather, price, and crowds.</p>
     <p class="note">Climate note: temperatures and weather summaries are late-June climate averages, not a live forecast. Exact forecasts for 24 June-2 July 2026 should be checked about 7-10 days before departure.</p>
     </section>
@@ -1775,14 +2179,14 @@
       </div>
 
     <div class="table-wrap" aria-label="Flight price table">
-      <table class="flight-table">
+      <table class="flight-table" id="flights-table">
         <thead>
           <tr>
-            <th>Location</th>
-            <th>Climate Late Jun</th>
-            <th>Best Price / Quality<br>Total For 2 / Per Person</th>
-            <th>Cheapest Price<br>Total For 2 / Per Person</th>
-            <th>Possible ISIC Discount</th>
+            <th><span class="th-title"><span>Location</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="overall" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Climate Late Jun</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="weather" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Best Price / Quality<br>Total For 2 / Per Person</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="bestFlightPrice" data-rank-direction="asc">Rank</button></span></th>
+            <th><span class="th-title"><span>Cheapest Price<br>Total For 2 / Per Person</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="cheapFlightPrice" data-rank-direction="asc">Rank</button></span></th>
+            <th><span class="th-title"><span>Possible ISIC Discount</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="isic" data-rank-direction="desc">Rank</button></span></th>
           </tr>
         </thead>
         <tbody>
@@ -1845,6 +2249,9 @@
         </tbody>
       </table>
     </div>
+
+    <p class="rank-status" id="flights-table-rank-status" aria-live="polite">Current order: original flight shortlist.</p>
+    <div class="mobile-card-list" id="flight-mobile-cards" aria-label="Mobile flight cards"></div>
 
     <p class="note">Price note: flight prices in this table are shown as a total for 2 travelers first, with an approximate per-person price underneath. Skyscanner links are set for 2 adults where the URL supports it.</p>
     <p class="note">ISIC note: the most relevant flight discount I found is an ISIC/Kiwi.com promo of EUR 15 off eligible bookings over EUR 200, valid through 31 July 2027, but it excludes Ryanair Group flights and must be verified through the ISIC offer page. I did not subtract it from the totals because eligibility depends on the exact booking path. <a href="https://isic.at/en/benefits/kiwi-com/8099/" target="_blank" rel="noopener">Open ISIC/Kiwi.com discount</a>.</p>
@@ -2944,10 +3351,126 @@
       }
     ];
 
+    const mapPoints = {
+      tallinn: { label: "Tallinn", lat: 59.437, lon: 24.753 },
+      tarifa: { label: "Tarifa", lat: 36.014, lon: -5.604 },
+      lagos: { label: "Lagos", lat: 37.102, lon: -8.674 },
+      naxos: { label: "Naxos", lat: 37.103, lon: 25.377 },
+      lefkada: { label: "Lefkada", lat: 38.833, lon: 20.706 },
+      budva: { label: "Budva", lat: 42.291, lon: 18.84 },
+      sopot: { label: "Sopot", lat: 54.441, lon: 18.561 },
+      "sunny-beach": { label: "Sunny Beach", lat: 42.695, lon: 27.71 },
+      paros: { label: "Paros", lat: 37.086, lon: 25.151 }
+    };
+
+    const decisionWeights = {
+      price: 0.22,
+      weather: 0.17,
+      nightlife: 0.16,
+      beach: 0.17,
+      flights: 0.17,
+      hotels: 0.11
+    };
+
+    const scoreLabels = {
+      price: "Price",
+      weather: "Weather",
+      nightlife: "Nightlife",
+      beach: "Beach",
+      flights: "Flights",
+      hotels: "Hotels"
+    };
+
+    const decisionScores = {
+      tarifa: { price: 7.2, weather: 8.5, nightlife: 8.6, beach: 8.6, flights: 7.3, hotels: 7.6, kitesurf: 10, safety: 8, friendly: 9, beauty: 8.5, nearby: 8.5, isic: 8, bestFor: "Best for beach energy, windy Atlantic scenery and lively old-town evenings." },
+      lagos: { price: 7.4, weather: 8.4, nightlife: 8, beach: 9, flights: 6.8, hotels: 8.1, kitesurf: 7.4, safety: 9, friendly: 9, beauty: 9, nearby: 9, isic: 8, bestFor: "Best all-rounder for beach, cliffs, nightlife and simple logistics." },
+      naxos: { price: 7.1, weather: 9.3, nightlife: 7.5, beach: 9, flights: 6.2, hotels: 8, kitesurf: 9.5, safety: 9, friendly: 9, beauty: 9, nearby: 8.6, isic: 7, bestFor: "Best Greek-island balance with beach-town charm and relaxed evenings." },
+      lefkada: { price: 7.3, weather: 8.8, nightlife: 7, beach: 9.8, flights: 7, hotels: 7.8, kitesurf: 9, safety: 9, friendly: 8, beauty: 9.5, nearby: 9.1, isic: 8, bestFor: "Best pure scenery and dramatic beach day-trip potential." },
+      budva: { price: 8, weather: 7.6, nightlife: 9.1, beach: 8, flights: 7.7, hotels: 8.2, kitesurf: 5.5, safety: 8, friendly: 8, beauty: 8.5, nearby: 8.8, isic: 7, bestFor: "Best for strong summer nightlife plus Montenegro coast day trips." },
+      sopot: { price: 9.4, weather: 5.8, nightlife: 7.5, beach: 7.2, flights: 9.5, hotels: 8.5, kitesurf: 6.8, safety: 9, friendly: 8.5, beauty: 8, nearby: 8, isic: 9, bestFor: "Best low-cost and shortest-flight choice if Baltic weather is acceptable." },
+      "sunny-beach": { price: 8.2, weather: 8.3, nightlife: 9.5, beach: 7.5, flights: 6.8, hotels: 8, kitesurf: 5.5, safety: 8, friendly: 8, beauty: 7, nearby: 7.8, isic: 7, bestFor: "Best for cheap, loud nightlife and warm resort weather." },
+      paros: { price: 6.6, weather: 9.2, nightlife: 8.5, beach: 9, flights: 6.4, hotels: 7.1, kitesurf: 9.2, safety: 9, friendly: 9, beauty: 9, nearby: 8.8, isic: 7, bestFor: "Best for stylish Cyclades atmosphere, nightlife and beach access." }
+    };
+
+    const destinationBudgetEstimates = {
+      tarifa: {
+        foodLow: 560,
+        foodHigh: 840,
+        localTransportLow: 90,
+        localTransportHigh: 220,
+        activitiesLow: 180,
+        activitiesHigh: 450,
+        note: "Food assumes casual tapas/restaurants; activities allow one whale-watching or kite lesson style splurge."
+      },
+      lagos: {
+        foodLow: 520,
+        foodHigh: 780,
+        localTransportLow: 80,
+        localTransportHigh: 180,
+        activitiesLow: 180,
+        activitiesHigh: 420,
+        note: "Activities cover kayak/boat trips and a few beach-bar evenings without treating every day as a tour day."
+      },
+      naxos: {
+        foodLow: 560,
+        foodHigh: 840,
+        localTransportLow: 100,
+        localTransportHigh: 240,
+        activitiesLow: 170,
+        activitiesHigh: 450,
+        note: "Local transport allows buses/taxis or a short rental day; activities leave room for beaches, villages or kitesurf."
+      },
+      lefkada: {
+        foodLow: 560,
+        foodHigh: 860,
+        localTransportLow: 160,
+        localTransportHigh: 360,
+        activitiesLow: 180,
+        activitiesHigh: 500,
+        note: "Transport is higher because the best beaches are spread out; activities allow boat day/paragliding/watersport choices."
+      },
+      budva: {
+        foodLow: 460,
+        foodHigh: 700,
+        localTransportLow: 90,
+        localTransportHigh: 220,
+        activitiesLow: 150,
+        activitiesHigh: 380,
+        note: "Good value food estimate, with activity room for Kotor, St Nikola, beach clubs or nightlife covers."
+      },
+      sopot: {
+        foodLow: 420,
+        foodHigh: 650,
+        localTransportLow: 70,
+        localTransportHigh: 160,
+        activitiesLow: 120,
+        activitiesHigh: 320,
+        note: "Cheapest day-to-day estimate, using trains and moderate food/drink costs around the Tri-City."
+      },
+      "sunny-beach": {
+        foodLow: 420,
+        foodHigh: 680,
+        localTransportLow: 70,
+        localTransportHigh: 180,
+        activitiesLow: 160,
+        activitiesHigh: 420,
+        note: "Lower daily costs, but activities/nightlife can climb if you add aquaparks, loungers and club nights."
+      },
+      paros: {
+        foodLow: 640,
+        foodHigh: 980,
+        localTransportLow: 140,
+        localTransportHigh: 340,
+        activitiesLow: 200,
+        activitiesHigh: 520,
+        note: "Pricier Cyclades daily spending; transport/activity buffer helps with Naoussa, beaches, Antiparos and kitesurf."
+      }
+    };
+
     const tripAssumptions = {
       travelers: 2,
       nights: 7,
-      note: "Estimate includes flights for 2, 7 hotel nights, and return airport transfer. Food, local transport, activities, travel insurance and ferry/onward legs are only included where explicitly shown."
+      note: "Base estimate includes flights for 2, 7 hotel nights and return airport transfer. Realistic budget adds food, local transport and activity spending estimates; travel insurance and shopping are still outside the total."
     };
 
     const flightEstimates = {
@@ -3098,6 +3621,241 @@
       return `${formatMinutes(min)}-${formatMinutes(max)}`;
     }
 
+    function averageRange(low, high) {
+      return (low + high) / 2;
+    }
+
+    function calculateDecisionScore(locationId) {
+      const scores = decisionScores[locationId];
+
+      return Object.entries(decisionWeights).reduce((total, [key, weight]) => {
+        return total + scores[key] * weight;
+      }, 0);
+    }
+
+    function getFlightAverage(locationId, flightKey) {
+      const flight = flightEstimates[locationId][flightKey];
+      const addOnLow = flight.addOnCostLow || 0;
+      const addOnHigh = flight.addOnCostHigh || 0;
+
+      return averageRange(flight.costLow + addOnLow, flight.costHigh + addOnHigh);
+    }
+
+    function getRankValue(locationId, key) {
+      const scores = decisionScores[locationId];
+
+      if (key === "overall") {
+        return calculateDecisionScore(locationId);
+      }
+
+      if (key === "bestFlightPrice") {
+        return getFlightAverage(locationId, "best");
+      }
+
+      if (key === "cheapFlightPrice") {
+        return getFlightAverage(locationId, "cheap");
+      }
+
+      return scores[key] ?? 0;
+    }
+
+    function getLocationIdFromRow(row) {
+      const link = row.querySelector('a[href^="#"]');
+
+      if (link) {
+        return link.getAttribute("href").slice(1);
+      }
+
+      const locationCell = row.cells[0]?.textContent || "";
+      const match = locations.find((location) => locationCell.includes(location.town) && locationCell.includes(location.country));
+
+      return match?.id || "";
+    }
+
+    function bindRankControls() {
+      document.querySelectorAll(".rank-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const table = document.querySelector(`#${button.dataset.rankTable}`);
+          const tbody = table?.querySelector("tbody");
+
+          if (!table || !tbody) {
+            return;
+          }
+
+          const direction = button.dataset.rankDirection === "asc" ? 1 : -1;
+          const rows = [...tbody.querySelectorAll("tr")];
+
+          rows
+            .sort((a, b) => {
+              const aValue = getRankValue(getLocationIdFromRow(a), button.dataset.rankKey);
+              const bValue = getRankValue(getLocationIdFromRow(b), button.dataset.rankKey);
+
+              return (aValue - bValue) * direction;
+            })
+            .forEach((row) => tbody.appendChild(row));
+
+          table.querySelectorAll(".rank-button").forEach((item) => {
+            item.classList.remove("active");
+            item.textContent = "Rank";
+          });
+          button.classList.add("active");
+          button.textContent = "Ranked";
+
+          const label = button.closest("th")?.innerText.replace("Ranked", "").trim() || "selected column";
+          const status = document.querySelector(`#${button.dataset.rankTable}-rank-status`);
+          if (status) {
+            status.textContent = `Current order: ranked best to last by ${label}.`;
+          }
+        });
+      });
+    }
+
+    function renderScoreBars(scores, limit = Object.keys(scoreLabels).length) {
+      return Object.entries(scoreLabels)
+        .slice(0, limit)
+        .map(([key, label]) => `
+          <div class="score-bar">
+            <span>${escapeHtml(label)}</span>
+            <span class="score-track"><span class="score-fill" style="width: ${Math.max(0, Math.min(100, scores[key] * 10))}%"></span></span>
+            <span>${escapeHtml(scores[key].toFixed(1))}</span>
+          </div>
+        `)
+        .join("");
+    }
+
+    function renderScoreCard(location, compact = false) {
+      const scores = decisionScores[location.id];
+      const overall = calculateDecisionScore(location.id);
+
+      return `
+        <article class="score-card">
+          <h3>${escapeHtml(location.town)}</h3>
+          <strong class="score-number">${escapeHtml(overall.toFixed(1))}/10</strong>
+          <p>${escapeHtml(scores.bestFor)}</p>
+          <div class="score-bars">
+            ${renderScoreBars(scores, compact ? 4 : 7)}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderScoreBoard() {
+      const container = document.querySelector("#score-board");
+
+      if (!container) {
+        return;
+      }
+
+      const ranked = [...locations].sort((a, b) => calculateDecisionScore(b.id) - calculateDecisionScore(a.id));
+      container.innerHTML = `<div class="score-grid">${ranked.map((location) => renderScoreCard(location)).join("")}</div>`;
+    }
+
+    function renderLocationScore(location) {
+      return `
+        <div class="location-decision">
+          <h3>Decision Score</h3>
+          <div class="score-grid score-grid-single">
+            ${renderScoreCard(location)}
+          </div>
+        </div>
+      `;
+    }
+
+    const mapBounds = {
+      minLon: -25,
+      maxLon: 54,
+      minLat: 28,
+      maxLat: 82,
+      width: 100,
+      height: 82
+    };
+
+    function projectMapPoint(point) {
+      const x = ((point.lon - mapBounds.minLon) / (mapBounds.maxLon - mapBounds.minLon)) * mapBounds.width;
+      const y = ((mapBounds.maxLat - point.lat) / (mapBounds.maxLat - mapBounds.minLat)) * mapBounds.height;
+
+      return { x, y };
+    }
+
+    function renderMapLabel(point, label, active = false) {
+      const labelX = point.x > 80 ? point.x - 18 : point.x + 1.6;
+      const labelY = point.y < 10 ? point.y + 4 : point.y - 1.6;
+
+      return `<text class="map-label${active ? " active" : ""}" x="${labelX.toFixed(1)}" y="${labelY.toFixed(1)}">${escapeHtml(label)}</text>`;
+    }
+
+    function renderRouteMap(activeLocationId = "") {
+      const origin = projectMapPoint(mapPoints.tallinn);
+      const shownLocations = activeLocationId
+        ? locations.filter((location) => location.id === activeLocationId)
+        : locations;
+      const compact = Boolean(activeLocationId);
+
+      return `
+        <div class="route-map ${compact ? "route-map-small" : ""}">
+          <svg viewBox="0 0 100 82" role="img" aria-label="${compact ? "Route from Tallinn to selected destination" : "Routes from Tallinn to all shortlisted destinations"}">
+            <image class="map-image" href="https://commons.wikimedia.org/wiki/Special:FilePath/Europe_location_map.svg?width=1600" x="0" y="0" width="100" height="82" preserveAspectRatio="none" />
+            ${shownLocations.map((location) => {
+              const point = projectMapPoint(mapPoints[location.id]);
+              const active = activeLocationId === location.id;
+              const controlY = Math.max(3, Math.min(origin.y, point.y) - 10);
+              return `<path class="map-line${active || compact ? " active" : ""}" d="M ${origin.x.toFixed(1)} ${origin.y.toFixed(1)} Q ${((origin.x + point.x) / 2).toFixed(1)} ${controlY.toFixed(1)} ${point.x.toFixed(1)} ${point.y.toFixed(1)}" />`;
+            }).join("")}
+            <circle class="map-origin" cx="${origin.x.toFixed(1)}" cy="${origin.y.toFixed(1)}" r="1.6" />
+            ${renderMapLabel(origin, "Tallinn", true)}
+            ${shownLocations.map((location) => {
+              const point = projectMapPoint(mapPoints[location.id]);
+              const active = activeLocationId === location.id;
+              return `
+                <path class="map-pin${active || compact ? " active" : ""}" d="M ${point.x.toFixed(1)} ${(point.y - (compact ? 2.8 : 2.3)).toFixed(1)} C ${(point.x - (compact ? 1.7 : 1.35)).toFixed(1)} ${(point.y - (compact ? 2.8 : 2.3)).toFixed(1)} ${(point.x - (compact ? 2.4 : 1.9)).toFixed(1)} ${(point.y - (compact ? 1.45 : 1.2)).toFixed(1)} ${(point.x - (compact ? 2.4 : 1.9)).toFixed(1)} ${(point.y - (compact ? 0.15 : 0.1)).toFixed(1)} C ${(point.x - (compact ? 2.4 : 1.9)).toFixed(1)} ${(point.y + (compact ? 1.9 : 1.55)).toFixed(1)} ${point.x.toFixed(1)} ${(point.y + (compact ? 4.0 : 3.25)).toFixed(1)} ${point.x.toFixed(1)} ${(point.y + (compact ? 4.0 : 3.25)).toFixed(1)} C ${point.x.toFixed(1)} ${(point.y + (compact ? 4.0 : 3.25)).toFixed(1)} ${(point.x + (compact ? 2.4 : 1.9)).toFixed(1)} ${(point.y + (compact ? 1.9 : 1.55)).toFixed(1)} ${(point.x + (compact ? 2.4 : 1.9)).toFixed(1)} ${(point.y - (compact ? 0.15 : 0.1)).toFixed(1)} C ${(point.x + (compact ? 2.4 : 1.9)).toFixed(1)} ${(point.y - (compact ? 1.45 : 1.2)).toFixed(1)} ${(point.x + (compact ? 1.7 : 1.35)).toFixed(1)} ${(point.y - (compact ? 2.8 : 2.3)).toFixed(1)} ${point.x.toFixed(1)} ${(point.y - (compact ? 2.8 : 2.3)).toFixed(1)} Z" />
+                <circle class="map-pin-dot" cx="${point.x.toFixed(1)}" cy="${(point.y - (compact ? 0.25 : 0.15)).toFixed(1)}" r="${compact ? "0.7" : "0.55"}" />
+                ${renderMapLabel(point, mapPoints[location.id].label, active || compact)}
+              `;
+            }).join("")}
+          </svg>
+        </div>
+        <p class="map-caption">${compact ? "Small route view from Tallinn to this destination." : "Approximate visual map, not a route-planning map. Lines show the direction from Tallinn to each holiday base."} Map background: <a href="https://commons.wikimedia.org/wiki/File:Europe_location_map.svg" target="_blank" rel="noopener">Europe location map</a> via Wikimedia Commons.</p>
+      `;
+    }
+
+    function renderMobileCards() {
+      const destinationContainer = document.querySelector("#destination-mobile-cards");
+      const flightContainer = document.querySelector("#flight-mobile-cards");
+
+      if (destinationContainer) {
+        destinationContainer.innerHTML = locations.map((location) => {
+          const score = calculateDecisionScore(location.id);
+          return `
+            <article class="mobile-table-card">
+              <h3><a href="#${escapeHtml(location.id)}">${escapeHtml(location.town)} (${escapeHtml(location.country)})</a></h3>
+              <div class="mobile-table-card-body">
+                <div class="mobile-card-row"><span>Score</span><strong>${escapeHtml(score.toFixed(1))}/10 - ${escapeHtml(decisionScores[location.id].bestFor)}</strong></div>
+                <div class="mobile-card-row"><span>Beach</span><strong>${escapeHtml(location.facts.beach)}</strong></div>
+                <div class="mobile-card-row"><span>Climate</span><strong>${escapeHtml(location.climate.day)} / ${escapeHtml(location.climate.night)}; ${escapeHtml(location.climate.weather)}</strong></div>
+                <div class="mobile-card-row"><span>Nightlife</span><strong>${escapeHtml(location.facts.nightlife)}</strong></div>
+                <div class="mobile-card-row"><span>Kitesurf</span><strong>${escapeHtml(location.facts.kitesurf)}</strong></div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      if (flightContainer) {
+        flightContainer.innerHTML = locations.map((location) => `
+          <article class="mobile-table-card">
+            <h3><a href="#${escapeHtml(location.id)}">${escapeHtml(location.town)} (${escapeHtml(location.country)})</a></h3>
+            <div class="mobile-table-card-body">
+              <div class="mobile-card-row"><span>Best</span><strong>${escapeHtml(location.flights.best.price)}; ${escapeHtml(location.flights.best.perPerson)}</strong></div>
+              <div class="mobile-card-row"><span>Route</span><strong>${escapeHtml(location.flights.best.details)}</strong></div>
+              <div class="mobile-card-row"><span>Cheapest</span><strong>${escapeHtml(location.flights.cheap.price)}; ${escapeHtml(location.flights.cheap.perPerson)}</strong></div>
+              <div class="mobile-card-row"><span>Climate</span><strong>${escapeHtml(location.climate.day)} / ${escapeHtml(location.climate.night)}</strong></div>
+              <div class="mobile-card-row"><span>Links</span><strong><a class="flight-link" href="${escapeHtml(location.flights.best.link)}" target="_blank" rel="noopener">Best flight</a> <a class="flight-link" href="${escapeHtml(location.flights.cheap.link)}" target="_blank" rel="noopener">Cheapest flight</a></strong></div>
+            </div>
+          </article>
+        `).join("");
+      }
+    }
+
     function getFlightEstimate(location, flightKey) {
       return {
         ...location.flights[flightKey],
@@ -3143,6 +3901,11 @@
       const outboundMax = flight.outMax + (flight.addOnOutMax || 0) + transfer.max;
       const returnMin = flight.backMin + (flight.addOnBackMin || 0) + transfer.min;
       const returnMax = flight.backMax + (flight.addOnBackMax || 0) + transfer.max;
+      const spending = destinationBudgetEstimates[location.id];
+      const dayToDayLow = spending.foodLow + spending.localTransportLow + spending.activitiesLow;
+      const dayToDayHigh = spending.foodHigh + spending.localTransportHigh + spending.activitiesHigh;
+      const baseTotalLow = flight.costLow + hotelLow + transferLow + addOnLow;
+      const baseTotalHigh = flight.costHigh + hotelHigh + transferHigh + addOnHigh;
 
       return {
         location,
@@ -3156,8 +3919,13 @@
         transferHigh,
         addOnLow,
         addOnHigh,
-        totalLow: flight.costLow + hotelLow + transferLow + addOnLow,
-        totalHigh: flight.costHigh + hotelHigh + transferHigh + addOnHigh,
+        spending,
+        dayToDayLow,
+        dayToDayHigh,
+        totalLow: baseTotalLow,
+        totalHigh: baseTotalHigh,
+        realisticLow: baseTotalLow + dayToDayLow,
+        realisticHigh: baseTotalHigh + dayToDayHigh,
         outboundMin,
         outboundMax,
         returnMin,
@@ -3172,17 +3940,23 @@
 
       return `
         <div class="trip-result">
-          <h4 class="trip-total">${escapeHtml(formatEuros(trip.totalLow, trip.totalHigh))} estimated total for 2</h4>
+          <h4 class="trip-total">${escapeHtml(formatEuros(trip.realisticLow, trip.realisticHigh))} realistic budget for 2</h4>
+          <p class="trip-budget-note">Base booking estimate: ${escapeHtml(formatEuros(trip.totalLow, trip.totalHigh))}. Added day-to-day spending: ${escapeHtml(formatEuros(trip.dayToDayLow, trip.dayToDayHigh))}.</p>
           <div class="trip-result-grid">
             <div class="trip-result-item"><span>Flight</span><strong>${escapeHtml(trip.flight.label)}: ${escapeHtml(formatEuros(trip.flight.costLow, trip.flight.costHigh))}</strong></div>
             <div class="trip-result-item"><span>Hotel stay</span><strong>${escapeHtml(formatEuros(trip.hotelLow, trip.hotelHigh))} / ${tripAssumptions.nights} nights</strong></div>
             <div class="trip-result-item"><span>Return transfer</span><strong>${escapeHtml(formatEuros(trip.transferLow, trip.transferHigh))}</strong></div>
             <div class="trip-result-item"><span>Onward add-on</span><strong>${escapeHtml(addOnText)}</strong></div>
+            <div class="trip-result-item"><span>Food estimate</span><strong>${escapeHtml(formatEuros(trip.spending.foodLow, trip.spending.foodHigh))}</strong></div>
+            <div class="trip-result-item"><span>Local transport</span><strong>${escapeHtml(formatEuros(trip.spending.localTransportLow, trip.spending.localTransportHigh))}</strong></div>
+            <div class="trip-result-item"><span>Activities</span><strong>${escapeHtml(formatEuros(trip.spending.activitiesLow, trip.spending.activitiesHigh))}</strong></div>
             <div class="trip-result-item"><span>Outbound time</span><strong>${escapeHtml(formatTimeRange(trip.outboundMin, trip.outboundMax))}</strong></div>
             <div class="trip-result-item"><span>Return time</span><strong>${escapeHtml(formatTimeRange(trip.returnMin, trip.returnMax))}</strong></div>
           </div>
           <ul class="trip-detail-list">
             <li><b>Total travel time:</b> ${escapeHtml(formatTimeRange(trip.totalTravelMin, trip.totalTravelMax))} round-trip airport-to-hotel movement estimate.</li>
+            <li><b>Realistic budget:</b> ${escapeHtml(formatEuros(trip.realisticLow, trip.realisticHigh))} includes the base booking estimate plus food, local transport and activities for two.</li>
+            <li><b>Food / local transport / activities:</b> ${escapeHtml(formatEuros(trip.spending.foodLow, trip.spending.foodHigh))}, ${escapeHtml(formatEuros(trip.spending.localTransportLow, trip.spending.localTransportHigh))}, and ${escapeHtml(formatEuros(trip.spending.activitiesLow, trip.spending.activitiesHigh))}. ${escapeHtml(trip.spending.note)}</li>
             <li><b>Selected hotel:</b> ${escapeHtml(trip.hotel.name)} (${escapeHtml(trip.hotel.type)}). ${escapeHtml(trip.hotelEstimate.priceNote)}</li>
             <li><b>Hotel benefits:</b> ${escapeHtml(trip.hotel.strengths)}</li>
             <li><b>Hotel minuses:</b> ${escapeHtml(trip.hotel.weaknesses)}</li>
@@ -3405,6 +4179,10 @@
           <div class="location-body">
             <p class="overview-text">${escapeHtml(location.overview)}</p>
             <p class="overview-text weather-overview"><b>Late-June climate:</b> ${escapeHtml(location.climate.day)}, ${escapeHtml(location.climate.night)}. Usual weather is ${escapeHtml(location.climate.weather.toLowerCase())}; ${escapeHtml(location.climate.rain.toLowerCase())}. Sea temperature is usually ${escapeHtml(location.climate.sea.toLowerCase())}. <b>Forecast note:</b> ${escapeHtml(location.climate.forecast)}</p>
+            <div class="map-score-pair">
+              ${renderRouteMap(location.id)}
+              ${renderLocationScore(location)}
+            </div>
             <label class="compare-toggle">
               <input type="checkbox" class="compare-location" value="${escapeHtml(location.id)}">
               Compare this location
@@ -3483,6 +4261,7 @@
         .map((location) => ({ label: location.town, location }));
 
       const rows = [
+        { label: "Decision score", get: (item) => escapeHtml(`${calculateDecisionScore(item.location.id).toFixed(1)}/10`) },
         { label: "Country", get: (item) => escapeHtml(item.location.country) },
         { label: "Region", get: (item) => escapeHtml(item.location.region) },
         { label: "Beach", get: (item) => escapeHtml(item.location.facts.beach) },
@@ -3569,7 +4348,11 @@
         { label: "Hotel", get: (item) => escapeHtml(`${item.trip.hotel.name} (${item.trip.hotel.type})`) },
         { label: "Hotel cost", get: (item) => escapeHtml(`${formatEuros(item.trip.hotelLow, item.trip.hotelHigh)} for ${tripAssumptions.nights} nights`) },
         { label: "Return transfer", get: (item) => escapeHtml(`${formatEuros(item.trip.transferLow, item.trip.transferHigh)}; ${item.trip.transfer.note}`) },
-        { label: "Total estimate", get: (item) => escapeHtml(`${formatEuros(item.trip.totalLow, item.trip.totalHigh)} for 2`) },
+        { label: "Base booking estimate", get: (item) => escapeHtml(`${formatEuros(item.trip.totalLow, item.trip.totalHigh)} for 2`) },
+        { label: "Realistic budget", get: (item) => escapeHtml(`${formatEuros(item.trip.realisticLow, item.trip.realisticHigh)} for 2`) },
+        { label: "Food estimate", get: (item) => escapeHtml(formatEuros(item.trip.spending.foodLow, item.trip.spending.foodHigh)) },
+        { label: "Local transport", get: (item) => escapeHtml(formatEuros(item.trip.spending.localTransportLow, item.trip.spending.localTransportHigh)) },
+        { label: "Activities", get: (item) => escapeHtml(formatEuros(item.trip.spending.activitiesLow, item.trip.spending.activitiesHigh)) },
         { label: "Total travel time", get: (item) => escapeHtml(formatTimeRange(item.trip.totalTravelMin, item.trip.totalTravelMax)) },
         { label: "Hotel benefits", get: (item) => escapeHtml(item.trip.hotel.strengths) },
         { label: "Hotel minuses", get: (item) => escapeHtml(item.trip.hotel.weaknesses) },
@@ -3646,7 +4429,10 @@
       updateTripComparison();
     }
 
+    renderScoreBoard();
+    renderMobileCards();
     renderLocationDetails();
+    bindRankControls();
 
     const menuToggle = document.querySelector("#menu-toggle");
     const sideNav = document.querySelector("#side-nav");
