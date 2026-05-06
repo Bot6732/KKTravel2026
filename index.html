@@ -595,6 +595,34 @@
       white-space: nowrap;
     }
 
+    .section-heading-actions {
+      display: inline-flex;
+      flex: 0 0 auto;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .score-expand-all {
+      flex: 0 0 auto;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: var(--accent);
+      background: var(--surface);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .score-expand-all:hover,
+    .score-expand-all:focus {
+      background: rgba(40, 115, 184, 0.08);
+      outline: none;
+    }
+
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -768,6 +796,68 @@
       background: var(--surface-muted);
     }
 
+    .score-card-collapsible {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .score-card-toggle {
+      display: grid;
+      width: 100%;
+      min-height: 78px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 13px;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .score-card-toggle:hover,
+    .score-card-toggle:focus {
+      background: rgba(40, 115, 184, 0.06);
+      outline: none;
+    }
+
+    .score-card-summary {
+      min-width: 0;
+    }
+
+    .score-card-name {
+      display: block;
+      color: var(--header);
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .score-card-arrow {
+      display: inline-grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 1px solid #c6d2df;
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--surface);
+      font-size: 17px;
+      font-weight: 900;
+      transition: transform 160ms ease;
+    }
+
+    .score-card-collapsible[data-expanded="true"] .score-card-arrow {
+      transform: rotate(90deg);
+    }
+
+    .score-card-details {
+      padding: 0 13px 13px;
+      border-top: 1px solid rgba(18, 38, 58, 0.08);
+    }
+
     .score-card h3 {
       margin: 0;
       color: var(--header);
@@ -781,6 +871,10 @@
       color: var(--accent);
       font-size: 24px;
       font-weight: 900;
+    }
+
+    .score-card-toggle .score-number {
+      margin-top: 6px;
     }
 
     .score-card p {
@@ -1165,9 +1259,46 @@
       line-height: 1.55;
     }
 
+    .student-benefit-cell {
+      display: grid;
+      gap: 7px;
+      min-width: 220px;
+      color: #42536a;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .student-benefit-cell strong {
+      color: var(--header);
+    }
+
+    .student-benefit-cell a {
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .student-benefit-cell a:hover,
+    .student-benefit-cell a:focus {
+      text-decoration: underline;
+    }
+
+    .student-benefit-callout {
+      margin-top: 12px;
+      padding: 12px 13px;
+      border: 1px solid rgba(40, 115, 184, 0.22);
+      border-radius: 8px;
+      background: rgba(40, 115, 184, 0.06);
+    }
+
+    .student-benefit-callout .student-benefit-cell {
+      min-width: 0;
+      font-size: 14px;
+    }
+
     .hotel-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -1209,6 +1340,29 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.4;
+    }
+
+    .availability-status {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 5px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .availability-available {
+      border: 1px solid #9ed1b2;
+      color: #23683a;
+      background: #edf8f1;
+    }
+
+    .availability-unavailable {
+      border: 1px solid #f0b6a8;
+      color: #9d2f1e;
+      background: #fff0ec;
     }
 
     .hotel-card ul {
@@ -1495,6 +1649,12 @@
         display: block;
       }
 
+      .section-heading-actions {
+        margin-top: 12px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
       .header-meta,
       .summary-grid {
         grid-template-columns: 1fr 1fr;
@@ -1622,7 +1782,7 @@
       .mobile-card-preview #destinations .table-wrap,
       .mobile-card-preview #flights .table-wrap,
       .mobile-card-preview #destinations-table-rank-status,
-      .mobile-card-preview #flights-table-rank-status {
+      .mobile-card-preview #trip-cost-table-rank-status {
         display: none;
       }
 
@@ -1960,9 +2120,9 @@
         <a href="#start">Top of page</a>
         <a href="#decision-scores">Decision scores</a>
         <a href="#destinations">Destination table</a>
-        <a href="#flights">Flight table</a>
+        <a href="#flights">Trip costs</a>
       </div>
-      <div class="side-nav-group">
+      <div class="side-nav-group" id="side-nav-locations">
         <p class="side-nav-label">Locations</p>
         <a href="#tarifa">Tarifa</a>
         <a href="#lagos">Lagos</a>
@@ -2010,7 +2170,10 @@
           <h2 class="section-title">Weighted Score By Travel Fit</h2>
           <p class="section-copy">Scores combine price, weather, nightlife, beach quality, flight convenience and hotel fit. Kitesurf stays separate as a nice-to-have bonus, not part of the weighted score.</p>
         </div>
-        <span class="pill">Out of 10</span>
+        <div class="section-heading-actions">
+          <button class="score-expand-all" type="button" id="toggle-all-scores" aria-expanded="false" aria-controls="score-board">Expand all</button>
+          <span class="pill">Out of 10</span>
+        </div>
       </div>
       <div class="score-panel" id="score-board" aria-label="Destination decision scores"></div>
     </section>
@@ -2022,7 +2185,7 @@
           <h2 class="section-title">Beach Town Comparison</h2>
           <p class="section-copy">European beach bases with nightlife, moderate pricing potential and kitesurf access where available.</p>
         </div>
-        <span class="pill">8 locations</span>
+        <span class="pill" id="location-count-pill">11 locations</span>
       </div>
 
       <div class="summary-grid" aria-label="Planning highlights">
@@ -2040,7 +2203,7 @@
         </div>
         <div class="summary-card">
           <span>Cheapest flight base</span>
-          <strong>Sopot</strong>
+          <strong>Budva</strong>
         </div>
       </div>
 
@@ -2171,91 +2334,36 @@
     <section class="section-block" id="flights">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Flights</span>
-          <h2 class="section-title">Flight Prices From Estonia</h2>
-          <p class="section-copy">Snapshot for two travelers from Tallinn, staying inside 24 June-1/2 July 2026 where schedules allow. Totals include one standard cabin bag for each traveler; low-cost airline cabin bag prices are estimated because they vary by route and demand.</p>
+          <span class="eyebrow">Trip budget</span>
+          <h2 class="section-title">All-In Cost Estimates From Estonia</h2>
+          <p class="section-copy">Estimated realistic totals for two travelers from Tallinn for 24 June-1/2 July 2026. Totals include flights with cabin bags, 7 hotel nights, airport transfers, onward island/ferry add-ons where needed, food, local transport and activities.</p>
         </div>
-        <span class="pill">Cabin bags included</span>
+        <span class="pill">Realistic total for 2</span>
       </div>
 
-    <div class="table-wrap" aria-label="Flight price table">
-      <table class="flight-table" id="flights-table">
+    <div class="table-wrap" aria-label="All-in trip cost table">
+      <table class="flight-table" id="trip-cost-table">
         <thead>
           <tr>
-            <th><span class="th-title"><span>Location</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="overall" data-rank-direction="desc">Rank</button></span></th>
-            <th><span class="th-title"><span>Climate Late Jun</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="weather" data-rank-direction="desc">Rank</button></span></th>
-            <th><span class="th-title"><span>Best Price / Quality<br>Total For 2 / Per Person</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="bestFlightPrice" data-rank-direction="asc">Rank</button></span></th>
-            <th><span class="th-title"><span>Cheapest Price<br>Total For 2 / Per Person</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="cheapFlightPrice" data-rank-direction="asc">Rank</button></span></th>
-            <th><span class="th-title"><span>Possible ISIC Discount</span><button class="rank-button" type="button" data-rank-table="flights-table" data-rank-key="isic" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Location</span><button class="rank-button" type="button" data-rank-table="trip-cost-table" data-rank-key="overall" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Climate Late Jun</span><button class="rank-button" type="button" data-rank-table="trip-cost-table" data-rank-key="weather" data-rank-direction="desc">Rank</button></span></th>
+            <th><span class="th-title"><span>Best Price + Best Hotel<br>Total For 2 / Per Person</span><button class="rank-button" type="button" data-rank-table="trip-cost-table" data-rank-key="bestTripCost" data-rank-direction="asc">Rank</button></span></th>
+            <th><span class="th-title"><span>Cheapest Flight + Cheapest Hotel<br>Total For 2 / Per Person</span><button class="rank-button" type="button" data-rank-table="trip-cost-table" data-rank-key="cheapTripCost" data-rank-direction="asc">Rank</button></span></th>
+            <th><span class="th-title"><span>Other Expenses Included</span><button class="rank-button" type="button" data-rank-table="trip-cost-table" data-rank-key="otherSpending" data-rank-direction="asc">Rank</button></span></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><a class="jump-link" href="#tarifa">Tarifa (Spain)</a></td>
-            <td>23C / 19C; mostly sunny, dry and windy</td>
-            <td><strong>About EUR 830 total for 2</strong><br><span class="price-basis">Approx EUR 415 per person</span><br>Route: Tallinn to Malaga, then ground transfer to Tarifa.<br>Travel time: about 4h50 out / 4h30 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 520 total for 2</strong><br><span class="price-basis">Approx EUR 260 per person</span><br>Route: Tallinn to Malaga.<br>Travel time: roughly 8-13h each way.<br>Stops: usually 1 stop.<br>Airlines: Ryanair/Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/agp/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> if booked through the ISIC/Kiwi.com offer and the booking is over EUR 200. Cheapest option may fail if it includes Ryanair Group flights.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#lagos">Lagos (Portugal)</a></td>
-            <td>22C / 18C; mostly sunny, very dry</td>
-            <td><strong>About EUR 870 total for 2</strong><br><span class="price-basis">Approx EUR 435 per person</span><br>Route: Tallinn to Faro, then train/bus/car to Lagos.<br>Travel time: roughly 6-9h each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 410 total for 2</strong><br><span class="price-basis">Approx EUR 205 per person</span><br>Route: Tallinn to Faro.<br>Travel time: about 21-25h each way on the cheapest June-style itineraries.<br>Stops: 1 stop.<br>Airlines: Wizz Air UK/easyJet or similar.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/fao/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> through ISIC/Kiwi.com if the exact itinerary is sold there and no Ryanair Group segment is included.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#naxos">Naxos Town / Chora (Greece)</a></td>
-            <td>24C / 22C; sunny, dry, breezy</td>
-            <td><strong>About EUR 610-730 total for 2</strong><br><span class="price-basis">Approx EUR 305-365 per person</span><br>Route: Tallinn to Naxos airport, usually via Athens; ferry alternative from Athens may be better.<br>Travel time: varies, often 8h+ flight routing.<br>Stops: 1-2 stops.<br>Airlines: Aegean/Olympic plus partner airline.<br>Cabin bags: included or added where needed.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/jnx/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry to Naxos is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> on the flight booking via ISIC/Kiwi.com if over EUR 200 and not Ryanair Group. Ferry to Naxos is separate and not included in this flight discount.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#lefkada">Lefkada Town or Nidri (Greece)</a></td>
-            <td>26C / 21C; sunny, warm, small shower risk</td>
-            <td><strong>About EUR 582 total for 2</strong><br><span class="price-basis">Approx EUR 291 per person</span><br>Route: Tallinn to Preveza/Lefkada, then short transfer.<br>Travel time: usually 6-8h each way.<br>Stops: 1 stop.<br>Airline: Lufthansa.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 535 total for 2</strong><br><span class="price-basis">Approx EUR 268 per person</span><br>Route: Tallinn to Preveza/Lefkada.<br>Travel time: usually longer than Lufthansa option.<br>Stops: 1+ stops.<br>Airlines: Wizz Air or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pvk/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> via ISIC/Kiwi.com if the route is booked there, costs over EUR 200, and does not include Ryanair Group flights.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#budva">Budva (Montenegro)</a></td>
-            <td>24C / 13C; sunny spells, showers possible</td>
-            <td><strong>About EUR 682 total for 2</strong><br><span class="price-basis">Approx EUR 341 per person</span><br>Route: Tallinn to Tivat via Riga, then short transfer to Budva.<br>Travel time: about 4h15 each way.<br>Stops: 1 stop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tiv/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 350 total for 2</strong><br><span class="price-basis">Approx EUR 175 per person</span><br>Route: Tallinn to Podgorica, then longer ground transfer to Budva.<br>Travel time: varies; usually 6-12h flight routing plus transfer.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair mix.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/tgd/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> for eligible Kiwi.com bookings. Best airBaltic-style routing is more likely eligible; cheapest mixed option may be excluded if Ryanair appears.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#sopot">Sopot (Poland)</a></td>
-            <td>19C / 12C; mild, partly cloudy, rain possible</td>
-            <td><strong>About EUR 210-230 total for 2</strong><br><span class="price-basis">Approx EUR 105-115 per person</span><br>Route: Tallinn to Gdansk, then train/taxi to Sopot.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 210-230 total for 2</strong><br><span class="price-basis">Approx EUR 105-115 per person</span><br>Route: same direct Tallinn-Gdansk flight.<br>Travel time: about 1h25 flight.<br>Stops: nonstop.<br>Airline: Wizz Air.<br>Cabin bags: WIZZ Priority added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/gdn/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> if the total booking is over EUR 200 and sold through ISIC/Kiwi.com. This is likely the clearest fit because it is Wizz Air, not Ryanair Group.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#sunny-beach">Sunny Beach / Nessebar (Bulgaria)</a></td>
-            <td>27C / 18C; warm, mostly sunny, occasional showers</td>
-            <td><strong>About EUR 860-1,030 total for 2</strong><br><span class="price-basis">Approx EUR 430-515 per person</span><br>Route: Tallinn to Burgas, then short transfer.<br>Travel time: about 3h40 out / 3h10 back.<br>Stops: nonstop.<br>Airline: airBaltic.<br>Cabin bags: included.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 555 total for 2</strong><br><span class="price-basis">Approx EUR 278 per person</span><br>Route: Tallinn to Burgas.<br>Travel time: roughly 6-15h each way.<br>Stops: 1 stop.<br>Airlines: Wizz Air/Ryanair or mixed low-cost.<br>Cabin bags: added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/boj/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> via ISIC/Kiwi.com. Cheapest option only works with the discount if the final itinerary avoids Ryanair Group flights.</td>
-          </tr>
-          <tr>
-            <td><a class="jump-link" href="#paros">Parikia or Naoussa (Greece)</a></td>
-            <td>24C / 22C; sunny, dry, breezy</td>
-            <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry/short domestic leg to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/pas/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>About EUR 415-470 total for 2</strong><br><span class="price-basis">Approx EUR 208-235 per person</span><br>Route: Tallinn to Athens only, then ferry to Paros is extra.<br>Travel time: about 3h35 if direct; ferry extra.<br>Stops: nonstop flight to Athens when available.<br>Airline: airBaltic or Wizz/Aegean mix.<br>Cabin bags: included/added for both travelers.<br><a class="flight-link" href="https://www.skyscanner.net/transport/flights/tll/ath/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Open Skyscanner</a></td>
-            <td><strong>Up to EUR 15</strong> on eligible flight booking through ISIC/Kiwi.com. Ferry or separate island transfer costs are not covered by the flight discount.</td>
-          </tr>
+          <tr><td colspan="5">Loading trip cost estimates...</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p class="rank-status" id="flights-table-rank-status" aria-live="polite">Current order: original flight shortlist.</p>
-    <div class="mobile-card-list" id="flight-mobile-cards" aria-label="Mobile flight cards"></div>
+    <p class="rank-status" id="trip-cost-table-rank-status" aria-live="polite">Current order: original trip-cost shortlist.</p>
+    <div class="mobile-card-list" id="trip-cost-mobile-cards" aria-label="Mobile trip cost cards"></div>
 
-    <p class="note">Price note: flight prices in this table are shown as a total for 2 travelers first, with an approximate per-person price underneath. Skyscanner links are set for 2 adults where the URL supports it.</p>
-    <p class="note">ISIC note: the most relevant flight discount I found is an ISIC/Kiwi.com promo of EUR 15 off eligible bookings over EUR 200, valid through 31 July 2027, but it excludes Ryanair Group flights and must be verified through the ISIC offer page. I did not subtract it from the totals because eligibility depends on the exact booking path. <a href="https://isic.at/en/benefits/kiwi-com/8099/" target="_blank" rel="noopener">Open ISIC/Kiwi.com discount</a>.</p>
-    <p class="note">Sources checked: airBaltic, Lufthansa, Eurowings, Skyscanner, Trip.com, Momondo, FlightsFrom, ISIC/Student discount pages, airline cabin-bag policy pages, Weather Atlas and Weather Spark. Flight prices and weather forecasts can change quickly, so treat these as planning estimates rather than locked fares.</p>
+    <p class="note">Price note: totals are planning estimates for 2 travelers. Best price + best hotel uses the best price/quality flight and the first curated resort-style or strongest hotel option for that destination. Cheapest plan uses the cheapest flight and the lowest estimated hotel/room option after transfer costs. Insurance, shopping, new live price changes and refundable fare upgrades are not included.</p>
+    <p class="note">ISIC/student note checked 6 May 2026: the broad flight discount is still <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi.com EUR 15 off</a> eligible bookings over EUR 200, but it does not add luggage and excludes Ryanair Group flights. The real luggage-heavy ISIC-verifiable option is <a href="https://www.turkishairlines.com/en-int/student/" target="_blank" rel="noopener">Turkish Airlines student fares</a>, which can include 40 kg or 2 x 23 kg checked baggage on Turkish-operated student fares, but often adds an Istanbul detour. <a href="https://www.lufthansa.com/ee/en/local-page/student-fares" target="_blank" rel="noopener">Lufthansa student fares</a> do not apply to flight bookings within Europe; <a href="https://help.ryanair.com/hc/en-fi/articles/12891285734033-Erasmus-Terms-Conditions" target="_blank" rel="noopener">Ryanair Erasmus/ESN</a> free checked bag is ESNcard-only and excludes 16 Jun-31 Aug travel; <a href="https://en.aegeanair.com/genairation/" target="_blank" rel="noopener">AEGEAN genAIRation</a> is age-based, not ISIC.</p>
+    <p class="note">Sources checked: airBaltic, Lufthansa, Eurowings, Skyscanner, Booking.com, Trip.com, Momondo, FlightsFrom, ISIC/Kiwi, Turkish Airlines student fares, Lufthansa student fares, Ryanair Erasmus/ESN terms, AEGEAN genAIRation, Blue Star Ferries ISIC discounts, airline cabin-bag policy pages, Weather Atlas and Weather Spark. Flight prices, hotel prices and weather forecasts can change quickly, so treat these as planning estimates rather than locked fares.</p>
     </section>
 
     <section class="section-block" id="location-details-section">
@@ -2593,7 +2701,7 @@
       </table>
     </div>
 
-    <p class="note">Hotel source set: official hotel pages where available, plus hotel/travel listings for location checks. Hotel prices and availability for 24 June-1/2 July 2026 should be checked through the linked hotel pages before booking. Airport-transfer costs are rough one-way planning estimates for 2 people unless marked per person; always confirm with the hotel or transfer company before booking.</p>
+    <p class="note">Hotel source set: hotel cards now use Booking.com options that showed availability on 3 May 2026 for 24 June-1 July 2026, 2 adults, 1 room and EUR pricing. Use the Booking.com link to re-check live status before booking. If you extend the trip to 2 July, change the checkout date on Booking.com before comparing prices. Airport-transfer costs are rough one-way planning estimates for 2 people unless marked per person; always confirm with the hotel or transfer company before booking.</p>
     </section>
   </main>
   <script>
@@ -2656,7 +2764,7 @@
         hotels: [
           {
             id: "tarifa-residencia",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "La Residencia Puerto Hotel & Spa",
             link: "https://laresidenciatarifa.com/en/hotel-spa-tarifa/",
             image: hotelImages.resort,
@@ -2669,8 +2777,22 @@
             transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Budget option: airport train/bus into Malaga, then coach toward Tarifa/Algeciras, roughly EUR 20-35 per person and 3.5-5h total. Rental car is easiest if you want kite beaches; hotel parking may cost extra."
           },
           {
+            id: "tarifa-convento",
+            type: "Just a hotel",
+            name: "Hotel Convento Tarifa",
+            link: "https://www.hotelconventotarifa.com/en/",
+            image: hotelImages.boutique,
+            strengths: "Characterful central hotel in a converted convent, good for old-town evenings and a more grown-up feel than a hostal.",
+            weaknesses: "No resort pool and rooms can be simpler than the historic building suggests.",
+            beach: "Playa Chica about 600 m; Los Lances town beach about 900 m.",
+            nightlife: "Old town bars and restaurants are about 2-5 min walk.",
+            airport: "Malaga Airport about 155 km / 1h50; Jerez about 130 km.",
+            bonus: "Good middle option if you want a real hotel without paying resort/spa prices.",
+            transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Budget option: train/bus into Malaga, then coach toward Tarifa/Algeciras, roughly EUR 20-35 per person and 3.5-5h total. A rental car is useful for Los Lances and kite beaches."
+          },
+          {
             id: "tarifa-hostal",
-            type: "Just room",
+            type: "Just a room",
             name: "Hostal Tarifa",
             link: "https://www.hostaltarifa.com/en/hostal-in-tarifa/",
             image: hotelImages.room,
@@ -2749,7 +2871,7 @@
         hotels: [
           {
             id: "lagos-tivoli",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "Tivoli Lagos Algarve Resort",
             link: "https://www.tivolihotels.com/en/tivoli-lagos",
             image: hotelImages.resort,
@@ -2762,8 +2884,22 @@
             transport: "From Faro Airport: pre-booked private transfer about EUR 76 for up to 4 people, public taxi about EUR 90, around 1h. Budget route: airport bus/taxi to Faro city, then train/bus to Lagos, roughly EUR 8-18 per person but slower at 2.5-4h. Shared shuttle may be around EUR 20-35 per person."
           },
           {
+            id: "lagos-marina-rio",
+            type: "Just a hotel",
+            name: "Hotel Marina Rio",
+            link: "https://www.marinario.com/en/",
+            image: hotelImages.boutique,
+            strengths: "Reliable hotel by the marina, easy arrival logistics and a calmer base than the busiest bar streets.",
+            weaknesses: "Not a beach resort and the rooftop pool is compact rather than a full resort setup.",
+            beach: "Meia Praia about 1.1 km; Praia da Batata about 1.2 km.",
+            nightlife: "Marina is outside the door; old-town bars are about 8-12 min walk.",
+            airport: "Faro Airport about 90 km / 1h.",
+            bonus: "Very practical middle option if you want a proper hotel, simple transport and walkable evenings.",
+            transport: "From Faro Airport: private transfer about EUR 76 for up to 4 people or public taxi about EUR 90, around 1h. Budget route via Faro city train/bus is roughly EUR 8-18 per person and 2.5-4h with luggage."
+          },
+          {
             id: "lagos-lagosmar",
-            type: "Just room",
+            type: "Just a room",
             name: "Lagosmar Story Hotel",
             link: "https://www.lagosmar.com/en/",
             image: hotelImages.room,
@@ -2842,7 +2978,7 @@
         hotels: [
           {
             id: "naxos-nissaki",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "Nissaki Beach Hotel",
             link: "https://www.nissakihotels.com/nissaki-beach-hotel/location.html",
             image: hotelImages.resort,
@@ -2855,8 +2991,22 @@
             transport: "From Naxos Airport: local taxi/transfer to Naxos Town area is roughly EUR 20, about 5-10 min; premium pre-booked transfers can be EUR 40-60. Budget option: local bus if the timetable fits, roughly EUR 2-3 per person, or ask the hotel about transfers."
           },
           {
+            id: "naxos-argo",
+            type: "Just a hotel",
+            name: "Argo Boutique Hotel",
+            link: "https://www.argonaxos.com/",
+            image: hotelImages.boutique,
+            strengths: "Polished hotel close to Agios Georgios with spa-style extras and a stronger hotel feel than a simple room.",
+            weaknesses: "Not beachfront and not a full resort; some rooms are compact.",
+            beach: "Agios Georgios Beach about 150-250 m.",
+            nightlife: "Naxos Town restaurants and bars about 5-10 min walk.",
+            airport: "Naxos Airport about 2 km.",
+            bonus: "Good middle choice for comfort, beach access and town access without going full beachfront luxury.",
+            transport: "From Naxos Airport: taxi/transfer is roughly EUR 20 and 5-10 min. Premium pre-booked transfers may be EUR 40-60. Local bus can be around EUR 2-3 per person if the timetable fits."
+          },
+          {
             id: "naxos-soula",
-            type: "Just room",
+            type: "Just a room",
             name: "Soula Hotel",
             link: "https://www.soulahotel.gr/",
             image: hotelImages.room,
@@ -2935,7 +3085,7 @@
         hotels: [
           {
             id: "lefkada-porto-galini",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "Porto Galini Seaside Resort & Spa",
             link: "https://portogalini.gr/",
             image: hotelImages.resort,
@@ -2948,8 +3098,22 @@
             transport: "From Preveza/Aktion Airport: taxi or pre-booked transfer to Nikiana/Porto Galini area is roughly EUR 40-55, around 30-40 min. Public transport is awkward with luggage. Rental car is recommended if you want west-coast beaches."
           },
           {
+            id: "lefkada-ionion-star",
+            type: "Just a hotel",
+            name: "Ionion Star Hotel",
+            link: "https://www.ionionstar.gr/",
+            image: hotelImages.boutique,
+            strengths: "Straightforward town hotel by the waterfront, easy for restaurants, promenades and first-night logistics.",
+            weaknesses: "Not a beach resort; Agios Ioannis needs taxi, bike or car.",
+            beach: "Lefkada lagoon waterfront nearby; Agios Ioannis Beach about 3 km.",
+            nightlife: "Lefkada Town cafes, restaurants and relaxed bars are immediate.",
+            airport: "Preveza/Aktion Airport about 20 km / 20-25 min.",
+            bonus: "Best middle option if you want town convenience before renting a car for beach days.",
+            transport: "From Preveza/Aktion Airport: taxi or pre-booked transfer to Lefkada Town is roughly EUR 35-50, about 25-30 min. Budget public transport is awkward with luggage. Rental car is useful for west-coast beaches."
+          },
+          {
             id: "lefkada-boschetto",
-            type: "Just room",
+            type: "Just a room",
             name: "Boschetto Hotel",
             link: "https://www.boschettohotel.com/",
             image: hotelImages.room,
@@ -3028,7 +3192,7 @@
         hotels: [
           {
             id: "budva-avala",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "Avala Resort & Villas",
             link: "https://www.avalaresort.com/",
             image: hotelImages.resort,
@@ -3041,8 +3205,22 @@
             transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. Budget option: taxi to Tivat bus station plus bus to Budva, usually around EUR 8-15 total for 2 but slower and less comfortable. From Podgorica Airport, transfer is usually about EUR 55-80."
           },
           {
+            id: "budva-bracera",
+            type: "Just a hotel",
+            name: "Hotel Bracera",
+            link: "https://hotelbracera.com/",
+            image: hotelImages.boutique,
+            strengths: "Modern city-beach hotel near Slovenska Plaza, with easier pricing than the top resort picks.",
+            weaknesses: "Less character than Old Town boutique stays and not directly on Mogren Beach.",
+            beach: "Slovenska Beach about 150-250 m; Mogren Beach about 1.4 km.",
+            nightlife: "Budva promenade and bars are close; Old Town about 10-15 min walk.",
+            airport: "Tivat Airport about 22-25 km.",
+            bonus: "Good middle option if you want a proper hotel near beach and nightlife without going full resort.",
+            transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. Budget option is taxi to Tivat bus station plus bus to Budva, around EUR 8-15 total for 2 before any final walk/taxi."
+          },
+          {
             id: "budva-hermes",
-            type: "Just room",
+            type: "Just a room",
             name: "Hotel Hermes Budva",
             link: "https://www.hotelhermesbudva.com/en/location",
             image: hotelImages.room,
@@ -3121,7 +3299,7 @@
         hotels: [
           {
             id: "sopot-marriott",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "Sopot Marriott Resort & Spa",
             link: "https://www.marriott.com/en-us/hotels/gdnmc-sopot-marriott-resort-and-spa/overview/",
             image: hotelImages.resort,
@@ -3134,8 +3312,22 @@
             transport: "From Gdansk Airport: pre-booked taxi to Sopot is about 120 PLN day / 150 PLN night, around EUR 28-35 and 25-30 min. SKM train is about 6-8 PLN per person but needs a walk/taxi from Sopot station. Bolt/Uber can range widely, roughly 70-180 PLN."
           },
           {
+            id: "sopot-focus-premium",
+            type: "Just a hotel",
+            name: "Focus Hotel Premium Sopot",
+            link: "https://www.focushotels.pl/en/focus-hotel-premium-sopot",
+            image: hotelImages.boutique,
+            strengths: "Modern chain-style hotel, close to the train station and useful for quick Tri-City movement.",
+            weaknesses: "Not beachfront and not romantic; beach and nightlife require a walk.",
+            beach: "About 1 km to Sopot beach and pier.",
+            nightlife: "Monte Cassino nightlife about 700-900 m.",
+            airport: "Gdansk Airport about 16 km.",
+            bonus: "Good middle option if you want reliable hotel standards and easy train access.",
+            transport: "From Gdansk Airport: pre-booked taxi about 120 PLN day / 150 PLN night, around EUR 28-35 and 25-30 min. Cheapest option is SKM/train for about 6-8 PLN per person, then a short walk or taxi."
+          },
+          {
             id: "sopot-bb-molo",
-            type: "Just room",
+            type: "Just a room",
             name: "B&B Molo",
             link: "https://bbmolo.pl/en/bb-molo-about-us/",
             image: hotelImages.room,
@@ -3193,7 +3385,7 @@
           rain: "About 7 rainy days / 32 mm in June",
           sunshine: "About 10.6 hours of sunshine per day",
           sea: "About 21.6C",
-          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: warm resort weather, good beach temperatures and occasional shower risk; generally better for sun than Sopot, but less dry than Naxos or Lagos."
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: warm resort weather, good beach temperatures and occasional shower risk; sunnier than northern beach-city options, but less dry than Naxos or Lagos."
         },
         flights: {
           best: {
@@ -3214,7 +3406,7 @@
         hotels: [
           {
             id: "sunny-evrika",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "DIT Evrika Beach Club Hotel",
             link: "https://hotel-evrika.com/en/hotel/",
             image: hotelImages.resort,
@@ -3227,8 +3419,22 @@
             transport: "From Burgas Airport: taxi to Sunny Beach is roughly EUR 25-36 metered or about EUR 35 with some pre-booked transfers, around 30-40 min. Private transfers can range EUR 40-70. Budget bus via Burgas is possible but indirect and slow with luggage."
           },
           {
+            id: "sunny-premium-inn",
+            type: "Just a hotel",
+            name: "Best Western PLUS Premium Inn",
+            link: "https://www.bestwestern.com/en_US/book/hotels-in-sunny-beach/best-western-plus-premium-inn/propertyCode.77718.html",
+            image: hotelImages.boutique,
+            strengths: "Central, recognizable hotel standard with pool access, good for nightlife and simpler logistics.",
+            weaknesses: "Not beachfront and still in busy Sunny Beach, so expect summer noise and crowds.",
+            beach: "Central beach about 450-600 m.",
+            nightlife: "Flower Street and central bars are about 5-8 min walk.",
+            airport: "Burgas Airport about 28-30 km.",
+            bonus: "Best middle option if you want a proper hotel rather than a huge all-inclusive resort.",
+            transport: "From Burgas Airport: taxi to Sunny Beach is roughly EUR 25-36 metered or about EUR 35 pre-booked, around 30-40 min. Private transfers can range EUR 40-70. Public transport via Burgas is cheaper but inconvenient with luggage."
+          },
+          {
             id: "sunny-atol",
-            type: "Just room",
+            type: "Just a room",
             name: "Hotel Atol",
             link: "https://www.atolhotels.com/?lng=en-GB",
             image: hotelImages.room,
@@ -3307,7 +3513,7 @@
         hotels: [
           {
             id: "paros-agnanti",
-            type: "Pool / resort",
+            type: "Resort-style hotel",
             name: "Paros Agnanti Resort & Spa",
             link: "https://www.parosagnanti.gr/",
             image: hotelImages.resort,
@@ -3320,8 +3526,22 @@
             transport: "From Paros Airport: to Parikia/Krios area, local taxi is often roughly EUR 15-25 while private transfer quotes can be about EUR 48. Bus to Parikia is about EUR 3-4 per person if schedules fit, then hotel shuttle/taxi to Krios. Ask the hotel about transfer options."
           },
           {
+            id: "paros-argonauta",
+            type: "Just a hotel",
+            name: "Argonauta Hotel",
+            link: "https://www.argonauta.gr/",
+            image: hotelImages.boutique,
+            strengths: "Stylish central Parikia hotel with strong restaurant/bar access and easy ferry/bus logistics.",
+            weaknesses: "No resort pool and central Parikia can feel busy around the port.",
+            beach: "Parikia seafront is immediate; Livadia Beach about 600-800 m.",
+            nightlife: "Old town bars and restaurants are right around the hotel.",
+            airport: "Paros Airport about 10 km.",
+            bonus: "Good middle option if you want hotel quality and nightlife access without Naoussa prices.",
+            transport: "From Paros Airport: taxi to Parikia is roughly EUR 9-15 locally, while pre-booked private transfer can be about EUR 48. Bus to Parikia is about EUR 3-4 per person if schedules line up."
+          },
+          {
             id: "paros-oasis",
-            type: "Just room",
+            type: "Just a room",
             name: "Oasis Hotel Paros",
             link: "https://www.paroshoteloasis.gr/rooms/",
             image: hotelImages.room,
@@ -3351,6 +3571,303 @@
       }
     ];
 
+    const addedLocations = [
+      {
+        id: "tenerife",
+        country: "Spain",
+        town: "Tenerife / Costa Adeje",
+        region: "Canary Islands",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Beach_in_Costa_Adeje%2C_Tenerife.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Beach_in_Costa_Adeje,_Tenerife.jpg",
+        imageCredit: "TimOve / Wikimedia Commons",
+        overview: "Tenerife is the warm-weather upgrade in the shortlist. Costa Adeje gives easy resort beaches, pools, restaurants and polished nightlife, while Los Cristianos and Playa de las Americas are close enough for livelier evenings. It is not the cheapest flight from Tallinn because the Canary Islands are far, but the weather reliability is excellent for late June: warm days, mild nights, strong sun and low rain risk. Kitesurfing is not usually a Costa Adeje doorstep activity, but El Medano is one of the best wind-sport areas in the Canaries and works as a day trip. This is a strong choice if guaranteed beach climate matters more than shortest travel time.",
+        facts: {
+          beach: "5-15 min walk to Costa Adeje beaches",
+          safety: "Very good, 8.5/10",
+          friendly: "9/10",
+          beauty: "8.8/10",
+          things: "Siam Park, Teide day trip, boat trips, Los Cristianos, El Medano",
+          nightlife: "Good; polished resort bars plus nearby Playa de las Americas",
+          kitesurf: "Excellent nearby at El Medano, about 20-30 km"
+        },
+        beachAccess: {
+          walk: "Most Costa Adeje hotel zones are about 5-15 min from a beach such as Fanabe, Torviscas or Playa del Duque. Some hillside apartments can be 20+ min back uphill.",
+          difficulty: "Easy near the coast, but hillside streets can make the return walk feel hotter and steeper in midday sun.",
+          taxi: "Short Costa Adeje taxis are often roughly EUR 6-12 one way. A taxi to El Medano for kitesurfing can be around EUR 35-55 one way, so a rental car or planned transfer is better for sport days."
+        },
+        climate: {
+          day: "26C average daytime high",
+          night: "20C average night low",
+          weather: "Mostly sunny, dry and warm with strong UV",
+          rain: "Usually very low rain risk in late June",
+          sunshine: "Long sunny days; shade and sunscreen matter",
+          sea: "About 22C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: warm, sunny, dry Canary weather with strong UV and sea breezes; the main variable is wind exposure rather than rain."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 760-920 total for 2",
+            perPerson: "Approx EUR 380-460 per person",
+            details: "Tallinn to Tenerife South, usually 1 stop through a major European hub. Expect about 8-13h each way; cabin bags included or added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/tfs/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 620-760 total for 2",
+            perPerson: "Approx EUR 310-380 per person",
+            details: "Tallinn to Tenerife South with 1-2 stops, often mixed low-cost carriers. Roughly 11-18h each way; cabin bags added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/tfs/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          { id: "tenerife-dreams", type: "Resort-style hotel", name: "Dreams Jardin Tropical Resort & Spa", link: "#", image: hotelImages.resort, strengths: "Resort-style Costa Adeje option with pool/spa feel and strong review score.", weaknesses: "Resort pricing and not the cheapest stay.", beach: "Costa Adeje beach zone nearby.", nightlife: "Walkable resort bars and short taxi to Playa de las Americas.", airport: "Tenerife South Airport about 18 km.", bonus: "Strong pool-and-beach comfort pick.", transport: "From Tenerife South Airport: taxi roughly EUR 30-40 and 20-25 min; shared shuttle often EUR 8-18 per person; public bus to Costa Adeje can be around EUR 4-6 per person if timing works." },
+          { id: "tenerife-mynd", type: "Just a hotel", name: "MYND Adeje", link: "#", image: hotelImages.boutique, strengths: "Modern hotel option with good score and lighter price than classic resorts.", weaknesses: "Not directly in the loudest nightlife zone.", beach: "Costa Adeje coast nearby.", nightlife: "Costa Adeje evenings nearby; taxi for Las Americas.", airport: "Tenerife South Airport about 25 km.", bonus: "Good middle hotel pick.", transport: "From Tenerife South Airport: taxi roughly EUR 35-50; shared shuttle EUR 8-20 per person; bus is cheaper but slower and may require a final walk/taxi." },
+          { id: "tenerife-mareverde", type: "Just a room", name: "Mareverde Fase I", link: "#", image: hotelImages.room, strengths: "Lower-cost studio-style base with pool view and kitchen flexibility.", weaknesses: "Apartment/studio setup rather than full hotel service.", beach: "About 450 m from beach.", nightlife: "Costa Adeje bars nearby; bigger clubs need taxi.", airport: "Tenerife South Airport about 18-20 km.", bonus: "Best cheap-style Tenerife pick.", transport: "From Tenerife South Airport: taxi roughly EUR 30-40; shuttle EUR 8-18 per person; bus to Costa Adeje is cheap but slower with luggage." },
+          { id: "tenerife-island-village", type: "Varia", name: "Apartments Island Village Heights", link: "#", image: hotelImages.beach, strengths: "Apartment option with low checked price and more living space.", weaknesses: "Farther uphill, so beach walks and nightlife require more effort.", beach: "Booking.com showed beachfront wording, but expect hillside resort logistics.", nightlife: "Costa Adeje centre is reachable by taxi/walk depending on exact unit.", airport: "Tenerife South Airport about 18 km.", bonus: "Flexible apartment choice for budget control.", transport: "From Tenerife South Airport: taxi roughly EUR 30-40; bus/shuttle can be cheaper but hillside location may still need a short taxi." }
+        ]
+      },
+      {
+        id: "majorca",
+        country: "Spain",
+        town: "Majorca / Palmanova",
+        region: "Balearic Islands",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Palmanova_Mallorca.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Palmanova_Mallorca.jpg",
+        imageCredit: "Liilia Moroz / Wikimedia Commons",
+        overview: "Majorca is the easy Mediterranean resort choice: short-feeling beach logistics, warm water, many hotels and plenty of nightlife nearby. Palmanova is a practical couple base because it has beaches and restaurants in town while Magaluf is close if you want louder nights. Palma adds city food, shopping and culture within taxi/bus distance. It is generally more expensive than Bulgaria or Montenegro, but flight and hotel choice are strong enough that it can still land in a moderate budget if you avoid the priciest resorts. Kitesurfing is more of a bonus than a main reason to choose it, with better wind-sport conditions on certain beaches and not always right beside Palmanova.",
+        facts: {
+          beach: "0-10 min walk to Palmanova beach",
+          safety: "Very good, 8.5/10",
+          friendly: "9/10",
+          beauty: "9/10",
+          things: "Palma old town, beach clubs, boat trips, Magaluf, Serra de Tramuntana",
+          nightlife: "Strong nearby; Palmanova calmer, Magaluf louder",
+          kitesurf: "Possible, but not a primary kite destination"
+        },
+        beachAccess: {
+          walk: "Most Palmanova stays are about 0-10 min from the sand, with many hotels and rooms 100-400 m from the beach.",
+          difficulty: "Very easy and mostly flat along the resort front. Heat and crowds are the main friction, not terrain.",
+          taxi: "Local taxis within Palmanova/Magaluf are often roughly EUR 6-15 one way. Taxi to Palma can be about EUR 25-40; airport taxi to Palmanova is usually around EUR 40-55."
+        },
+        climate: {
+          day: "28C average daytime high",
+          night: "19C average night low",
+          weather: "Mostly sunny, hot and dry",
+          rain: "Low rain risk, usually only a few June rain days",
+          sunshine: "Strong Mediterranean sun; beach shade matters",
+          sea: "About 23C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: hot, mostly sunny beach weather, warm water and very strong midday sun; short showers are possible but not the normal pattern."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 560-720 total for 2",
+            perPerson: "Approx EUR 280-360 per person",
+            details: "Tallinn to Palma de Mallorca, usually 1 stop. Expect roughly 6-10h each way on balanced routes; cabin bags included or added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/pmi/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 440-580 total for 2",
+            perPerson: "Approx EUR 220-290 per person",
+            details: "Tallinn to Palma with 1-2 stops and mixed low-cost airlines. Roughly 8-15h each way; cabin bags added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/pmi/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          { id: "majorca-reverence", type: "Resort-style hotel", name: "Reverence Mare Hotel - Adults Only", link: "#", image: hotelImages.resort, strengths: "Adults-only resort-style hotel close to Palmanova beach with pool/spa feel.", weaknesses: "More expensive than hostals and simple apartments.", beach: "Palmanova beach area, easy walk.", nightlife: "Palmanova restaurants nearby; Magaluf nightlife a short taxi/walk away.", airport: "Palma Airport about 25 km.", bonus: "Best couple-friendly resort-style option.", transport: "From Palma Airport: taxi/private transfer roughly EUR 40-55 and 20-30 min. Shared shuttle can be around EUR 10-20 per person. Public bus via Palma is cheaper but slower." },
+          { id: "majorca-azuline", type: "Just a hotel", name: "azuLine Hotel Palmanova Garden", link: "#", image: hotelImages.boutique, strengths: "Proper hotel option at a more moderate price, near beach and restaurants.", weaknesses: "Less polished than higher-end adults-only hotels.", beach: "About 200 m from beach.", nightlife: "Palmanova centre nearby; Magaluf is close.", airport: "Palma Airport about 25 km.", bonus: "Solid price-vs-location hotel pick.", transport: "From Palma Airport: taxi/private transfer roughly EUR 40-55; shuttle around EUR 10-20 per person; bus via Palma is cheaper but longer." },
+          { id: "majorca-belgica", type: "Just a room", name: "Hostal Belgica", link: "#", image: hotelImages.room, strengths: "Cheaper room-style option with terrace and beach within walking distance.", weaknesses: "Hostal services are simpler and comfort is lower than hotels.", beach: "About 400 m from beach.", nightlife: "About 0.8 km from Palmanova centre; Magaluf reachable.", airport: "Palma Airport about 25 km.", bonus: "Best low-cost Palmanova option in the checked results.", transport: "From Palma Airport: taxi roughly EUR 40-55; shared shuttle EUR 10-20 per person; bus connection is possible but less convenient with luggage." },
+          { id: "majorca-kompas", type: "Varia", name: "INNER Kompas Palmanova Adults Only", link: "#", image: hotelImages.beach, strengths: "Adults-only beachfront studio, useful if you want simple self-catering and direct beach mood.", weaknesses: "Studio/apartment setup rather than full hotel service.", beach: "Beachfront.", nightlife: "Palmanova nightlife nearby; Magaluf in walking/taxi range.", airport: "Palma Airport about 25 km.", bonus: "Varia pick for beach-first flexibility.", transport: "From Palma Airport: taxi/private transfer roughly EUR 40-55; shuttle may be cheaper per person; public bus is lower cost but slower." }
+        ]
+      },
+      {
+        id: "lisbon",
+        country: "Portugal",
+        town: "Lisbon / Cascais",
+        region: "Lisbon Coast",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cascais%2C_Portugal_%2848547207877%29.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Cascais,_Portugal_(48547207877).jpg",
+        imageCredit: "Stephen Colebourne / Wikimedia Commons",
+        overview: "Lisbon works best here if you treat it as a city-plus-beach trip rather than a pure resort holiday. Cascais is the beach base with safer swimming beaches, seaside restaurants and easy train access, while Lisbon gives the best nightlife, food, viewpoints and culture in the list. Costa da Caparica and Guincho add surf and kitesurf options, though Atlantic water is cooler than Greece or Spain. It is very tourist-friendly, strong for ISIC-style museum/transport value and usually more flexible than island destinations because there are many flights and hotels. Choose it if you want nights out and city exploring as much as beach time.",
+        facts: {
+          beach: "Cascais beaches in town; Lisbon beaches by train/taxi",
+          safety: "Very good, 8.5/10",
+          friendly: "9/10",
+          beauty: "8.7/10",
+          things: "Lisbon nightlife, Sintra, Cascais, Belem, Caparica, Guincho",
+          nightlife: "Excellent in Lisbon; calmer seaside evenings in Cascais",
+          kitesurf: "Good nearby at Guincho and Costa da Caparica"
+        },
+        beachAccess: {
+          walk: "In Cascais, several beaches are about 2-10 min from the centre. From central Lisbon, beach trips usually need the Cascais train, ferry/bus to Caparica or taxi.",
+          difficulty: "Cascais beach access is easy. Lisbon city itself is hillier, and Caparica/Guincho beach trips take more planning.",
+          taxi: "Cascais local taxis are often EUR 6-12. Lisbon to Cascais/Caparica by taxi can be roughly EUR 25-45 one way; train to Cascais is much cheaper at a few euros per person."
+        },
+        climate: {
+          day: "26C average daytime high",
+          night: "17C average night low",
+          weather: "Mostly sunny and dry, breezy on the coast",
+          rain: "Low late-June rain risk",
+          sunshine: "Strong sun, but Atlantic breeze cools beaches",
+          sea: "About 19C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: mostly sunny and dry, warm in Lisbon, breezier and cooler by the Atlantic beaches; rain risk is low."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 560-720 total for 2",
+            perPerson: "Approx EUR 280-360 per person",
+            details: "Tallinn to Lisbon, usually 1 stop via a major hub. Expect roughly 6-9h each way; cabin bags included or added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/lis/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 430-560 total for 2",
+            perPerson: "Approx EUR 215-280 per person",
+            details: "Tallinn to Lisbon with 1-2 stops, often mixed low-cost or long layover routes. Roughly 9-17h each way; cabin bags added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/lis/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          { id: "lisbon-vila-gale", type: "Resort-style hotel", name: "Vila Gale Cascais", link: "#", image: hotelImages.resort, strengths: "Sea-view hotel with pool/restaurant feel, close to Cascais beaches.", weaknesses: "More expensive than guesthouses and not in Lisbon nightlife itself.", beach: "About 50 m from beach.", nightlife: "Cascais centre nearby; Lisbon nightlife by train/taxi.", airport: "Lisbon Airport about 35 km.", bonus: "Best beach-base comfort pick for the Lisbon option.", transport: "From Lisbon Airport: taxi/private transfer to Cascais roughly EUR 40-60 and 35-50 min. Metro/train via Cais do Sodre plus Cascais line is much cheaper, around EUR 5-8 per person total, but slower with luggage." },
+          { id: "lisbon-city-beach", type: "Just a hotel", name: "Cascais City & Beach Hotel", link: "#", image: hotelImages.boutique, strengths: "Proper central Cascais hotel, very close to beach and train station area.", weaknesses: "Not a resort and prices are still higher than simple rooms.", beach: "About 100 m from beach.", nightlife: "Cascais restaurants and bars immediate; Lisbon nightlife by train/taxi.", airport: "Lisbon Airport about 35 km.", bonus: "Strong logistics for beach plus Lisbon day/night trips.", transport: "From Lisbon Airport: taxi/private transfer roughly EUR 40-60. Public route by metro/train is about EUR 5-8 per person and 60-80 min depending on connections." },
+          { id: "lisbon-village-guest", type: "Just a room", name: "Village Cascais Guest House", link: "#", image: hotelImages.room, strengths: "Available lower-cost private-room style stay near centre and beach.", weaknesses: "Guest-house comfort, fewer hotel services.", beach: "About 500 m from beach.", nightlife: "About 0.6 km from Cascais centre; Lisbon nights need train/taxi.", airport: "Lisbon Airport about 35 km.", bonus: "Good moderate-cost room base.", transport: "From Lisbon Airport: taxi/private transfer roughly EUR 40-60; train route via Lisbon city can be about EUR 5-8 per person but slower." },
+          { id: "lisbon-quinta-bicuda", type: "Varia", name: "Quinta da Bicuda", link: "#", image: hotelImages.beach, strengths: "Studio with patio and parking, useful for Guincho/Cascais exploration.", weaknesses: "About 2.8 km from centre and farther from the easiest nightlife.", beach: "About 2.9 km from beach.", nightlife: "Taxi/bike/bus to Cascais centre; Lisbon nightlife is a longer trip.", airport: "Lisbon Airport about 35-40 km.", bonus: "Varia pick if you rent a car or want a calmer base.", transport: "From Lisbon Airport: taxi/private transfer roughly EUR 45-65. Public transport is possible but awkward; rental car or taxi works better for this base." }
+        ]
+      },
+      {
+        id: "amalfi",
+        country: "Italy",
+        town: "Amalfi Coast / Amalfi",
+        region: "Campania",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Positano_Beach.jpg?width=1400",
+        imageSource: "https://commons.wikimedia.org/wiki/File:Positano_Beach.jpg",
+        imageCredit: "Sebastian Schreiber / Wikimedia Commons",
+        overview: "The Amalfi Coast is the beauty splurge. It gives the most dramatic scenery in the new group: cliff towns, boat views, lemon terraces, Positano/Amalfi/Ravello trips and blue water under steep coastlines. The trade-off is price and logistics. Beaches are beautiful but often small or pebbly, hotels sell out early, nightlife is more wine bars, restaurants and scenic evenings than clubbing, and transfers from Naples can be slow. It is not a practical kitesurf destination. Choose Amalfi if the trip is meant to feel romantic and visually special, and avoid it if moderate budget is the top priority.",
+        facts: {
+          beach: "5-20 min walk to small Amalfi beaches depending on stay",
+          safety: "Very good, 8.5/10",
+          friendly: "8.5/10",
+          beauty: "9.8/10",
+          things: "Positano, Ravello, boat days, Path of the Gods, Amalfi town",
+          nightlife: "Moderate; scenic restaurants and wine bars more than clubs",
+          kitesurf: "Not a realistic reason to choose this destination"
+        },
+        beachAccess: {
+          walk: "Central Amalfi stays can be 5-10 min from the main beach, but hillside hotels can mean stairs or shuttle/taxi. Positano and smaller coves often involve steps.",
+          difficulty: "Moderate compared with flat resorts. Expect stairs, narrow roads, crowds and heat; beach access can feel like part of the activity.",
+          taxi: "Short local taxis can be expensive, often EUR 15-30 even for small hops. Naples Airport to Amalfi private transfer is commonly around EUR 120-180 one way; ferry/bus routes are cheaper but slower."
+        },
+        climate: {
+          day: "29C average daytime high",
+          night: "21C average night low",
+          weather: "Mostly sunny, hot and Mediterranean",
+          rain: "Low-to-moderate shower risk for early summer",
+          sunshine: "Strong sun on cliffs and stone streets",
+          sea: "About 24C",
+          forecast: "Forecast for 24 June-2 July 2026 is not available yet this far ahead. Planning expectation: hot, mostly sunny Mediterranean weather, warm sea and strong sun; an isolated shower is possible but not the main concern."
+        },
+        flights: {
+          best: {
+            title: "Best price / quality",
+            price: "About EUR 620-780 total for 2",
+            perPerson: "Approx EUR 310-390 per person",
+            details: "Tallinn to Naples, usually 1 stop, then long ground transfer to Amalfi. Flight time roughly 6-10h each way; cabin bags included or added.",
+            link: "https://www.skyscanner.net/transport/flights/tll/nap/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          },
+          cheap: {
+            title: "Cheapest",
+            price: "About EUR 480-620 total for 2",
+            perPerson: "Approx EUR 240-310 per person",
+            details: "Tallinn to Naples with 1-2 stops, often longer mixed-airline routings. Roughly 10-18h each way; cabin bags added for both travelers.",
+            link: "https://www.skyscanner.net/transport/flights/tll/nap/260624/260701/?adults=2&adultsv2=2&cabinclass=economy&rtn=1"
+          }
+        },
+        hotels: [
+          { id: "amalfi-excelsior", type: "Resort-style hotel", name: "Grand Hotel Excelsior", link: "#", image: hotelImages.resort, strengths: "Resort-style Amalfi option with sea views, parking and restaurant feel.", weaknesses: "Expensive and not in the easiest nightlife/centre position.", beach: "About 400 m from beach in Booking results; shuttle/steps may matter.", nightlife: "Amalfi centre needs shuttle/taxi/walk depending on route.", airport: "Naples Airport about 65-75 km.", bonus: "Best scenic comfort pick.", transport: "From Naples Airport: private transfer to Amalfi roughly EUR 120-180 and 1.5-2.5h. Cheaper route: airport bus/train to Naples/Salerno then ferry or SITA bus, often EUR 20-45 per person but 3-5h with luggage." },
+          { id: "amalfi-croce", type: "Just a hotel", name: "Hotel Croce Di Amalfi", link: "#", image: hotelImages.boutique, strengths: "Central hotel choice with breakfast and very short beach/centre distance.", weaknesses: "Only limited rooms and Amalfi centre can be busy/noisy.", beach: "About 150 m from beach.", nightlife: "Central Amalfi restaurants and bars nearby.", airport: "Naples Airport about 65-75 km.", bonus: "Best proper-hotel logistics for Amalfi town.", transport: "From Naples Airport: private transfer roughly EUR 120-180. Budget route via Naples/Salerno plus ferry/bus can be EUR 20-45 per person but slower and less comfortable with bags." },
+          { id: "amalfi-matteo", type: "Just a room", name: "Matteo's House B&b", link: "#", image: hotelImages.room, strengths: "Lower-cost sea-view room choice compared with many Amalfi hotels.", weaknesses: "B&B/room stay with fewer services and farther from the centre.", beach: "About 400 m from beach.", nightlife: "About 1.9 km from centre, so taxi/bus/walk planning matters.", airport: "Naples Airport about 65-75 km.", bonus: "Best room-style value in the checked Amalfi results.", transport: "From Naples Airport: private transfer roughly EUR 120-180. Public/ferry route is cheaper but may still require a local taxi or walk with luggage." },
+          { id: "amalfi-cupido", type: "Varia", name: "Cupido Art House Amalfi", link: "#", image: hotelImages.beach, strengths: "Apartment with kitchen/living space in central Amalfi, useful for budget control.", weaknesses: "Apartment setup, not hotel service; availability can move quickly.", beach: "About 250 m from beach.", nightlife: "About 200 m from centre.", airport: "Naples Airport about 65-75 km.", bonus: "Varia pick for central space and self-catering.", transport: "From Naples Airport: private transfer roughly EUR 120-180; ferry/bus via Naples or Salerno can be much cheaper but usually 3-5h total." }
+        ]
+      }
+    ];
+
+    const sopotIndex = locations.findIndex((location) => location.id === "sopot");
+    if (sopotIndex !== -1) {
+      locations.splice(sopotIndex, 1);
+    }
+
+    const sunnyBeachIndex = locations.findIndex((location) => location.id === "sunny-beach");
+    locations.splice(sunnyBeachIndex === -1 ? locations.length : sunnyBeachIndex, 0, ...addedLocations);
+
+    const availableHotelChoices = {
+      "tarifa-residencia": { name: "100% Fun", image: hotelImages.resort, strengths: "Surf-hotel feeling near Valdevaqueros, breakfast included, close to kite schools and beach bars.", weaknesses: "About 9 km from Tarifa old town, so nightlife needs taxi or car.", beach: "About 350 m from Valdevaqueros beach.", nightlife: "Beach-bar energy nearby; Tarifa old town about 9 km.", airport: "Malaga Airport about 150 km / 1h45-2h.", bonus: "Available resort-style pick for kite and beach mood.", transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Public transport usually reaches Tarifa town first, then add taxi to Valdevaqueros. Rental car is strongly useful.", bookingPrice: "EUR 1,181", bookingRoom: "Standard double/twin room; breakfast included", bookingLeft: "1 left at this price" },
+      "tarifa-convento": { name: "Aristoy - by Grupo Tribu", image: hotelImages.boutique, strengths: "Central hotel-style stay with strong score, premium double room and easy old-town access.", weaknesses: "Only one room was shown at this price and it is not a resort.", beach: "About 500 m from beach.", nightlife: "About 200 m from centre; bars and restaurants are immediate.", airport: "Malaga Airport about 155 km / 1h50.", bonus: "Available proper-hotel choice for town evenings.", transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185, about 1h45-2h. Budget route is train/bus into Malaga, then coach toward Tarifa/Algeciras, roughly EUR 20-35 per person and 3.5-5h.", bookingPrice: "EUR 783", bookingRoom: "Premium double room", bookingLeft: "1 left at this price" },
+      "tarifa-hostal": { name: "Hostal Tarifa - Recepcion abierta las 24h", image: hotelImages.room, strengths: "Cheapest available Tarifa room-style choice I found, central and practical with 24-hour reception.", weaknesses: "Simple hostal feel, no pool and limited atmosphere.", beach: "About 400 m from beach.", nightlife: "About 450 m from centre; easy walk to old town.", airport: "Malaga Airport about 155 km / 1h50.", bonus: "Available budget room choice.", transport: "From Malaga Airport: private transfer/taxi roughly EUR 135-185. Budget route via Malaga and coach to Tarifa is roughly EUR 20-35 per person and 3.5-5h.", bookingPrice: "EUR 587", bookingRoom: "Double room", bookingLeft: "3 left at this price" },
+      "tarifa-hurricane": { name: "Fonduq Estudios", image: hotelImages.boutique, strengths: "Available studio with balcony, central enough for food streets and still close to beach.", weaknesses: "Studio/apartment rather than hotel service; one unit left at the checked price.", beach: "About 550 m from beach.", nightlife: "About 300 m from centre.", airport: "Malaga Airport about 155 km / 1h50.", bonus: "Varia option with kitchenette-style flexibility.", transport: "Same Tarifa transfer logic: private transfer/taxi roughly EUR 135-185, or public transport via Malaga and coach to Tarifa with a longer 3.5-5h journey.", bookingPrice: "EUR 665", bookingRoom: "Studio with balcony", bookingLeft: "1 left at this price" },
+
+      "lagos-tivoli": { name: "Cascade Wellness Resort", image: hotelImages.resort, strengths: "True resort-style option with wellness facilities, beach proximity and a more complete holiday-hotel feel.", weaknesses: "Expensive and outside the old-town nightlife core.", beach: "About 200 m from beach.", nightlife: "About 1.9 km from Lagos centre; taxi or longer walk for bars.", airport: "Faro Airport about 90 km / 1h.", bonus: "Available resort-style pick for Lagos.", transport: "From Faro Airport: private transfer about EUR 76 for up to 4 people or public taxi about EUR 90. Budget train/bus via Faro city is roughly EUR 8-18 per person but slower.", bookingPrice: "EUR 2,250", bookingRoom: "Resort room option", bookingLeft: "" },
+      "lagos-marina-rio": { name: "Carvi Beach Hotel", image: hotelImages.boutique, strengths: "Proper hotel near the beach with restaurant, 24-hour reception and partial sea-view room shown.", weaknesses: "Higher price than simple rooms and not in the very centre.", beach: "About 100 m from beach.", nightlife: "About 1.3 km from centre; walkable or short taxi.", airport: "Faro Airport about 90 km / 1h.", bonus: "Available hotel choice if beach access matters.", transport: "From Faro Airport: private transfer about EUR 76 for up to 4 people or public taxi about EUR 90. Budget route via Faro city train/bus is roughly EUR 8-18 per person.", bookingPrice: "EUR 1,629", bookingRoom: "Double room with partial sea view; breakfast included", bookingLeft: "3 left at this price" },
+      "lagos-lagosmar": { name: "Sunny House", image: hotelImages.room, strengths: "Adults-only budget room option, good value for Lagos dates and relatively central.", weaknesses: "Shared-bathroom budget category shown and less hotel comfort.", beach: "About 750 m from beach.", nightlife: "About 450 m from centre.", airport: "Faro Airport about 90 km / 1h.", bonus: "Available cheapest-style room choice.", transport: "From Faro Airport: transfer/taxi about EUR 76-90. Budget train/bus via Faro city is slower but can be roughly EUR 8-18 per person.", bookingPrice: "EUR 618", bookingRoom: "Budget twin room with shared bathroom", bookingLeft: "6 left at this price" },
+      "lagos-casa-mae": { name: "Baluarte da Vila Apartments", image: hotelImages.beach, strengths: "Available apartment-style choice close to beach and old town, useful if you want more space.", weaknesses: "Apartment setup rather than full hotel service.", beach: "About 200 m from beach.", nightlife: "About 600 m from centre.", airport: "Faro Airport about 90 km / 1h.", bonus: "Varia choice with space and very good location.", transport: "From Faro Airport: private transfer about EUR 76 for up to 4 people or public taxi about EUR 90. Public transport via Faro city can work but is slower.", bookingPrice: "EUR 1,515", bookingRoom: "Apartment option", bookingLeft: "2 left at this price" },
+
+      "naxos-nissaki": { name: "Iphimedeia Luxury Hotel & Suites", image: hotelImages.resort, strengths: "Luxury suites feel, high score and a calmer resort-style base outside the busiest Chora lanes.", weaknesses: "Not directly in town centre; one option left at checked price.", beach: "About 700 m from beach.", nightlife: "About 1.7 km from Naxos Chora centre.", airport: "Naxos Airport about 2-3 km.", bonus: "Available resort-style Naxos choice.", transport: "From Naxos Airport: taxi/transfer is roughly EUR 20 and 5-10 min. Local bus can be about EUR 2-3 per person if schedules line up.", bookingPrice: "EUR 1,399", bookingRoom: "Suite/luxury room option", bookingLeft: "1 left at this price" },
+      "naxos-argo": { name: "Naxos Green Village Hotel", image: hotelImages.boutique, strengths: "Proper hotel with strong score, spa/wellness features and a deluxe double room shown.", weaknesses: "Not beachfront and only one checked room left.", beach: "Naxos Chora beach access is nearby; Booking showed it in the Naxos Chora area.", nightlife: "Close enough for Naxos Town evenings.", airport: "Naxos Airport about 2-3 km.", bonus: "Available middle hotel pick.", transport: "From Naxos Airport: taxi/transfer roughly EUR 20, about 5-10 min; bus may be EUR 2-3 per person if schedules fit.", bookingPrice: "EUR 1,190", bookingRoom: "Deluxe double room", bookingLeft: "1 left at this price" },
+      "naxos-soula": { name: "BLUE IN NAXOS", image: hotelImages.room, strengths: "Available economy double room, very close to Agios Georgios beach and strong comfort score.", weaknesses: "Only one room left and less resort feel.", beach: "About 100 m from beach.", nightlife: "About 450 m from centre.", airport: "Naxos Airport about 2-3 km.", bonus: "Available simple room choice near the beach.", transport: "From Naxos Airport: taxi/transfer roughly EUR 20, about 5-10 min; local bus may work if timed well.", bookingPrice: "EUR 644", bookingRoom: "Economy double room", bookingLeft: "1 left at this price" },
+      "naxos-grotta": { name: "Aegeon Hotel", image: hotelImages.beach, strengths: "Available studio near the beach with hot tub/jacuzzi facilities noted by Booking.com.", weaknesses: "Studio category rather than classic hotel service; one option left.", beach: "About 50 m from beach.", nightlife: "About 350 m from centre.", airport: "Naxos Airport about 2-3 km.", bonus: "Varia pick with beach-first location.", transport: "From Naxos Airport: taxi/transfer roughly EUR 20. Bus can be cheap but depends on timing.", bookingPrice: "EUR 632", bookingRoom: "Studio for 2 adults", bookingLeft: "1 left at this price" },
+
+      "lefkada-porto-galini": { name: "Porto Galini Seaside Resort & Spa", image: hotelImages.resort, strengths: "True available resort choice with spa, seaside setting and multiple rooms showing.", weaknesses: "Higher price and needs car/taxi for nightlife.", beach: "Seaside resort setting.", nightlife: "Near Nikiana; Nidri and Lefkada Town need taxi/car.", airport: "Preveza/Aktion Airport about 30-35 km.", bonus: "Available proper resort choice on Lefkada.", transport: "From Preveza/Aktion Airport: taxi or pre-booked transfer to Nikiana area roughly EUR 40-55, around 30-40 min. Rental car is recommended for west-coast beaches.", bookingPrice: "EUR 2,205", bookingRoom: "Superior double/twin room with sea view", bookingLeft: "6 left at this price" },
+      "lefkada-ionion-star": { name: "Ionion Star Hotel", image: hotelImages.boutique, strengths: "Available town hotel, central for cafes and arrival logistics.", weaknesses: "Lower score than the island's best apartment options and not a beach resort.", beach: "About 1.4 km from beach.", nightlife: "About 200 m from Lefkada Town centre.", airport: "Preveza/Aktion Airport about 20 km / 20-25 min.", bonus: "Available proper-hotel choice in Lefkada Town.", transport: "From Preveza/Aktion Airport: taxi/pre-booked transfer roughly EUR 35-50, about 25-30 min. Rental car useful for beaches.", bookingPrice: "EUR 1,102", bookingRoom: "Town hotel room option", bookingLeft: "" },
+      "lefkada-boschetto": { name: "Pension Holidays", image: hotelImages.room, strengths: "Available simple room choice with strong score, sea-view room wording and a low price.", weaknesses: "Pension style rather than hotel amenities.", beach: "Nidri/Vasiliki/Lefkada beach access depends on exact base; Booking showed it in the Lefkada search area.", nightlife: "Local tavernas nearby; bigger nightlife depends on base.", airport: "Preveza/Aktion Airport roughly 25-65 km depending on island base.", bonus: "Available budget room-style choice.", transport: "From Preveza/Aktion Airport: taxi/transfer depends on exact area, roughly EUR 35-80. A rental car is useful for Lefkada.", bookingPrice: "EUR 504", bookingRoom: "Double/twin room with sea view", bookingLeft: "1 left at this price" },
+      "lefkada-elisso": { name: "Sea Pebble Studios", image: hotelImages.beach, strengths: "Available studio option, strong score and useful for a quieter beach-base stay.", weaknesses: "Studio setup, not a hotel; car/taxi needed for wider nightlife.", beach: "Mikros Gialos beach area.", nightlife: "Quiet local evenings; Nidri/Lefkada Town require transport.", airport: "Preveza/Aktion Airport about 45-65 km depending on route.", bonus: "Varia pick for a calmer studio beach stay.", transport: "From Preveza/Aktion Airport: taxi/private transfer may be roughly EUR 60-80. Rental car is strongly recommended for this style of Lefkada base.", bookingPrice: "EUR 644", bookingRoom: "Studio", bookingLeft: "" },
+
+      "budva-avala": { name: "Iberostar Waves Bellevue All Inclusive", image: hotelImages.resort, strengths: "Available beachfront all-inclusive resort with pools and strong review volume.", weaknesses: "About 2 km from Budva centre and more resort-bubble than old-town style.", beach: "Beachfront.", nightlife: "About 2 km from Budva centre; taxi/walk needed.", airport: "Tivat Airport about 22-25 km.", bonus: "Available resort-style Budva option.", transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. From Podgorica Airport, expect around EUR 55-80.", bookingPrice: "EUR 2,428", bookingRoom: "Double/twin room with garden view; all-inclusive", bookingLeft: "2 left at this price" },
+      "budva-bracera": { name: "Infinity Hotel & More", image: hotelImages.boutique, strengths: "Available modern hotel with high score, close to beach and central Budva.", weaknesses: "Pricier than apartments and not a full resort.", beach: "About 500 m from beach.", nightlife: "About 800 m from centre.", airport: "Tivat Airport about 22-25 km.", bonus: "Available proper-hotel choice.", transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35, about 25-30 min. Bus via Tivat station can be cheaper but slower.", bookingPrice: "EUR 1,501", bookingRoom: "Standard double/twin room", bookingLeft: "" },
+      "budva-hermes": { name: "Hotel Dubrava", image: hotelImages.room, strengths: "Available low-cost hotel-named room choice with exceptional early score in the search results.", weaknesses: "Further from centre and beach than old-town options.", beach: "About 1.1 km from beach.", nightlife: "About 1.9 km from centre.", airport: "Tivat Airport about 22-25 km.", bonus: "Available budget room-style choice.", transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35. Budget bus route may work with light luggage.", bookingPrice: "EUR 531", bookingRoom: "Room option", bookingLeft: "" },
+      "budva-astoria": { name: "Lola of Old Town", image: hotelImages.beach, strengths: "Available old-town apartment-style stay, 50 m from centre and beach.", weaknesses: "Apartment setup rather than hotel service; old-town noise possible.", beach: "About 50 m from beach.", nightlife: "Old Town nightlife and restaurants are immediate.", airport: "Tivat Airport about 20-25 km.", bonus: "Varia choice for atmosphere and location.", transport: "From Tivat Airport: taxi/private transfer roughly EUR 25-35; old-town access may require a short walk from drop-off.", bookingPrice: "EUR 770", bookingRoom: "One-bedroom apartment", bookingLeft: "" },
+
+      "tenerife-dreams": { name: "Dreams Jardin Tropical Resort & Spa", image: hotelImages.resort, strengths: "Available Costa Adeje resort/spa choice with a strong 9.0 Booking.com score and proper holiday-hotel feel.", weaknesses: "More expensive than apartments and not in the kitesurf area.", beach: "Costa Adeje beach area; Booking showed it in the Costa Adeje results.", nightlife: "Costa Adeje resort bars are nearby; Playa de las Americas is a short taxi away.", airport: "Tenerife South Airport about 18 km.", bonus: "Available resort-style Tenerife pick.", transport: "From Tenerife South Airport: taxi roughly EUR 30-40 and 20-25 min. Shared shuttle can be around EUR 8-18 per person; public bus to Costa Adeje is cheaper if timing works.", bookingPrice: "EUR 1,302", bookingRoom: "Double room; breakfast included", bookingLeft: "" },
+      "tenerife-mynd": { name: "MYND Adeje", image: hotelImages.boutique, strengths: "Available modern hotel with strong score and side sea-view room shown.", weaknesses: "Not a beachfront resort and a little calmer than central Las Americas.", beach: "Costa Adeje beach access nearby; exact walk depends on room/building.", nightlife: "Costa Adeje evenings nearby; short taxi for bigger clubs.", airport: "Tenerife South Airport about 25 km.", bonus: "Available proper-hotel middle pick.", transport: "From Tenerife South Airport: taxi roughly EUR 35-50. Shared shuttle can be EUR 8-20 per person; bus is cheaper but slower with luggage.", bookingPrice: "EUR 1,010", bookingRoom: "Double room with side sea view", bookingLeft: "5 left at this price" },
+      "tenerife-mareverde": { name: "Mareverde Fase I", image: hotelImages.room, strengths: "Available studio apartment with pool view and the lowest checked Costa Adeje price in this set.", weaknesses: "Studio/apartment stay, not hotel service; less polished than resort hotels.", beach: "About 450 m from beach.", nightlife: "Costa Adeje bars nearby; bigger nightlife needs taxi.", airport: "Tenerife South Airport about 18-20 km.", bonus: "Available room-style budget pick.", transport: "From Tenerife South Airport: taxi roughly EUR 30-40. Shuttle EUR 8-18 per person; bus is cheap but slower and may need a walk.", bookingPrice: "EUR 567", bookingRoom: "Studio apartment with pool view", bookingLeft: "" },
+      "tenerife-island-village": { name: "Apartments Island Village Heights", image: hotelImages.beach, strengths: "Available apartment choice with a very low checked price and free parking wording.", weaknesses: "Farther from central beach/nightlife and more self-service than a hotel.", beach: "Booking showed beachfront wording, but the area can be hillside; verify exact unit location.", nightlife: "Costa Adeje centre is reachable by walk/taxi depending on exact unit.", airport: "Tenerife South Airport about 18 km.", bonus: "Varia choice for apartment flexibility and low hotel cost.", transport: "From Tenerife South Airport: taxi roughly EUR 30-40. Bus/shuttle can reduce cost, but hillside location may still need final taxi.", bookingPrice: "EUR 542", bookingRoom: "Apartment option", bookingLeft: "1 left at this price" },
+
+      "majorca-reverence": { name: "Reverence Mare Hotel - Adults Only", image: hotelImages.resort, strengths: "Available adults-only resort-style Palmanova option with strong score and beach-resort feel.", weaknesses: "Pricier than hostals and simple hotels.", beach: "Palmanova beach area; Booking showed it in the Palmanova results.", nightlife: "Palmanova restaurants nearby; Magaluf nightlife is close by taxi/walk.", airport: "Palma Airport about 25 km.", bonus: "Available resort-style Majorca pick.", transport: "From Palma Airport: taxi/private transfer roughly EUR 40-55 and 20-30 min. Shared shuttle can be EUR 10-20 per person; bus via Palma is cheaper but slower.", bookingPrice: "EUR 1,839", bookingRoom: "Double room; breakfast included", bookingLeft: "1 left at this price" },
+      "majorca-azuline": { name: "azuLine Hotel Palmanova Garden", image: hotelImages.boutique, strengths: "Available proper hotel close to beach and restaurants at a more moderate Palmanova price.", weaknesses: "Less premium than adults-only or beachfront resort hotels.", beach: "About 200 m from beach.", nightlife: "About 350 m from centre; Magaluf is nearby.", airport: "Palma Airport about 25 km.", bonus: "Available hotel pick with good price/location balance.", transport: "From Palma Airport: taxi/private transfer roughly EUR 40-55. Shared shuttle around EUR 10-20 per person; bus via Palma is cheaper but longer.", bookingPrice: "EUR 1,167", bookingRoom: "Double room; breakfast included", bookingLeft: "6 left at this price" },
+      "majorca-belgica": { name: "Hostal Belgica", image: hotelImages.room, strengths: "Available simple room choice with terrace and one of the lower checked Palmanova prices.", weaknesses: "Hostal comfort, fewer hotel services and a simpler stay.", beach: "About 400 m from beach.", nightlife: "About 800 m from centre; Magaluf/Palmanova bars are reachable.", airport: "Palma Airport about 25 km.", bonus: "Available room-style budget choice.", transport: "From Palma Airport: taxi roughly EUR 40-55. Shared shuttle EUR 10-20 per person; public bus is possible but less convenient with luggage.", bookingPrice: "EUR 702", bookingRoom: "Double room with terrace", bookingLeft: "3 left at this price" },
+      "majorca-kompas": { name: "INNER Kompas Palmanova Adults Only", image: hotelImages.beach, strengths: "Available adults-only beachfront studio with kitchen flexibility and strong score.", weaknesses: "Studio/apartment setup rather than full hotel service; one option left.", beach: "Beachfront.", nightlife: "Palmanova bars nearby; Magaluf in walking/taxi range.", airport: "Palma Airport about 25 km.", bonus: "Varia choice for direct beach access.", transport: "From Palma Airport: taxi/private transfer roughly EUR 40-55; shuttle is cheaper per person; bus takes longer.", bookingPrice: "EUR 1,219", bookingRoom: "Studio", bookingLeft: "1 left at this price" },
+
+      "lisbon-vila-gale": { name: "Vila Gale Cascais", image: hotelImages.resort, strengths: "Available sea-view hotel with pool/restaurant feel, 50 m beach wording and good Cascais logistics.", weaknesses: "Not in Lisbon nightlife itself and pricier than guesthouses.", beach: "About 50 m from beach.", nightlife: "About 600 m from Cascais centre; Lisbon nightlife by train/taxi.", airport: "Lisbon Airport about 35 km.", bonus: "Available beach-base comfort pick for the Lisbon option.", transport: "From Lisbon Airport: taxi/private transfer to Cascais roughly EUR 40-60 and 35-50 min. Metro/train via Cais do Sodre plus Cascais line is roughly EUR 5-8 per person but slower.", bookingPrice: "EUR 1,868", bookingRoom: "Twin room with sea view", bookingLeft: "4 left at this price" },
+      "lisbon-city-beach": { name: "Cascais City & Beach Hotel", image: hotelImages.boutique, strengths: "Available proper central hotel only about 100 m from beach and close to Cascais train/food streets.", weaknesses: "Not a resort and still not as cheap as a basic guesthouse.", beach: "About 100 m from beach.", nightlife: "Cascais centre immediate; Lisbon nightlife by train/taxi.", airport: "Lisbon Airport about 35 km.", bonus: "Available hotel choice with very easy beach logistics.", transport: "From Lisbon Airport: taxi/private transfer roughly EUR 40-60. Public metro/train route is about EUR 5-8 per person and 60-80 min depending on connections.", bookingPrice: "EUR 1,450", bookingRoom: "Twin room; breakfast included", bookingLeft: "" },
+      "lisbon-village-guest": { name: "Village Cascais Guest House", image: hotelImages.room, strengths: "Available lower-cost private-room style choice near Cascais centre and beach.", weaknesses: "Guest-house setup and fewer full-hotel services.", beach: "About 500 m from beach.", nightlife: "About 600 m from centre; Lisbon nights need train/taxi.", airport: "Lisbon Airport about 35 km.", bonus: "Available moderate room-style pick.", transport: "From Lisbon Airport: taxi/private transfer roughly EUR 40-60; public train route via Lisbon city is around EUR 5-8 per person but slower.", bookingPrice: "EUR 877", bookingRoom: "Double room with private bathroom", bookingLeft: "1 left at this price" },
+      "lisbon-quinta-bicuda": { name: "Quinta da Bicuda", image: hotelImages.beach, strengths: "Available studio with patio, parking and calmer Cascais/Guincho access.", weaknesses: "Farther from the centre and beach; nightlife needs taxi/car.", beach: "About 2.9 km from beach.", nightlife: "About 2.8 km from centre; Lisbon nightlife is a longer trip.", airport: "Lisbon Airport about 35-40 km.", bonus: "Varia pick for car/rental flexibility and Guincho access.", transport: "From Lisbon Airport: taxi/private transfer roughly EUR 45-65. Public transport is possible but awkward; rental car or taxi works better.", bookingPrice: "EUR 1,290", bookingRoom: "Studio with patio", bookingLeft: "1 left at this price" },
+
+      "amalfi-excelsior": { name: "Grand Hotel Excelsior", image: hotelImages.resort, strengths: "Available Amalfi resort-style option with sea-view room wording, parking and restaurant feel.", weaknesses: "Expensive and less central than town hotels.", beach: "About 400 m from beach.", nightlife: "About 1 km from centre; shuttle/taxi/walk planning matters.", airport: "Naples Airport about 65-75 km.", bonus: "Available scenic comfort pick.", transport: "From Naples Airport: private transfer to Amalfi roughly EUR 120-180 and 1.5-2.5h. Cheaper route via Naples/Salerno plus ferry or SITA bus is often EUR 20-45 per person but 3-5h with luggage.", bookingPrice: "EUR 3,117", bookingRoom: "Standard double room with balcony and sea view", bookingLeft: "1 left at this price" },
+      "amalfi-croce": { name: "Hotel Croce Di Amalfi", image: hotelImages.boutique, strengths: "Available central Amalfi hotel, close to beach and town with breakfast included.", weaknesses: "Only limited rooms and central Amalfi can be crowded/noisy.", beach: "About 150 m from beach.", nightlife: "About 200 m from centre; restaurants and bars nearby.", airport: "Naples Airport about 65-75 km.", bonus: "Available proper-hotel logistics pick.", transport: "From Naples Airport: private transfer roughly EUR 120-180. Budget route by train/bus/ferry via Naples or Salerno can be EUR 20-45 per person but slower.", bookingPrice: "EUR 1,604", bookingRoom: "Double room; breakfast included", bookingLeft: "1 left at this price" },
+      "amalfi-matteo": { name: "Matteo's House B&b", image: hotelImages.room, strengths: "Available sea-view room with one of the lower checked Amalfi prices.", weaknesses: "B&B/room style, adults-only wording and farther from central Amalfi.", beach: "About 400 m from beach.", nightlife: "About 1.9 km from centre; transport may be needed.", airport: "Naples Airport about 65-75 km.", bonus: "Available room-style value pick for Amalfi.", transport: "From Naples Airport: private transfer roughly EUR 120-180. Public/ferry route is cheaper but may still need local taxi/walk with bags.", bookingPrice: "EUR 1,331", bookingRoom: "Room with sea view", bookingLeft: "1 left at this price" },
+      "amalfi-cupido": { name: "Cupido Art House Amalfi", image: hotelImages.beach, strengths: "Available central apartment with kitchen/living space and beach within a short walk.", weaknesses: "Apartment setup rather than hotel service; no resort amenities.", beach: "About 250 m from beach.", nightlife: "About 200 m from centre.", airport: "Naples Airport about 65-75 km.", bonus: "Varia choice for central space and self-catering.", transport: "From Naples Airport: private transfer roughly EUR 120-180; ferry/bus via Naples or Salerno is cheaper but usually 3-5h total.", bookingPrice: "EUR 1,533", bookingRoom: "One-bedroom apartment", bookingLeft: "" },
+
+      "sopot-marriott": { name: "Hotel Haffner Resort & Spa - Destigo Hotels", image: hotelImages.resort, strengths: "Available resort/spa choice with premium hotel feel and good comfort score.", weaknesses: "Very expensive compared with other Sopot choices.", beach: "Sopot beach area; Booking showed it in resort/spa results.", nightlife: "Sopot centre and Monte Cassino are nearby by walk/taxi.", airport: "Gdansk Airport about 16 km.", bonus: "Available resort-style Sopot option.", transport: "From Gdansk Airport: pre-booked taxi around 120 PLN day / 150 PLN night, about EUR 28-35. SKM train is cheap but may need walk/taxi.", bookingPrice: "EUR 3,184", bookingRoom: "Superior double/twin room", bookingLeft: "1 left at this price" },
+      "sopot-focus-premium": { name: "Meduza Sopot", image: hotelImages.boutique, strengths: "Available hotel by the beach with 24-hour front desk and strong score.", weaknesses: "More guesthouse/hotel hybrid than large chain hotel.", beach: "Beachfront.", nightlife: "About 800 m from centre.", airport: "Gdansk Airport about 16 km.", bonus: "Available proper hotel choice near the sea.", transport: "From Gdansk Airport: taxi around EUR 28-35 and 25-30 min. SKM train can be about 6-8 PLN per person plus walk/taxi.", bookingPrice: "EUR 894", bookingRoom: "Double room with shower", bookingLeft: "1 left at this price" },
+      "sopot-bb-molo": { name: "Pokoje przy Plazy Sopot", image: hotelImages.room, strengths: "Available simple room close to the beach with strong score and moderate price.", weaknesses: "Room-focused stay, limited hotel services.", beach: "Beachfront.", nightlife: "About 500 m from centre.", airport: "Gdansk Airport about 16 km.", bonus: "Available room-style choice close to the sea.", transport: "From Gdansk Airport: taxi around EUR 28-35; SKM train is cheaper but may need a final walk.", bookingPrice: "EUR 657", bookingRoom: "Double room", bookingLeft: "1 left at this price" },
+      "sopot-molo": { name: "Apartamenty Bema4 Sopot", image: hotelImages.beach, strengths: "Available studio apartment, very central and good value for the date window.", weaknesses: "Apartment stay, not a hotel; one unit left.", beach: "About 350 m from beach.", nightlife: "About 150 m from centre.", airport: "Gdansk Airport about 16 km.", bonus: "Varia choice for central apartment flexibility.", transport: "From Gdansk Airport: taxi around EUR 28-35; train route can be cheap and practical for central Sopot.", bookingPrice: "EUR 635", bookingRoom: "Studio apartment", bookingLeft: "1 left at this price" },
+
+      "sunny-evrika": { name: "DIT Evrika Beach Club Hotel - All Inclusive", image: hotelImages.resort, strengths: "Available beachfront all-inclusive resort with pools, bars and entertainment.", weaknesses: "Large, busy resort and not quiet.", beach: "Beachfront.", nightlife: "About 1.5 km from centre / Flower Street.", airport: "Burgas Airport about 28-30 km.", bonus: "Available resort-style Sunny Beach choice.", transport: "From Burgas Airport: taxi roughly EUR 25-36 metered or about EUR 35 pre-booked; private transfers can be EUR 40-70.", bookingPrice: "EUR 1,567", bookingRoom: "Twin room with pool view; all-inclusive", bookingLeft: "" },
+      "sunny-premium-inn": { name: "Sunny Beach Hotel Forum - All Inclusive", image: hotelImages.boutique, strengths: "Available proper hotel with restaurant/bar and all-inclusive setup at a lower price than big resorts.", weaknesses: "About 2.9 km from centre, so nightlife needs taxi/bus.", beach: "About 450 m from beach.", nightlife: "About 2.9 km from central Sunny Beach nightlife.", airport: "Burgas Airport about 28-30 km.", bonus: "Available middle hotel choice.", transport: "From Burgas Airport: taxi roughly EUR 25-36 or pre-booked transfer around EUR 35-70. Public transport via Burgas is cheaper but inconvenient.", bookingPrice: "EUR 895", bookingRoom: "Double/twin room; all-inclusive", bookingLeft: "" },
+      "sunny-atol": { name: "Hotel Boomerang - Sunny Beach", image: hotelImages.room, strengths: "Available low-cost room option with very cheap checked price.", weaknesses: "Lower score and no resort polish.", beach: "About 650 m from beach.", nightlife: "About 500 m from centre.", airport: "Burgas Airport about 28-30 km.", bonus: "Available cheapest room-style hotel option.", transport: "From Burgas Airport: taxi roughly EUR 25-36 or pre-booked transfer around EUR 35-70. Public transport is possible but slow.", bookingPrice: "EUR 326", bookingRoom: "Standard double/twin room", bookingLeft: "" },
+      "sunny-panteleimon": { name: "Royal Beach Barcelo Aparthotel", image: hotelImages.beach, strengths: "Available studio apartment in a large aparthotel setup with pools and central resort location.", weaknesses: "Aparthotel/studio rather than classic hotel room; busy area.", beach: "About 150 m from beach.", nightlife: "About 450 m from centre.", airport: "Burgas Airport about 28-30 km.", bonus: "Varia choice for apartment space at a reasonable price.", transport: "From Burgas Airport: taxi roughly EUR 25-36 or pre-booked transfer around EUR 35-70.", bookingPrice: "EUR 536", bookingRoom: "Studio apartment", bookingLeft: "" },
+
+      "paros-agnanti": { name: "Pounda Resort Paros, a member of Radisson Individuals", image: hotelImages.resort, strengths: "Available resort-style choice near Pounda, useful for kitesurf access and breakfast included.", weaknesses: "Away from Naoussa/Parikia nightlife, so transport is needed.", beach: "Pounda beach area.", nightlife: "Parikia/Naoussa need bus, taxi or car.", airport: "Paros Airport about 6-10 km depending on route.", bonus: "Available resort choice with sport-friendly location.", transport: "From Paros Airport: taxi/transfer often roughly EUR 15-30 locally; bus via Parikia can be cheap but slower.", bookingPrice: "EUR 1,316", bookingRoom: "Standard room; breakfast included", bookingLeft: "1 left at this price" },
+      "paros-argonauta": { name: "Anna Platanou Hotel", image: hotelImages.boutique, strengths: "Available proper hotel in Parikia with good score, close to beach and old town.", weaknesses: "Not a resort and one room category may sell out quickly.", beach: "About 250 m from beach.", nightlife: "About 600 m from Parikia centre.", airport: "Paros Airport about 10 km.", bonus: "Available middle hotel choice.", transport: "From Paros Airport: taxi to Parikia roughly EUR 9-15 locally; private transfers can be about EUR 48. Bus is about EUR 3-4 per person if timed well.", bookingPrice: "EUR 924", bookingRoom: "Hotel room option", bookingLeft: "" },
+      "paros-oasis": { name: "Kato Yialos Paros", image: hotelImages.room, strengths: "Available lower-cost Parikia room choice only about 50 m from beach.", weaknesses: "Simple room-style stay and not a resort.", beach: "About 50 m from beach.", nightlife: "About 450 m from centre.", airport: "Paros Airport about 10 km.", bonus: "Available simple room choice.", transport: "From Paros Airport: taxi to Parikia roughly EUR 9-15; bus can be about EUR 3-4 per person if schedules fit.", bookingPrice: "EUR 608", bookingRoom: "Room option", bookingLeft: "" },
+      "paros-senia": { name: "Blue and White View", image: hotelImages.beach, strengths: "Available apartment with sea-view/balcony wording and very high score.", weaknesses: "Apartment/villa-style stay outside the main nightlife bases.", beach: "Paros beach access depends on exact area; Booking showed it as an island apartment option.", nightlife: "Transport needed for Parikia or Naoussa nightlife.", airport: "Paros Airport varies by base; plan roughly 10-20 km.", bonus: "Varia choice for space and views.", transport: "From Paros Airport: taxi/private transfer can range roughly EUR 15-60 depending on exact area. Rental car helps for beaches and nightlife.", bookingPrice: "EUR 918", bookingRoom: "Two-bedroom apartment with balcony and sea view", bookingLeft: "1 left at this price" }
+    };
+
+    locations.forEach((location) => {
+      location.hotels.forEach((hotel) => Object.assign(hotel, availableHotelChoices[hotel.id] || {}));
+    });
+
     const mapPoints = {
       tallinn: { label: "Tallinn", lat: 59.437, lon: 24.753 },
       tarifa: { label: "Tarifa", lat: 36.014, lon: -5.604 },
@@ -3359,6 +3876,10 @@
       lefkada: { label: "Lefkada", lat: 38.833, lon: 20.706 },
       budva: { label: "Budva", lat: 42.291, lon: 18.84 },
       sopot: { label: "Sopot", lat: 54.441, lon: 18.561 },
+      tenerife: { label: "Tenerife", lat: 28.122, lon: -16.727 },
+      majorca: { label: "Majorca", lat: 39.524, lon: 2.539 },
+      lisbon: { label: "Lisbon/Cascais", lat: 38.697, lon: -9.421 },
+      amalfi: { label: "Amalfi", lat: 40.634, lon: 14.602 },
       "sunny-beach": { label: "Sunny Beach", lat: 42.695, lon: 27.71 },
       paros: { label: "Paros", lat: 37.086, lon: 25.151 }
     };
@@ -3382,14 +3903,105 @@
     };
 
     const decisionScores = {
-      tarifa: { price: 7.2, weather: 8.5, nightlife: 8.6, beach: 8.6, flights: 7.3, hotels: 7.6, kitesurf: 10, safety: 8, friendly: 9, beauty: 8.5, nearby: 8.5, isic: 8, bestFor: "Best for beach energy, windy Atlantic scenery and lively old-town evenings." },
-      lagos: { price: 7.4, weather: 8.4, nightlife: 8, beach: 9, flights: 6.8, hotels: 8.1, kitesurf: 7.4, safety: 9, friendly: 9, beauty: 9, nearby: 9, isic: 8, bestFor: "Best all-rounder for beach, cliffs, nightlife and simple logistics." },
-      naxos: { price: 7.1, weather: 9.3, nightlife: 7.5, beach: 9, flights: 6.2, hotels: 8, kitesurf: 9.5, safety: 9, friendly: 9, beauty: 9, nearby: 8.6, isic: 7, bestFor: "Best Greek-island balance with beach-town charm and relaxed evenings." },
-      lefkada: { price: 7.3, weather: 8.8, nightlife: 7, beach: 9.8, flights: 7, hotels: 7.8, kitesurf: 9, safety: 9, friendly: 8, beauty: 9.5, nearby: 9.1, isic: 8, bestFor: "Best pure scenery and dramatic beach day-trip potential." },
-      budva: { price: 8, weather: 7.6, nightlife: 9.1, beach: 8, flights: 7.7, hotels: 8.2, kitesurf: 5.5, safety: 8, friendly: 8, beauty: 8.5, nearby: 8.8, isic: 7, bestFor: "Best for strong summer nightlife plus Montenegro coast day trips." },
+      tarifa: { price: 7.2, weather: 8.5, nightlife: 8.6, beach: 8.6, flights: 7.3, hotels: 7.6, kitesurf: 10, safety: 8, friendly: 9, beauty: 8.5, nearby: 8.5, isic: 8.5, bestFor: "Best for beach energy, windy Atlantic scenery and lively old-town evenings." },
+      lagos: { price: 7.4, weather: 8.4, nightlife: 8, beach: 9, flights: 6.8, hotels: 8.1, kitesurf: 7.4, safety: 9, friendly: 9, beauty: 9, nearby: 9, isic: 6.5, bestFor: "Best all-rounder for beach, cliffs, nightlife and simple logistics." },
+      naxos: { price: 7.1, weather: 9.3, nightlife: 7.5, beach: 9, flights: 6.2, hotels: 8, kitesurf: 9.5, safety: 9, friendly: 9, beauty: 9, nearby: 8.6, isic: 9.6, bestFor: "Best Greek-island balance with beach-town charm and relaxed evenings." },
+      lefkada: { price: 7.3, weather: 8.8, nightlife: 7, beach: 9.8, flights: 7, hotels: 7.8, kitesurf: 9, safety: 9, friendly: 8, beauty: 9.5, nearby: 9.1, isic: 6.2, bestFor: "Best pure scenery and dramatic beach day-trip potential." },
+      budva: { price: 8, weather: 7.6, nightlife: 9.1, beach: 8, flights: 7.7, hotels: 8.2, kitesurf: 5.5, safety: 8, friendly: 8, beauty: 8.5, nearby: 8.8, isic: 6.5, bestFor: "Best for strong summer nightlife plus Montenegro coast day trips." },
       sopot: { price: 9.4, weather: 5.8, nightlife: 7.5, beach: 7.2, flights: 9.5, hotels: 8.5, kitesurf: 6.8, safety: 9, friendly: 8.5, beauty: 8, nearby: 8, isic: 9, bestFor: "Best low-cost and shortest-flight choice if Baltic weather is acceptable." },
-      "sunny-beach": { price: 8.2, weather: 8.3, nightlife: 9.5, beach: 7.5, flights: 6.8, hotels: 8, kitesurf: 5.5, safety: 8, friendly: 8, beauty: 7, nearby: 7.8, isic: 7, bestFor: "Best for cheap, loud nightlife and warm resort weather." },
-      paros: { price: 6.6, weather: 9.2, nightlife: 8.5, beach: 9, flights: 6.4, hotels: 7.1, kitesurf: 9.2, safety: 9, friendly: 9, beauty: 9, nearby: 8.8, isic: 7, bestFor: "Best for stylish Cyclades atmosphere, nightlife and beach access." }
+      tenerife: { price: 6.8, weather: 9.5, nightlife: 8.6, beach: 8.5, flights: 6.8, hotels: 7.6, kitesurf: 8.8, safety: 8.5, friendly: 9, beauty: 8.8, nearby: 9, isic: 6.2, bestFor: "Best for warm Canary weather, resort comfort and El Medano kitesurf access." },
+      majorca: { price: 6.9, weather: 8.8, nightlife: 8.8, beach: 9, flights: 7.2, hotels: 7.5, kitesurf: 6.5, safety: 8.5, friendly: 9, beauty: 9, nearby: 9, isic: 6.5, bestFor: "Best for easy Mediterranean beaches, nightlife choice and strong resort logistics." },
+      lisbon: { price: 7.6, weather: 8.4, nightlife: 9.2, beach: 7.8, flights: 7.4, hotels: 7.8, kitesurf: 8, safety: 8.5, friendly: 9, beauty: 8.7, nearby: 9.2, isic: 8.4, bestFor: "Best city-plus-beach choice with nightlife, culture and Atlantic sport options." },
+      amalfi: { price: 5.4, weather: 8.6, nightlife: 6.8, beach: 8.4, flights: 6.5, hotels: 5.8, kitesurf: 2.5, safety: 8.5, friendly: 8.5, beauty: 9.8, nearby: 9.5, isic: 8.4, bestFor: "Best for romantic scenery and boat-day beauty, but weakest for budget." },
+      "sunny-beach": { price: 8.2, weather: 8.3, nightlife: 9.5, beach: 7.5, flights: 6.8, hotels: 8, kitesurf: 5.5, safety: 8, friendly: 8, beauty: 7, nearby: 7.8, isic: 6, bestFor: "Best for cheap, loud nightlife and warm resort weather." },
+      paros: { price: 6.6, weather: 9.2, nightlife: 8.5, beach: 9, flights: 6.4, hotels: 7.1, kitesurf: 9.2, safety: 9, friendly: 9, beauty: 9, nearby: 8.8, isic: 9.6, bestFor: "Best for stylish Cyclades atmosphere, nightlife and beach access." }
+    };
+
+    const studentTravelBenefits = {
+      default: {
+        summary: "ISIC/Kiwi EUR 15 only; no reliable free luggage perk found for this route.",
+        html: `
+          <span><strong>ISIC/Kiwi:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">EUR 15 off</a> eligible Kiwi.com bookings over EUR 200, if the exact itinerary is sold there and avoids Ryanair Group flights.</span>
+          <span><strong>Luggage reality:</strong> I did not find a reliable ISIC free cabin-trolley perk for this route; low-cost overhead/cabin-bag upgrades still need to be priced separately.</span>
+        `
+      },
+      tarifa: {
+        summary: "Kiwi EUR 15; Turkish student fares may add 40 kg or 2 x 23 kg checked baggage if a Malaga route via Istanbul prices well.",
+        html: `
+          <span><strong>Best ISIC angle:</strong> <a href="https://www.turkishairlines.com/en-int/student/" target="_blank" rel="noopener">Turkish Airlines student fares</a> can include 40 kg or 2 x 23 kg checked baggage and a free first change on Turkish-operated flights, useful only if a Malaga routing via Istanbul is still good value.</span>
+          <span><strong>Fallback:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> can work on non-Ryanair itineraries over EUR 200. No confirmed ISIC free onboard/cabin-bag perk for the likely low-cost Malaga options.</span>
+        `
+      },
+      lagos: {
+        summary: "Kiwi EUR 15 only; no dependable ISIC baggage perk found for the Faro routes.",
+        html: `
+          <span><strong>Main value:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> eligible bookings over EUR 200 if the Faro itinerary avoids Ryanair Group flights.</span>
+          <span><strong>Luggage reality:</strong> I did not find a dependable ISIC baggage perk for the likely Faro routes. Budget for cabin trolley/priority luggage if the Skyscanner fare is low-cost.</span>
+        `
+      },
+      naxos: {
+        summary: "Best ISIC value: Blue Star ferry can be 50% for ISIC holders; Aegean youth program may add baggage if age-eligible.",
+        html: `
+          <span><strong>Best ISIC value:</strong> <a href="https://www.bluestarferries.com/en-gb/offers-discounts/discounts-for-cyclades-dodecanese-n-aegean-saronic-islands" target="_blank" rel="noopener">Blue Star Ferries lists 50% off</a> passenger fares for ISIC holders on Cyclades routes, which matters if you fly to Athens and ferry to Naxos. Bring the ISIC card for ticket issue and boarding.</span>
+          <span><strong>Flight add-on:</strong> <a href="https://en.aegeanair.com/genairation/" target="_blank" rel="noopener">AEGEAN genAIRation</a> has flight discounts and free baggage coupons for eligible 18-25 travelers, but it is a youth program, not ISIC. Kiwi EUR 15 can still help on eligible Athens flight bookings.</span>
+        `
+      },
+      lefkada: {
+        summary: "Kiwi EUR 15 only; Lufthansa student baggage fares do not apply within Europe.",
+        html: `
+          <span><strong>Main value:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> is the realistic flight discount if the Preveza/nearby routing is eligible.</span>
+          <span><strong>Checked bag check:</strong> <a href="https://www.lufthansa.com/ee/en/local-page/student-fares" target="_blank" rel="noopener">Lufthansa student fares</a> can include extra baggage on selected long-haul student routes, but Lufthansa specifically does not offer student fares for bookings within Europe, so it should not be counted for Lefkada.</span>
+        `
+      },
+      budva: {
+        summary: "Kiwi EUR 15; Turkish student fares could add big checked baggage if a Tivat/Podgorica route via Istanbul works.",
+        html: `
+          <span><strong>Useful if it prices well:</strong> <a href="https://www.turkishairlines.com/en-int/student/" target="_blank" rel="noopener">Turkish student fares</a> can include 40 kg or 2 x 23 kg checked baggage on Turkish-operated routes, so check it for Podgorica/Tivat if baggage matters more than the shortest schedule.</span>
+          <span><strong>Fallback:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> may work on eligible non-Ryanair itineraries. No plain ISIC free cabin-bag perk found.</span>
+        `
+      },
+      tenerife: {
+        summary: "Kiwi EUR 15 only; no clear ISIC cabin-bag perk for Tenerife low-cost routes.",
+        html: `
+          <span><strong>Main value:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> eligible bookings over EUR 200, only if the final Tenerife itinerary avoids Ryanair Group flights.</span>
+          <span><strong>Luggage reality:</strong> I did not find a clear ISIC cabin-bag or checked-bag perk for the usual Tenerife low-cost routings. Add baggage in Skyscanner/airline checkout before comparing totals.</span>
+        `
+      },
+      majorca: {
+        summary: "Kiwi EUR 15; Ryanair free bag is ESNcard-only and excluded for late June.",
+        html: `
+          <span><strong>Main value:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> can help if the Palma itinerary is eligible and not Ryanair Group.</span>
+          <span><strong>Important trap:</strong> <a href="https://help.ryanair.com/hc/en-fi/articles/12891285734033-Erasmus-Terms-Conditions" target="_blank" rel="noopener">Ryanair Erasmus/ESN</a> includes a free 20 kg checked bag, but it is ESNcard-only and excludes flights from 16 June to 31 August, so it does not fit the 24 Jun-1 Jul trip.</span>
+        `
+      },
+      lisbon: {
+        summary: "Kiwi EUR 15; Turkish student fares may add 40 kg or 2 x 23 kg checked baggage but usually add an Istanbul detour.",
+        html: `
+          <span><strong>Best baggage option:</strong> <a href="https://www.turkishairlines.com/en-int/student/" target="_blank" rel="noopener">Turkish Airlines student fares</a> can include 40 kg or 2 x 23 kg checked baggage and one free first change on Turkish-operated student fares. Check it only if an Istanbul detour still beats paying bags on a faster route.</span>
+          <span><strong>Normal discount:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> remains the broad option for eligible bookings over EUR 200.</span>
+        `
+      },
+      amalfi: {
+        summary: "Kiwi EUR 15; Turkish student fares to Naples may add checked baggage if the Istanbul route is worth the time.",
+        html: `
+          <span><strong>Best baggage option:</strong> <a href="https://www.turkishairlines.com/en-int/student/" target="_blank" rel="noopener">Turkish Airlines student fares</a> may be useful for Naples if a Turkish-operated routing via Istanbul appears at a fair price, because checked baggage can be 40 kg or 2 x 23 kg.</span>
+          <span><strong>Fallback:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> can help on eligible flight bookings, but Amalfi transfers/hotels are the bigger budget pressure.</span>
+        `
+      },
+      "sunny-beach": {
+        summary: "Kiwi EUR 15 only; the well-known Ryanair free bag is not ISIC and not valid for these dates.",
+        html: `
+          <span><strong>Main value:</strong> <a href="https://isic.de/en/benefits/kiwi-com/8098/" target="_blank" rel="noopener">ISIC/Kiwi EUR 15 off</a> if the Burgas itinerary is eligible and not Ryanair Group.</span>
+          <span><strong>Not usable here:</strong> <a href="https://help.ryanair.com/hc/en-fi/articles/12891285734033-Erasmus-Terms-Conditions" target="_blank" rel="noopener">Ryanair Erasmus/ESN</a> is the free 20 kg checked-bag offer people mention, but it requires ESNcard and excludes 16 June-31 August travel.</span>
+        `
+      },
+      paros: {
+        summary: "Best ISIC value: Blue Star ferry can be 50% for ISIC holders; Aegean youth program may add baggage if age-eligible.",
+        html: `
+          <span><strong>Best ISIC value:</strong> <a href="https://www.bluestarferries.com/en-gb/offers-discounts/discounts-for-cyclades-dodecanese-n-aegean-saronic-islands" target="_blank" rel="noopener">Blue Star Ferries lists 50% off</a> passenger fares for ISIC holders on Cyclades routes, which can help if you fly to Athens and ferry to Paros. Bring the ISIC card for ticket issue and boarding.</span>
+          <span><strong>Flight add-on:</strong> <a href="https://en.aegeanair.com/genairation/" target="_blank" rel="noopener">AEGEAN genAIRation</a> has flight discounts and free baggage coupons for eligible 18-25 travelers, but it is not an ISIC discount. Kiwi EUR 15 can still help on eligible Athens flight bookings.</span>
+        `
+      }
     };
 
     const destinationBudgetEstimates = {
@@ -3447,6 +4059,42 @@
         activitiesHigh: 320,
         note: "Cheapest day-to-day estimate, using trains and moderate food/drink costs around the Tri-City."
       },
+      tenerife: {
+        foodLow: 560,
+        foodHigh: 850,
+        localTransportLow: 160,
+        localTransportHigh: 340,
+        activitiesLow: 180,
+        activitiesHigh: 450,
+        note: "Food assumes resort-area restaurants plus a few cheaper meals; transport/activity buffer helps with Teide, El Medano or boat trips."
+      },
+      majorca: {
+        foodLow: 620,
+        foodHigh: 950,
+        localTransportLow: 160,
+        localTransportHigh: 360,
+        activitiesLow: 180,
+        activitiesHigh: 480,
+        note: "Majorca can stay moderate if you avoid premium beach clubs; budget allows Palma, boat trips and a few livelier nights."
+      },
+      lisbon: {
+        foodLow: 560,
+        foodHigh: 900,
+        localTransportLow: 120,
+        localTransportHigh: 300,
+        activitiesLow: 160,
+        activitiesHigh: 420,
+        note: "Good city value if you use trains and casual restaurants; activities cover Sintra, museums, beach transfers or surf/kite add-ons."
+      },
+      amalfi: {
+        foodLow: 780,
+        foodHigh: 1200,
+        localTransportLow: 220,
+        localTransportHigh: 520,
+        activitiesLow: 220,
+        activitiesHigh: 650,
+        note: "Higher because Amalfi restaurants, ferries, private transfers and boat days are expensive compared with the rest of the list."
+      },
       "sunny-beach": {
         foodLow: 420,
         foodHigh: 680,
@@ -3498,6 +4146,22 @@
         best: { costLow: 210, costHigh: 230, outMin: 85, outMax: 85, backMin: 85, backMax: 85, label: "Best price / quality", travelNote: "Short direct flight to Gdansk." },
         cheap: { costLow: 210, costHigh: 230, outMin: 85, outMax: 85, backMin: 85, backMax: 85, label: "Cheapest", travelNote: "Same direct flight; the best and cheapest option are effectively identical." }
       },
+      tenerife: {
+        best: { costLow: 760, costHigh: 920, outMin: 480, outMax: 780, backMin: 480, backMax: 780, label: "Best price / quality", travelNote: "Longer Canary Islands routing, but lands in the warmest and most weather-reliable destination." },
+        cheap: { costLow: 620, costHigh: 760, outMin: 660, outMax: 1080, backMin: 660, backMax: 1080, label: "Cheapest", travelNote: "Lower fare with longer layovers or mixed low-cost carriers." }
+      },
+      majorca: {
+        best: { costLow: 560, costHigh: 720, outMin: 360, outMax: 600, backMin: 360, backMax: 600, label: "Best price / quality", travelNote: "Good Mediterranean routing into Palma with a manageable one-stop travel day." },
+        cheap: { costLow: 440, costHigh: 580, outMin: 480, outMax: 900, backMin: 480, backMax: 900, label: "Cheapest", travelNote: "Cheaper route, usually more waiting or low-cost mixing." }
+      },
+      lisbon: {
+        best: { costLow: 560, costHigh: 720, outMin: 390, outMax: 600, backMin: 390, backMax: 600, label: "Best price / quality", travelNote: "Balanced one-stop routing into Lisbon, with easy onward train/taxi to Cascais." },
+        cheap: { costLow: 430, costHigh: 560, outMin: 540, outMax: 1020, backMin: 540, backMax: 1020, label: "Cheapest", travelNote: "Cheapest fares may have long layovers, but Lisbon stays logistically flexible once you arrive." }
+      },
+      amalfi: {
+        best: { costLow: 620, costHigh: 780, outMin: 420, outMax: 650, backMin: 420, backMax: 650, label: "Best price / quality", travelNote: "Flight into Naples is only part of the trip; Amalfi transfer time and cost matter a lot." },
+        cheap: { costLow: 480, costHigh: 620, outMin: 600, outMax: 1080, backMin: 600, backMax: 1080, label: "Cheapest", travelNote: "Cheaper Naples routing, but the long Amalfi transfer can erase some comfort value." }
+      },
       "sunny-beach": {
         best: { costLow: 860, costHigh: 1030, outMin: 220, outMax: 220, backMin: 190, backMax: 190, label: "Best price / quality", travelNote: "Nonstop Burgas route when available." },
         cheap: { costLow: 555, costHigh: 555, outMin: 360, outMax: 900, backMin: 360, backMax: 900, label: "Cheapest", travelNote: "Cheaper but with a stop and much more variable travel time." }
@@ -3510,30 +4174,79 @@
 
     const hotelEstimates = {
       "tarifa-residencia": { nightLow: 240, nightHigh: 360, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Upscale town spa hotel estimate." },
+      "tarifa-convento": { nightLow: 120, nightHigh: 210, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Central proper-hotel estimate." },
       "tarifa-hostal": { nightLow: 85, nightHigh: 140, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Simple central room estimate." },
       "tarifa-hurricane": { nightLow: 180, nightHigh: 300, transferLow: 135, transferHigh: 185, transferMin: 105, transferMax: 120, priceNote: "Beach/kite hotel estimate outside town." },
       "lagos-tivoli": { nightLow: 200, nightHigh: 320, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Central resort estimate." },
+      "lagos-marina-rio": { nightLow: 150, nightHigh: 260, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Marina proper-hotel estimate." },
       "lagos-lagosmar": { nightLow: 95, nightHigh: 150, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Simple central hotel estimate." },
       "lagos-casa-mae": { nightLow: 260, nightHigh: 420, transferLow: 76, transferHigh: 91, transferMin: 60, transferMax: 75, priceNote: "Boutique design hotel estimate." },
       "naxos-nissaki": { nightLow: 260, nightHigh: 450, transferLow: 20, transferHigh: 60, transferMin: 5, transferMax: 10, priceNote: "Beachfront boutique resort estimate." },
+      "naxos-argo": { nightLow: 140, nightHigh: 260, transferLow: 20, transferHigh: 60, transferMin: 5, transferMax: 10, priceNote: "Comfortable proper-hotel estimate." },
       "naxos-soula": { nightLow: 90, nightHigh: 160, transferLow: 0, transferHigh: 20, transferMin: 5, transferMax: 10, priceNote: "Simple beach hotel estimate; free transfer may apply." },
       "naxos-grotta": { nightLow: 160, nightHigh: 260, transferLow: 20, transferHigh: 60, transferMin: 5, transferMax: 10, priceNote: "View/boutique hotel estimate." },
       "lefkada-porto-galini": { nightLow: 260, nightHigh: 430, transferLow: 40, transferHigh: 55, transferMin: 30, transferMax: 40, priceNote: "Full resort estimate." },
+      "lefkada-ionion-star": { nightLow: 120, nightHigh: 210, transferLow: 35, transferHigh: 50, transferMin: 25, transferMax: 30, priceNote: "Town proper-hotel estimate." },
       "lefkada-boschetto": { nightLow: 140, nightHigh: 240, transferLow: 35, transferHigh: 50, transferMin: 25, transferMax: 30, priceNote: "Small town hotel estimate." },
       "lefkada-elisso": { nightLow: 130, nightHigh: 230, transferLow: 60, transferHigh: 80, transferMin: 60, transferMax: 75, priceNote: "Vasiliki sport/beach hotel estimate." },
       "budva-avala": { nightLow: 180, nightHigh: 320, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Central resort estimate from Tivat." },
+      "budva-bracera": { nightLow: 120, nightHigh: 220, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Modern proper-hotel estimate from Tivat." },
       "budva-hermes": { nightLow: 90, nightHigh: 160, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Simple Budva hotel estimate from Tivat." },
       "budva-astoria": { nightLow: 160, nightHigh: 280, transferLow: 25, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Old-town boutique estimate from Tivat." },
       "sopot-marriott": { nightLow: 220, nightHigh: 360, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Beach spa resort estimate." },
+      "sopot-focus-premium": { nightLow: 100, nightHigh: 180, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Modern proper-hotel estimate." },
       "sopot-bb-molo": { nightLow: 80, nightHigh: 140, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Simple B&B estimate." },
       "sopot-molo": { nightLow: 120, nightHigh: 200, transferLow: 28, transferHigh: 35, transferMin: 25, transferMax: 30, priceNote: "Central hotel estimate." },
+      "tenerife-dreams": { nightLow: 180, nightHigh: 260, transferLow: 30, transferHigh: 40, transferMin: 20, transferMax: 25, priceNote: "Costa Adeje resort estimate from Tenerife South." },
+      "tenerife-mynd": { nightLow: 130, nightHigh: 200, transferLow: 35, transferHigh: 50, transferMin: 25, transferMax: 35, priceNote: "Modern hotel estimate from Tenerife South." },
+      "tenerife-mareverde": { nightLow: 75, nightHigh: 120, transferLow: 30, transferHigh: 40, transferMin: 20, transferMax: 25, priceNote: "Studio room estimate from Tenerife South." },
+      "tenerife-island-village": { nightLow: 70, nightHigh: 120, transferLow: 30, transferHigh: 40, transferMin: 20, transferMax: 30, priceNote: "Apartment estimate from Tenerife South." },
+      "majorca-reverence": { nightLow: 240, nightHigh: 320, transferLow: 40, transferHigh: 55, transferMin: 20, transferMax: 30, priceNote: "Adults-only resort estimate from Palma Airport." },
+      "majorca-azuline": { nightLow: 130, nightHigh: 200, transferLow: 40, transferHigh: 55, transferMin: 20, transferMax: 30, priceNote: "Palmanova proper-hotel estimate from Palma Airport." },
+      "majorca-belgica": { nightLow: 85, nightHigh: 130, transferLow: 40, transferHigh: 55, transferMin: 20, transferMax: 30, priceNote: "Hostal room estimate from Palma Airport." },
+      "majorca-kompas": { nightLow: 150, nightHigh: 220, transferLow: 40, transferHigh: 55, transferMin: 20, transferMax: 30, priceNote: "Beach studio estimate from Palma Airport." },
+      "lisbon-vila-gale": { nightLow: 220, nightHigh: 310, transferLow: 40, transferHigh: 60, transferMin: 35, transferMax: 50, priceNote: "Cascais sea-view hotel estimate from Lisbon Airport." },
+      "lisbon-city-beach": { nightLow: 170, nightHigh: 240, transferLow: 40, transferHigh: 60, transferMin: 35, transferMax: 50, priceNote: "Central Cascais hotel estimate from Lisbon Airport." },
+      "lisbon-village-guest": { nightLow: 100, nightHigh: 150, transferLow: 40, transferHigh: 60, transferMin: 35, transferMax: 50, priceNote: "Cascais guest-house estimate from Lisbon Airport." },
+      "lisbon-quinta-bicuda": { nightLow: 150, nightHigh: 230, transferLow: 45, transferHigh: 65, transferMin: 40, transferMax: 60, priceNote: "Calmer Cascais studio estimate from Lisbon Airport." },
+      "amalfi-excelsior": { nightLow: 400, nightHigh: 520, transferLow: 120, transferHigh: 180, transferMin: 90, transferMax: 150, priceNote: "Amalfi resort estimate from Naples Airport." },
+      "amalfi-croce": { nightLow: 200, nightHigh: 280, transferLow: 120, transferHigh: 180, transferMin: 90, transferMax: 150, priceNote: "Central Amalfi hotel estimate from Naples Airport." },
+      "amalfi-matteo": { nightLow: 160, nightHigh: 230, transferLow: 120, transferHigh: 180, transferMin: 90, transferMax: 150, priceNote: "Amalfi B&B room estimate from Naples Airport." },
+      "amalfi-cupido": { nightLow: 190, nightHigh: 260, transferLow: 120, transferHigh: 180, transferMin: 90, transferMax: 150, priceNote: "Central Amalfi apartment estimate from Naples Airport." },
       "sunny-evrika": { nightLow: 240, nightHigh: 420, transferLow: 25, transferHigh: 70, transferMin: 30, transferMax: 40, priceNote: "All-inclusive resort estimate." },
+      "sunny-premium-inn": { nightLow: 100, nightHigh: 180, transferLow: 25, transferHigh: 70, transferMin: 30, transferMax: 40, priceNote: "Central proper-hotel estimate." },
       "sunny-atol": { nightLow: 70, nightHigh: 120, transferLow: 25, transferHigh: 70, transferMin: 30, transferMax: 40, priceNote: "Budget central hotel estimate." },
       "sunny-panteleimon": { nightLow: 120, nightHigh: 220, transferLow: 25, transferHigh: 55, transferMin: 35, transferMax: 50, priceNote: "Nessebar-side quieter hotel estimate." },
       "paros-agnanti": { nightLow: 280, nightHigh: 520, transferLow: 15, transferHigh: 48, transferMin: 15, transferMax: 25, priceNote: "Five-star resort estimate." },
+      "paros-argonauta": { nightLow: 130, nightHigh: 230, transferLow: 9, transferHigh: 48, transferMin: 12, transferMax: 20, priceNote: "Central proper-hotel estimate." },
       "paros-oasis": { nightLow: 90, nightHigh: 160, transferLow: 9, transferHigh: 48, transferMin: 12, transferMax: 20, priceNote: "Simple central Parikia estimate." },
       "paros-senia": { nightLow: 260, nightHigh: 480, transferLow: 25, transferHigh: 57, transferMin: 20, transferMax: 30, priceNote: "Naoussa boutique/pool hotel estimate." }
     };
+
+    locations.forEach((location) => {
+      location.hotels.forEach((hotel) => {
+        const estimate = hotelEstimates[hotel.id];
+        const bookingTotal = Number(String(hotel.bookingPrice || "").replace(/[^\d.]/g, ""));
+
+        if (estimate && bookingTotal) {
+          estimate.nightLow = bookingTotal / tripAssumptions.nights;
+          estimate.nightHigh = bookingTotal / tripAssumptions.nights;
+          estimate.priceNote = `Booking.com available price snapshot for ${hotel.bookingRoom || "selected room"}, checked 3 May 2026.`;
+        }
+      });
+    });
+
+    const hotelAvailability = Object.fromEntries(
+      locations.flatMap((location) => location.hotels.map((hotel) => [
+        hotel.id,
+        {
+          status: "available",
+          label: "Available",
+          detail: `Booking.com showed this option available for 24 Jun-1 Jul 2026${hotel.bookingPrice ? ` at ${hotel.bookingPrice} for 1 week / 2 adults` : ""}${hotel.bookingLeft ? `; ${hotel.bookingLeft}` : ""}. Re-check live before booking.`,
+          checked: "Checked 3 May 2026"
+        }
+      ]))
+    );
 
     function escapeHtml(value) {
       return String(value)
@@ -3555,16 +4268,193 @@
       `;
     }
 
+    function getTableLocationLabel(location) {
+      const shortTown = location.town.includes(" / ") ? location.town.split(" / ")[0] : location.town;
+      return `${shortTown} (${location.country})`;
+    }
+
+    function getShortTemperature(value) {
+      const match = String(value).match(/\d+(?:\.\d+)?C/);
+      return match ? match[0] : value;
+    }
+
+    function getShortClimate(location) {
+      return `${getShortTemperature(location.climate.day)} day / ${getShortTemperature(location.climate.night)} night; ${location.climate.weather}; ${location.climate.rain}`;
+    }
+
+    function renderDestinationTable() {
+      const tbody = document.querySelector("#destinations-table tbody");
+      if (!tbody) {
+        return;
+      }
+
+      tbody.innerHTML = locations.map((location) => `
+        <tr>
+          <td><a class="jump-link" href="#${escapeHtml(location.id)}">${escapeHtml(getTableLocationLabel(location))}</a></td>
+          <td>${escapeHtml(location.region)}</td>
+          <td>${escapeHtml(location.facts.beach)}</td>
+          <td>${escapeHtml(getShortClimate(location))}</td>
+          <td>${escapeHtml(location.facts.safety)}</td>
+          <td>${escapeHtml(location.facts.friendly)}</td>
+          <td>${escapeHtml(location.facts.beauty.replace("/10", ""))}</td>
+          <td>${escapeHtml(location.facts.things)}</td>
+          <td>${escapeHtml(location.facts.nightlife)}</td>
+          <td>${escapeHtml(location.facts.kitesurf)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function getStudentTravelBenefit(location) {
+      return studentTravelBenefits[location.id] || studentTravelBenefits.default;
+    }
+
+    function renderStudentTravelBenefit(location) {
+      return `<div class="student-benefit-cell">${getStudentTravelBenefit(location).html}</div>`;
+    }
+
+    function getStudentTravelSummary(location) {
+      return getStudentTravelBenefit(location).summary;
+    }
+
+    function getTripAverage(trip) {
+      return averageRange(trip.realisticLow, trip.realisticHigh);
+    }
+
+    function getBestHotelOption(location) {
+      return location.hotels[0];
+    }
+
+    function getBestTripEstimate(location) {
+      return computeTripEstimate(location, "best", getBestHotelOption(location).id);
+    }
+
+    function getCheapestTripEstimate(location) {
+      return location.hotels
+        .map((hotel) => computeTripEstimate(location, "cheap", hotel.id))
+        .sort((a, b) => getTripAverage(a) - getTripAverage(b))[0];
+    }
+
+    function getOtherSpendingAverage(locationId) {
+      const spending = destinationBudgetEstimates[locationId];
+      const low = spending.foodLow + spending.localTransportLow + spending.activitiesLow;
+      const high = spending.foodHigh + spending.localTransportHigh + spending.activitiesHigh;
+
+      return averageRange(low, high);
+    }
+
+    function renderTripCostPlan(trip) {
+      const addOnText = trip.addOnHigh ? `Onward/ferry add-on: ${formatEuros(trip.addOnLow, trip.addOnHigh)}.` : "No separate onward/ferry add-on.";
+      const bookingLink = getBookingHotelLink(trip.location, trip.hotel);
+
+      return `
+        <strong>${escapeHtml(formatEuros(trip.realisticLow, trip.realisticHigh))} total for 2</strong><br>
+        <span class="price-basis">Approx ${escapeHtml(formatEuros(trip.realisticLow / 2, trip.realisticHigh / 2))} per person</span><br>
+        Base booking: ${escapeHtml(formatEuros(trip.totalLow, trip.totalHigh))}; other spending: ${escapeHtml(formatEuros(trip.dayToDayLow, trip.dayToDayHigh))}.<br>
+        Flight: ${escapeHtml(trip.flight.label)}, ${escapeHtml(formatEuros(trip.flight.costLow, trip.flight.costHigh))}. <a class="flight-link" href="${escapeHtml(trip.flight.link)}" target="_blank" rel="noopener">Open Skyscanner</a><br>
+        Hotel: <a class="flight-link" href="${escapeHtml(bookingLink)}" target="_blank" rel="noopener">${escapeHtml(trip.hotel.name)}</a> (${escapeHtml(trip.hotel.type)}), ${escapeHtml(formatEuros(trip.hotelLow, trip.hotelHigh))} for ${tripAssumptions.nights} nights.<br>
+        Transfer: ${escapeHtml(formatEuros(trip.transferLow, trip.transferHigh))} return. ${escapeHtml(addOnText)}<br>
+        Travel time: ${escapeHtml(formatTimeRange(trip.totalTravelMin, trip.totalTravelMax))} round trip.
+      `;
+    }
+
+    function renderOtherExpenseCell(location) {
+      const spending = destinationBudgetEstimates[location.id];
+      const low = spending.foodLow + spending.localTransportLow + spending.activitiesLow;
+      const high = spending.foodHigh + spending.localTransportHigh + spending.activitiesHigh;
+
+      return `
+        <strong>${escapeHtml(formatEuros(low, high))}</strong><br>
+        Food: ${escapeHtml(formatEuros(spending.foodLow, spending.foodHigh))}.<br>
+        Local transport: ${escapeHtml(formatEuros(spending.localTransportLow, spending.localTransportHigh))}.<br>
+        Activities/nightlife buffer: ${escapeHtml(formatEuros(spending.activitiesLow, spending.activitiesHigh))}.<br>
+        <span class="price-basis">${escapeHtml(spending.note)}</span><br>
+        ISIC/student: ${escapeHtml(getStudentTravelSummary(location))}
+      `;
+    }
+
+    function renderTripCostTable() {
+      const tbody = document.querySelector("#trip-cost-table tbody");
+      if (!tbody) {
+        return;
+      }
+
+      tbody.innerHTML = locations.map((location) => {
+        const bestTrip = getBestTripEstimate(location);
+        const cheapTrip = getCheapestTripEstimate(location);
+
+        return `
+          <tr>
+            <td><a class="jump-link" href="#${escapeHtml(location.id)}">${escapeHtml(getTableLocationLabel(location))}</a></td>
+            <td>${escapeHtml(getShortClimate(location))}</td>
+            <td>${renderTripCostPlan(bestTrip)}</td>
+            <td>${renderTripCostPlan(cheapTrip)}</td>
+            <td>${renderOtherExpenseCell(location)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderSideNavigation() {
+      const locationGroup = document.querySelector("#side-nav-locations");
+      if (locationGroup) {
+        locationGroup.innerHTML = `
+          <p class="side-nav-label">Locations</p>
+          ${locations.map((location) => `<a href="#${escapeHtml(location.id)}">${escapeHtml(location.town)}</a>`).join("")}
+        `;
+      }
+
+      const countPill = document.querySelector("#location-count-pill");
+      if (countPill) {
+        countPill.textContent = `${locations.length} locations`;
+      }
+    }
+
+    function renderOverviewTables() {
+      renderDestinationTable();
+      renderTripCostTable();
+      renderSideNavigation();
+    }
+
+    function getBookingHotelLink(location, hotel) {
+      const params = new URLSearchParams({
+        ss: `${hotel.name}, ${location.town}, ${location.country}`,
+        checkin: "2026-06-24",
+        checkout: "2026-07-01",
+        group_adults: "2",
+        no_rooms: "1",
+        group_children: "0",
+        selected_currency: "EUR"
+      });
+
+      return `https://www.booking.com/searchresults.html?${params.toString()}`;
+    }
+
+    function getHotelAvailability(hotel) {
+      return hotelAvailability[hotel.id] || {
+        status: "unavailable",
+        label: "Re-check live",
+        detail: "Availability has not been checked automatically for this hotel.",
+        checked: "Not checked"
+      };
+    }
+
+    function renderAvailability(availability) {
+      const className = availability.status === "available" ? "availability-available" : "availability-unavailable";
+      return `<span class="availability-status ${className}">${escapeHtml(availability.label)}</span>${escapeHtml(availability.detail)} ${escapeHtml(availability.checked)}.`;
+    }
+
     function renderHotelCard(location, hotel) {
       const estimate = hotelEstimates[hotel.id];
       const hotelStay = estimate ? `${formatEuros(estimate.nightLow * tripAssumptions.nights, estimate.nightHigh * tripAssumptions.nights)} for ${tripAssumptions.nights} nights` : "Estimate unavailable";
+      const bookingLink = getBookingHotelLink(location, hotel);
+      const availability = getHotelAvailability(hotel);
 
       return `
         <article class="hotel-card">
           <img src="${escapeHtml(hotel.image)}" alt="${escapeHtml(hotel.name)} hotel preview" loading="lazy">
           <div class="hotel-card-body">
             <div class="hotel-type">${escapeHtml(hotel.type)}</div>
-            <h4><a class="jump-link" href="${escapeHtml(hotel.link)}" target="_blank" rel="noopener">${escapeHtml(hotel.name)}</a></h4>
+            <h4><a class="jump-link" href="${escapeHtml(bookingLink)}" target="_blank" rel="noopener">${escapeHtml(hotel.name)}</a></h4>
             <label class="compare-toggle">
               <input type="checkbox" class="compare-hotel" value="${escapeHtml(hotel.id)}" data-location="${escapeHtml(location.id)}">
               Compare hotel
@@ -3576,11 +4466,12 @@
               <li><b>City/nightlife:</b> ${escapeHtml(hotel.nightlife)}</li>
               <li><b>Airport:</b> ${escapeHtml(hotel.airport)}</li>
               <li><b>Airport transfer:</b> ${escapeHtml(hotel.transport)}</li>
+              <li><b>Booking.com availability:</b> ${renderAvailability(availability)}</li>
               <li><b>Estimated hotel cost:</b> ${escapeHtml(hotelStay)}</li>
               <li><b>Bonus/minus:</b> ${escapeHtml(hotel.bonus)}</li>
             </ul>
-            <a class="flight-link" href="${escapeHtml(hotel.link)}" target="_blank" rel="noopener">Open hotel page</a>
-            <p class="hotel-note">Hotel thumbnail is a visual planning preview. Use the hotel link for official photos and live room details.</p>
+            <a class="flight-link" href="${escapeHtml(bookingLink)}" target="_blank" rel="noopener">Open Booking.com listing</a>
+            <p class="hotel-note">Booking.com opens with 24 Jun-1 Jul 2026, 2 adults and 1 room. Hotel thumbnail is a visual planning preview; use Booking.com for live availability and photos.</p>
           </div>
         </article>
       `;
@@ -3656,6 +4547,20 @@
         return getFlightAverage(locationId, "cheap");
       }
 
+      const location = locations.find((item) => item.id === locationId);
+
+      if (location && key === "bestTripCost") {
+        return getTripAverage(getBestTripEstimate(location));
+      }
+
+      if (location && key === "cheapTripCost") {
+        return getTripAverage(getCheapestTripEstimate(location));
+      }
+
+      if (key === "otherSpending") {
+        return getOtherSpendingAverage(locationId);
+      }
+
       return scores[key] ?? 0;
     }
 
@@ -3723,9 +4628,30 @@
         .join("");
     }
 
-    function renderScoreCard(location, compact = false) {
+    function renderScoreCard(location, compact = false, collapsible = false) {
       const scores = decisionScores[location.id];
       const overall = calculateDecisionScore(location.id);
+      const detailsId = `score-details-${location.id}`;
+
+      if (collapsible) {
+        return `
+          <article class="score-card score-card-collapsible" data-expanded="false">
+            <button class="score-card-toggle" type="button" aria-expanded="false" aria-controls="${escapeHtml(detailsId)}">
+              <span class="score-card-summary">
+                <span class="score-card-name">${escapeHtml(location.town)}</span>
+                <strong class="score-number">${escapeHtml(overall.toFixed(1))}/10</strong>
+              </span>
+              <span class="score-card-arrow" aria-hidden="true">&gt;</span>
+            </button>
+            <div class="score-card-details" id="${escapeHtml(detailsId)}" hidden>
+              <p>${escapeHtml(scores.bestFor)}</p>
+              <div class="score-bars">
+                ${renderScoreBars(scores, compact ? 4 : 7)}
+              </div>
+            </div>
+          </article>
+        `;
+      }
 
       return `
         <article class="score-card">
@@ -3739,6 +4665,54 @@
       `;
     }
 
+    function setScoreCardExpanded(card, expanded) {
+      const toggle = card.querySelector(".score-card-toggle");
+      const details = card.querySelector(".score-card-details");
+
+      card.dataset.expanded = String(expanded);
+      toggle.setAttribute("aria-expanded", String(expanded));
+      details.hidden = !expanded;
+    }
+
+    function updateScoreExpandAllButton() {
+      const button = document.querySelector("#toggle-all-scores");
+      const cards = [...document.querySelectorAll("#score-board .score-card-collapsible")];
+
+      if (!button || !cards.length) {
+        return;
+      }
+
+      const allExpanded = cards.every((card) => card.dataset.expanded === "true");
+      button.textContent = allExpanded ? "Collapse all" : "Expand all";
+      button.setAttribute("aria-expanded", String(allExpanded));
+    }
+
+    function bindScoreCardControls() {
+      document.querySelectorAll("#score-board .score-card-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".score-card-collapsible");
+          const expanded = card.dataset.expanded === "true";
+          setScoreCardExpanded(card, !expanded);
+          updateScoreExpandAllButton();
+        });
+      });
+
+      const expandAllButton = document.querySelector("#toggle-all-scores");
+
+      if (expandAllButton && expandAllButton.dataset.bound !== "true") {
+        expandAllButton.dataset.bound = "true";
+        expandAllButton.addEventListener("click", () => {
+          const cards = [...document.querySelectorAll("#score-board .score-card-collapsible")];
+          const shouldExpand = !cards.every((card) => card.dataset.expanded === "true");
+
+          cards.forEach((card) => setScoreCardExpanded(card, shouldExpand));
+          updateScoreExpandAllButton();
+        });
+      }
+
+      updateScoreExpandAllButton();
+    }
+
     function renderScoreBoard() {
       const container = document.querySelector("#score-board");
 
@@ -3747,7 +4721,8 @@
       }
 
       const ranked = [...locations].sort((a, b) => calculateDecisionScore(b.id) - calculateDecisionScore(a.id));
-      container.innerHTML = `<div class="score-grid">${ranked.map((location) => renderScoreCard(location)).join("")}</div>`;
+      container.innerHTML = `<div class="score-grid">${ranked.map((location) => renderScoreCard(location, false, true)).join("")}</div>`;
+      bindScoreCardControls();
     }
 
     function renderLocationScore(location) {
@@ -3820,7 +4795,7 @@
 
     function renderMobileCards() {
       const destinationContainer = document.querySelector("#destination-mobile-cards");
-      const flightContainer = document.querySelector("#flight-mobile-cards");
+      const tripCostContainer = document.querySelector("#trip-cost-mobile-cards");
 
       if (destinationContainer) {
         destinationContainer.innerHTML = locations.map((location) => {
@@ -3840,19 +4815,27 @@
         }).join("");
       }
 
-      if (flightContainer) {
-        flightContainer.innerHTML = locations.map((location) => `
-          <article class="mobile-table-card">
-            <h3><a href="#${escapeHtml(location.id)}">${escapeHtml(location.town)} (${escapeHtml(location.country)})</a></h3>
-            <div class="mobile-table-card-body">
-              <div class="mobile-card-row"><span>Best</span><strong>${escapeHtml(location.flights.best.price)}; ${escapeHtml(location.flights.best.perPerson)}</strong></div>
-              <div class="mobile-card-row"><span>Route</span><strong>${escapeHtml(location.flights.best.details)}</strong></div>
-              <div class="mobile-card-row"><span>Cheapest</span><strong>${escapeHtml(location.flights.cheap.price)}; ${escapeHtml(location.flights.cheap.perPerson)}</strong></div>
-              <div class="mobile-card-row"><span>Climate</span><strong>${escapeHtml(location.climate.day)} / ${escapeHtml(location.climate.night)}</strong></div>
-              <div class="mobile-card-row"><span>Links</span><strong><a class="flight-link" href="${escapeHtml(location.flights.best.link)}" target="_blank" rel="noopener">Best flight</a> <a class="flight-link" href="${escapeHtml(location.flights.cheap.link)}" target="_blank" rel="noopener">Cheapest flight</a></strong></div>
-            </div>
-          </article>
-        `).join("");
+      if (tripCostContainer) {
+        tripCostContainer.innerHTML = locations.map((location) => {
+          const bestTrip = getBestTripEstimate(location);
+          const cheapTrip = getCheapestTripEstimate(location);
+          const bestHotelLink = getBookingHotelLink(location, bestTrip.hotel);
+          const cheapHotelLink = getBookingHotelLink(location, cheapTrip.hotel);
+
+          return `
+            <article class="mobile-table-card">
+              <h3><a href="#${escapeHtml(location.id)}">${escapeHtml(location.town)} (${escapeHtml(location.country)})</a></h3>
+              <div class="mobile-table-card-body">
+                <div class="mobile-card-row"><span>Best total</span><strong>${escapeHtml(formatEuros(bestTrip.realisticLow, bestTrip.realisticHigh))} for 2; ${escapeHtml(bestTrip.hotel.name)}</strong></div>
+                <div class="mobile-card-row"><span>Cheapest</span><strong>${escapeHtml(formatEuros(cheapTrip.realisticLow, cheapTrip.realisticHigh))} for 2; ${escapeHtml(cheapTrip.hotel.name)}</strong></div>
+                <div class="mobile-card-row"><span>Other costs</span><strong>${escapeHtml(formatEuros(bestTrip.dayToDayLow, bestTrip.dayToDayHigh))} food, local transport and activities</strong></div>
+                <div class="mobile-card-row"><span>Travel time</span><strong>Best: ${escapeHtml(formatTimeRange(bestTrip.totalTravelMin, bestTrip.totalTravelMax))}; cheap: ${escapeHtml(formatTimeRange(cheapTrip.totalTravelMin, cheapTrip.totalTravelMax))}</strong></div>
+                <div class="mobile-card-row"><span>ISIC</span><strong>${escapeHtml(getStudentTravelSummary(location))}</strong></div>
+                <div class="mobile-card-row"><span>Links</span><strong><a class="flight-link" href="${escapeHtml(bestTrip.flight.link)}" target="_blank" rel="noopener">Best flight</a> <a class="flight-link" href="${escapeHtml(cheapTrip.flight.link)}" target="_blank" rel="noopener">Cheapest flight</a> <a class="flight-link" href="${escapeHtml(bestHotelLink)}" target="_blank" rel="noopener">Best hotel</a> <a class="flight-link" href="${escapeHtml(cheapHotelLink)}" target="_blank" rel="noopener">Cheapest hotel</a></strong></div>
+              </div>
+            </article>
+          `;
+        }).join("");
       }
     }
 
@@ -3937,6 +4920,8 @@
 
     function renderTripResult(trip) {
       const addOnText = trip.addOnHigh ? formatEuros(trip.addOnLow, trip.addOnHigh) : "None";
+      const bookingLink = getBookingHotelLink(trip.location, trip.hotel);
+      const availability = getHotelAvailability(trip.hotel);
 
       return `
         <div class="trip-result">
@@ -3957,7 +4942,8 @@
             <li><b>Total travel time:</b> ${escapeHtml(formatTimeRange(trip.totalTravelMin, trip.totalTravelMax))} round-trip airport-to-hotel movement estimate.</li>
             <li><b>Realistic budget:</b> ${escapeHtml(formatEuros(trip.realisticLow, trip.realisticHigh))} includes the base booking estimate plus food, local transport and activities for two.</li>
             <li><b>Food / local transport / activities:</b> ${escapeHtml(formatEuros(trip.spending.foodLow, trip.spending.foodHigh))}, ${escapeHtml(formatEuros(trip.spending.localTransportLow, trip.spending.localTransportHigh))}, and ${escapeHtml(formatEuros(trip.spending.activitiesLow, trip.spending.activitiesHigh))}. ${escapeHtml(trip.spending.note)}</li>
-            <li><b>Selected hotel:</b> ${escapeHtml(trip.hotel.name)} (${escapeHtml(trip.hotel.type)}). ${escapeHtml(trip.hotelEstimate.priceNote)}</li>
+            <li><b>Selected hotel:</b> <a class="flight-link" href="${escapeHtml(bookingLink)}" target="_blank" rel="noopener">${escapeHtml(trip.hotel.name)} on Booking.com</a> (${escapeHtml(trip.hotel.type)}). ${escapeHtml(trip.hotelEstimate.priceNote)}</li>
+            <li><b>Booking.com availability:</b> ${renderAvailability(availability)}</li>
             <li><b>Hotel benefits:</b> ${escapeHtml(trip.hotel.strengths)}</li>
             <li><b>Hotel minuses:</b> ${escapeHtml(trip.hotel.weaknesses)}</li>
             <li><b>Airport transfer:</b> ${escapeHtml(trip.hotel.transport)} ${escapeHtml(trip.transfer.note)}</li>
@@ -4063,9 +5049,53 @@
         Nightlife: "Good and compact. Main area is Bohaterow Monte Cassino, with clubs like Ego, Soho, Zla Kobieta and Makahiki listed around 10-20 PLN cover, beer around 8-12 PLN and drinks around 12-22 PLN. Good for affordable nights out.",
         Kitesurf: "Good regionally, not directly in Sopot. The serious kitesurf scene is on Hel Peninsula, about 50-80 km away. This is a day-trip sport option, not a doorstep beach activity."
       },
+      tenerife: {
+        Climate: "Late June is very reliable: around 26C by day and 20C at night. In direct sun around pools, dark sand and promenades it can feel closer to 30-34C, but sea breeze helps. Pack for summer and strong UV.",
+        Weather: "Mostly sunny, dry and warm. Cloud can sit around higher terrain, but the south coast around Costa Adeje is one of the sunnier parts of Tenerife. The sun is sharp, so beach shade matters.",
+        Rain: "Rain risk is very low for the Costa Adeje area in late June. A shower is possible but unlikely to shape the week. Wind direction and UV exposure matter more than rain.",
+        Safety: "8.5/10 because Tenerife South is a mature resort area with good services, but it is busier and more nightlife/tourist-heavy than quieter Greek islands. Main risks: petty theft, sun/heat, ocean conditions, late-night drinking zones and taxi/transfer pricing.",
+        "Tourist-friendly": "9/10 because English is widely usable, hotels/tours/transfers are easy and the island is built for visitors. It loses little because the best island sights and El Medano kitesurfing need car/taxi planning.",
+        Beauty: "8.8/10 because Tenerife adds volcanic scenery, Teide, cliffs, black/golden beaches and strong ocean views. Costa Adeje itself is more resort-polished than wild, so the score comes from island variety as much as the town.",
+        Nearby: "Siam Park is the big paid attraction and can be a meaningful extra cost. Teide tours/car days are the standout scenery. Boat trips for dolphins/whales are common. El Medano kitesurf lessons/rentals add sport-day costs plus transfer/car costs.",
+        Nightlife: "Good and flexible. Costa Adeje has resort bars, restaurants and beach-club style evenings; Playa de las Americas is better for bigger nights and clubs such as Papagayo-style beach club evenings. Drinks/club costs are usually higher than Bulgaria, lower than Amalfi.",
+        Kitesurf: "Excellent nearby, but not on the Costa Adeje doorstep. El Medano is the key wind-sport town about 20-30 km away. Choose Tenerife if you want one or two kitesurf days plus resort comfort, not if you want to walk to kite schools every morning."
+      },
+      majorca: {
+        Climate: "Late June is hot and summery: around 28C day and 19C night. In direct beach sun it can feel 32-35C, especially on pale sand and promenades. Nights are warm enough for light clothes.",
+        Weather: "Mostly sunny and dry with strong Mediterranean UV. Afternoon heat can be intense, but sea breeze and swims help. Cloud is possible but not the main pattern.",
+        Rain: "Rain risk is low. A short shower can happen, but the normal plan should be beach weather. The bigger comfort issues are heat, crowds and sun exposure.",
+        Safety: "8.5/10 because Palmanova is generally safe and tourist-ready, but nearby nightlife zones can get messy. Main risks: pickpockets, drunk crowds, beach valuables, scooter/road incidents and overpaying for taxis late at night.",
+        "Tourist-friendly": "9/10 because it is extremely easy for visitors: English, transfers, restaurants, beaches, hotels and tours are straightforward. It loses very little unless you dislike package-resort crowds.",
+        Beauty: "9/10 because you get clean resort beaches plus Palma, coves, boat trips and the Serra de Tramuntana. Palmanova itself is practical more than dramatic, but the island day-trip beauty is strong.",
+        Nearby: "Palma old town and cathedral are easy by bus/taxi. Boat trips and beach clubs add costs. Magaluf is close for nightlife. Serra de Tramuntana or cove days are best with car/tour; expect higher prices than Bulgaria/Montenegro.",
+        Nightlife: "Strong nearby. Palmanova gives easier bars and restaurants; Magaluf is the louder option with club strips, promoters and late nights. Best if you want the option of party energy without sleeping directly in the wildest area.",
+        Kitesurf: "Possible rather than core. Majorca has wind-sport spots, but Palmanova is not a dedicated kite base. Treat kitesurfing as a weather-dependent bonus and choose Tarifa, Naxos, Paros or Tenerife for stronger sport focus."
+      },
+      lisbon: {
+        Climate: "Late June is warm: around 26C in Lisbon and usually cooler/breezier by Cascais beaches, with nights around 17C. In city streets and viewpoints it can feel 30C+, while Atlantic beaches feel fresher.",
+        Weather: "Mostly sunny and dry, but Atlantic wind is part of the feel. The sun is strong, yet beach water and breeze keep it less tropical than Greece, Majorca or Tenerife.",
+        Rain: "Rain risk is low in late June. A shower is possible but unlikely to dominate. Beach comfort is more affected by wind and cooler Atlantic water.",
+        Safety: "8.5/10 because Lisbon/Cascais is generally safe and organized, but city-tourist risks are real. Main risks: pickpockets on trams/metro/viewpoints, beach valuables, nightlife crowds in Bairro Alto/Cais do Sodre, and ocean conditions at wilder beaches.",
+        "Tourist-friendly": "9/10 because English is common, public transport is useful, tours are abundant and restaurants/hotels are easy to navigate. It loses little because beach trips need train/ferry/taxi planning.",
+        Beauty: "8.7/10 because Lisbon adds viewpoints, tiled streets, Belem, Cascais coast, Sintra palaces and Atlantic cliffs. Beaches are pretty but the water is cooler and less resort-tropical.",
+        Nearby: "Sintra is the standout paid day trip and can cost more once palace tickets and transport are included. Cascais beaches are low-cost by train. Costa da Caparica and Guincho are better for surf/kite, with lesson/rental costs plus transport.",
+        Nightlife: "Excellent if you use Lisbon: Bairro Alto for bar hopping, Cais do Sodre/Pink Street for late bars and clubs, LX Factory for food/drinks, and Alfama for fado-style evenings. Cascais is calmer and more seaside-restaurant focused.",
+        Kitesurf: "Good nearby, especially Guincho and Costa da Caparica when conditions fit. It needs transport and wind planning, but the sport quality is real. Not as effortless as Tarifa, but better than Majorca or Amalfi."
+      },
+      amalfi: {
+        Climate: "Late June is hot Mediterranean summer: around 29C day and 21C night. In direct sun on stone streets, stairs and boats it can feel 33-36C. Pack light clothes, water and sun protection.",
+        Weather: "Mostly sunny and warm with very strong sun. Shade can be limited on boats, beaches and cliff paths. Evenings stay pleasant for restaurants and scenic walks.",
+        Rain: "Rain risk is low-to-moderate. A short shower or storm is possible, but the bigger planning risks are heat, crowds, expensive transport and hotel availability.",
+        Safety: "8.5/10 because Amalfi is generally safe and couple-friendly, but logistics create risk. Main issues: narrow roads, crowded ferries/buses, heat on stairs/paths, swimming near boat traffic and expensive taxis. Petty theft risk is lower than big cities but still normal tourist caution.",
+        "Tourist-friendly": "8.5/10 because tourism services are strong, English is common in hotels/restaurants and tours are easy, but transport is slower, pricier and more crowded than simple resort bases.",
+        Beauty: "9.8/10 because the coastline is spectacular: Positano cliffs, Amalfi town, Ravello gardens, lemon terraces, boat views and turquoise coves. It scores highest visually, even though beaches are smaller and less practical.",
+        Nearby: "Boat days, Positano, Ravello and Path of the Gods are the main draws. Costs can climb fast: ferries, private boats, taxis and restaurant prices are higher than most destinations here. Many sights are free to walk, but logistics are the expense.",
+        Nightlife: "Moderate and scenic. Think restaurants, wine/cocktail bars, hotel terraces and late gelato rather than clubs. Positano has livelier upscale evenings, but prices are high and transport back can be painful.",
+        Kitesurf: "Not a meaningful reason to choose Amalfi. The coast is steep, crowded and boat-heavy, with limited practical kite beaches. Treat sport as swimming/boat/hiking, not kitesurf."
+      },
       "sunny-beach": {
         Climate: "Late June is properly warm: around 27C day and 18C night. In direct sun on sand or pool areas it can feel 31-34C, especially with little breeze. Evenings stay comfortable for nightlife.",
-        Weather: "Mostly sunny and resort-friendly, with a stronger beach-holiday feel than Sopot. The sun is sharp around midday, so shade and sunscreen matter. Cloud/showers can happen but are usually not the main pattern.",
+        Weather: "Mostly sunny and resort-friendly, with a stronger warm-beach feel than northern coast options. The sun is sharp around midday, so shade and sunscreen matter. Cloud/showers can happen but are usually not the main pattern.",
         Rain: "Rain risk is moderate compared with Greece/Portugal. Around a week can include a shower or storm, but many days should still be beach-usable. The bigger practical risk is crowds and noise, not weather.",
         Safety: "8/10 because the resort is busy and tourism-focused but can be messy at night. Main risks are petty theft, scams/overcharging, very drunk party crowds, beach valuables and nightlife pressure. Benefits: lots of people, easy taxis, simple resort layout.",
         "Tourist-friendly": "8/10 because it is extremely easy for package tourists: hotels, English menus, beach bars and clubs everywhere. It loses points because the area can feel commercial, loud and less authentic, and service quality varies.",
@@ -4206,6 +5236,9 @@
                 ${renderFlightSummary(location.flights.best)}
                 ${renderFlightSummary(location.flights.cheap)}
               </div>
+              <div class="student-benefit-callout">
+                ${renderStudentTravelBenefit(location)}
+              </div>
             </div>
             <div class="detail-subsection">
               <h3>Hotels</h3>
@@ -4289,6 +5322,8 @@
       const rows = [
         { label: "Destination", get: (item) => escapeHtml(`${item.location.town}, ${item.location.country}`) },
         { label: "Type", get: (item) => escapeHtml(item.hotel.type) },
+        { label: "Booking.com listing", get: (item) => `<a class="flight-link" href="${escapeHtml(getBookingHotelLink(item.location, item.hotel))}" target="_blank" rel="noopener">Open Booking.com</a>` },
+        { label: "Booking.com availability", get: (item) => renderAvailability(getHotelAvailability(item.hotel)) },
         { label: "Beach", get: (item) => escapeHtml(item.hotel.beach) },
         { label: "City / nightlife", get: (item) => escapeHtml(item.hotel.nightlife) },
         { label: "Airport", get: (item) => escapeHtml(item.hotel.airport) },
@@ -4346,6 +5381,8 @@
         { label: "Flight", get: (item) => escapeHtml(`${item.trip.flight.label}: ${formatEuros(item.trip.flight.costLow, item.trip.flight.costHigh)} for 2`) },
         { label: "Flight details", get: (item) => escapeHtml(item.trip.flight.details) },
         { label: "Hotel", get: (item) => escapeHtml(`${item.trip.hotel.name} (${item.trip.hotel.type})`) },
+        { label: "Booking.com listing", get: (item) => `<a class="flight-link" href="${escapeHtml(getBookingHotelLink(item.trip.location, item.trip.hotel))}" target="_blank" rel="noopener">Open Booking.com</a>` },
+        { label: "Booking.com availability", get: (item) => renderAvailability(getHotelAvailability(item.trip.hotel)) },
         { label: "Hotel cost", get: (item) => escapeHtml(`${formatEuros(item.trip.hotelLow, item.trip.hotelHigh)} for ${tripAssumptions.nights} nights`) },
         { label: "Return transfer", get: (item) => escapeHtml(`${formatEuros(item.trip.transferLow, item.trip.transferHigh)}; ${item.trip.transfer.note}`) },
         { label: "Base booking estimate", get: (item) => escapeHtml(`${formatEuros(item.trip.totalLow, item.trip.totalHigh)} for 2`) },
@@ -4429,6 +5466,7 @@
       updateTripComparison();
     }
 
+    renderOverviewTables();
     renderScoreBoard();
     renderMobileCards();
     renderLocationDetails();
